@@ -1,0 +1,12 @@
+.container{
+background-color:#FFC0CB;
+padding:10px;
+}
+
+.login-row{
+margin-bottom:10px;
+display:block;
+}
+.error-message{
+color:red;
+}
