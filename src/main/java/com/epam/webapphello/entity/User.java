@@ -1,14 +1,16 @@
 package com.epam.webapphello.entity;
 
-public class User {
+public class User implements Identifable{
 
-    private int id;
+    public final static String TABLE = "user";
+
+    private Long id;
     private String login;
     private String password;
     private String name;
 
 
-    public User(int id, String name,String login) {
+    public User(Long id, String name,String login) {
         this.id = id;
         this.login = login;
         this.name = name;
@@ -18,11 +20,11 @@ public class User {
     }
 
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
