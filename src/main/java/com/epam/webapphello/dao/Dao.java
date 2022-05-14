@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface Dao <T extends Identifable>{
 
-    Optional<T> getById(Long id);
+    Optional<T> getById(Long id) throws DAOException;
 
     List<T> getAll() throws DAOException;
 

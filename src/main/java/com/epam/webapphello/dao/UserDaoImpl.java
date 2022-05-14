@@ -3,6 +3,7 @@ package com.epam.webapphello.dao;
 import com.epam.webapphello.entity.User;
 import com.epam.webapphello.exception.DAOException;
 import com.epam.webapphello.mapper.RowMapper;
+import com.epam.webapphello.mapper.UserRowMapper;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -34,8 +35,7 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
         }
 
     @Override
-    public Optional<User> getById(Long id) {
-        String table = getTableName();
+    public Optional<User> getById(Long id) throws DAOException {
         return executeForSingleResult(FIND_BY_ID,  new UserRowMapper(), id);
     }
 
@@ -51,7 +51,7 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
         try {
             PreparedStatement statement = createStatement (SAVE_USER, item.getId(),item.getName(),
                                             item.getSurname(), item.getLogin(), item.getPassword(),
-                                            item.getRole(), item.getAmount(),item.isBlocked());
+                                            item.getRole(), item.getAmount(),item.getIsBlocked());
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new DAOException(e);

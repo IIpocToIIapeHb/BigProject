@@ -10,12 +10,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 
-public class SimpleUserDao implements UserDao {
-//    public static void main(String[] args) {
-//        SimpleUserDao simpleUserService = new SimpleUserDao();
-//        System.out.println(simpleUserService.findUserByLoginAndPassword("BlackSwan", "Hello world"));
-//
-//    }
+public class KneesUserDao implements UserDao {
+    public static void main(String[] args) throws DAOException {
+        KneesUserDao simpleUserService = new KneesUserDao();
+        System.out.println(simpleUserService.findUserByLoginAndPassword("BlackSwan", "Hello world"));
+
+    }
 
     public Optional<User> findUserByLoginAndPassword(final String login, final String password) throws DAOException {
         try (Connection connection = ConnectorDB.getConnection()) {
