@@ -16,6 +16,6 @@ public class UserRowMapper implements RowMapper{
                         resultSet.getString("password"),
                         resultSet.getString("role"),
                         resultSet.getDouble("amount"),
-                        resultSet.getByte("is_blocked"));
+                        resultSet.getByte("is_blocked")==0 ? false:true);
     }
 }

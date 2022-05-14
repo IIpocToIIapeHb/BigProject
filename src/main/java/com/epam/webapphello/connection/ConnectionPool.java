@@ -25,7 +25,6 @@ public class ConnectionPool {
 
 
     private ConnectionPool() throws ConnectionException {
-
         availableConnection = new ArrayDeque<>();
         for (int i = 0; i < CONNECTIONS_NUMBER; i++) {
                 try {

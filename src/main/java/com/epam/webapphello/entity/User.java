@@ -10,10 +10,10 @@ public class User implements Identifable{
     private String login;
     private String password;
     private String role;
-    private Double amount;
-    private Byte isBlocked;
+    private double amount;
+    private boolean isBlocked;
 
-    public User(Long id, String name, String surname, String login, String password, String role, Double amount, Byte isBlocked) {
+    public User(Long id, String name, String surname, String login, String password, String role, double amount, boolean isBlocked) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -32,6 +32,13 @@ public class User implements Identifable{
     }
     public User() {
     }
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -47,6 +54,21 @@ public class User implements Identifable{
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getRole() {
@@ -65,37 +87,16 @@ public class User implements Identifable{
         this.amount = amount;
     }
 
-    public Byte getIsBlocked() {
+    public boolean getIsBlocked() {
         return isBlocked;
     }
 
-    public void setIsBlocked(Byte isBlocked) {
+    public void setIsBlocked(boolean isBlocked) {
         this.isBlocked = isBlocked;
     }
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     @Override
     public String toString() {
