@@ -1,6 +1,7 @@
 package com.epam.webapphello.dao;
 
 import com.epam.webapphello.entity.User;
+import com.epam.webapphello.exception.ConnectionException;
 import com.epam.webapphello.exception.DAOException;
 
 import java.util.Optional;

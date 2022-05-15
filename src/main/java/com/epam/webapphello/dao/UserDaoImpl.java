@@ -14,29 +14,29 @@ import java.util.Optional;
 
 public class UserDaoImpl extends AbstractDao<User> implements UserDao {
 
-    private static final String FIND_BY_LOGIN_AND_PASSWORD = "select * from user where login = ? and password = ?";
+    private static final String FIND_BY_LOGIN_AND_PASSWORD = "select * from user where login = ? and password = md5(?)";
     private static final String FIND_BY_ID = "select * from user where id = ? ";
     private static final String SHOW_USER_TABLE = "select * from user where id = ? ";
     private static final String DELETE_BY_ID = "delete from user where id = ?";
     private static final String SAVE_USER =
             "INSERT into (id, name, surname, login, password, role, amount, is_blocked) \n" +
-            "VALUES (?,?,?,?,?,?,?,?);";
+                    "VALUES (?,?,?,?,?,?,?,?);";
 
-    public UserDaoImpl(Connection connection){
+    public UserDaoImpl(Connection connection) {
         super(connection);
     }
 
     @Override
     public Optional<User> findUserByLoginAndPassword(String login, String password) throws DAOException {
-        return  executeForSingleResult(FIND_BY_LOGIN_AND_PASSWORD,
-                                        new UserRowMapper(),
-                                        login,
-                                        password);
-        }
+        return executeForSingleResult(FIND_BY_LOGIN_AND_PASSWORD,
+                new UserRowMapper(),
+                login,
+                password);
+    }
 
     @Override
     public Optional<User> getById(Long id) throws DAOException {
-        return executeForSingleResult(FIND_BY_ID,  new UserRowMapper(), id);
+        return executeForSingleResult(FIND_BY_ID, new UserRowMapper(), id);
     }
 
     @Override
@@ -49,9 +49,9 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
     @Override
     public void save(User item) throws DAOException {
         try {
-            PreparedStatement statement = createStatement (SAVE_USER, item.getId(),item.getName(),
-                                            item.getSurname(), item.getLogin(), item.getPassword(),
-                                            item.getRole(), item.getAmount(),item.getIsBlocked());
+            PreparedStatement statement = createStatement(SAVE_USER, item.getId(), item.getName(),
+                    item.getSurname(), item.getLogin(), item.getPassword(),
+                    item.getRole(), item.getAmount(), item.getIsBlocked());
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new DAOException(e);
@@ -61,7 +61,7 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
     @Override
     public void removeById(Long id) throws DAOException {
         try {
-            PreparedStatement statement = createStatement (DELETE_BY_ID, id);
+            PreparedStatement statement = createStatement(DELETE_BY_ID, id);
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new DAOException(e);
@@ -72,6 +72,6 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
     protected String getTableName() {
         return User.TABLE;
     }
-    }
+}
 
 

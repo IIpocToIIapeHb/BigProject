@@ -1,6 +1,9 @@
 package com.epam.webapphello.dao;
 
+import com.epam.webapphello.connection.ConnectionPool;
+import com.epam.webapphello.connection.ProxyConnection;
 import com.epam.webapphello.entity.User;
+import com.epam.webapphello.exception.ConnectionException;
 import com.epam.webapphello.exception.DAOException;
 
 import java.io.IOException;
@@ -18,7 +21,9 @@ public class KneesUserDao implements UserDao {
     }
 
     public Optional<User> findUserByLoginAndPassword(final String login, final String password) throws DAOException {
-        try (Connection connection = ConnectorDB.getConnection()) {
+
+        ConnectionPool pool = ConnectionPool.getInstance();
+        try (ProxyConnection connection = pool.getConnection()) {
             try (PreparedStatement statement = connection.prepareStatement("select id,name,login from user" +
                     " where login = ? and password = md5(?)")) {
                 statement.setString(1, login);
@@ -30,7 +35,7 @@ public class KneesUserDao implements UserDao {
                     }
                 }
             }
-        } catch (SQLException | IOException e) {
+        } catch (SQLException | ConnectionException e) {
             throw new DAOException(e);
         }
         return Optional.empty();

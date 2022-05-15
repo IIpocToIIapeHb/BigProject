@@ -1,12 +1,7 @@
 package com.epam.webapphello.connection;
 
-import com.epam.webapphello.dao.ConnectorDB;
 import com.epam.webapphello.exception.ConnectionException;
-import com.epam.webapphello.exception.DAOException;
 
-import javax.naming.OperationNotSupportedException;
-import java.io.IOException;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayDeque;
 import java.util.Queue;
@@ -16,28 +11,18 @@ import java.util.concurrent.locks.ReentrantLock;
 public class ConnectionPool {
 
     private static volatile ConnectionPool instance;
-
     private Queue<ProxyConnection> availableConnection;
     private Queue<ProxyConnection> connectionInUse;
     private static final int CONNECTIONS_NUMBER = 10;
-
     private static final Lock LOCK_INSTANCE = new ReentrantLock();
+    private ConnectionFactory connectionFactory = new ConnectionFactory();
 
 
-    private ConnectionPool() throws ConnectionException {
-        availableConnection = new ArrayDeque<>();
-        for (int i = 0; i < CONNECTIONS_NUMBER; i++) {
-                try {
-                    availableConnection.offer((ProxyConnection) ConnectorDB.getConnection());
-                } catch (SQLException | IOException e) {
-                    throw new ConnectionException(e);
-                }
-            }
-        connectionInUse = new ArrayDeque<>();
+    private ConnectionPool() {
     }
 
 
-    public static ConnectionPool getInstance() throws ConnectionException {
+    public static ConnectionPool getInstance() {
         ConnectionPool localInstance = instance;
         if (localInstance == null) {
             LOCK_INSTANCE.lock();
@@ -51,10 +36,10 @@ public class ConnectionPool {
     }
 
 
-    public void returnConnection(ProxyConnection proxyConnection){
+    public void returnConnection(ProxyConnection proxyConnection) {
         LOCK_INSTANCE.lock();
         try {
-            if (connectionInUse.contains(proxyConnection)){
+            if (connectionInUse.contains(proxyConnection)) {
                 availableConnection.offer(proxyConnection);
                 connectionInUse.remove(proxyConnection);
             }
@@ -63,23 +48,39 @@ public class ConnectionPool {
         }
     }
 
-    public ProxyConnection getConnection() throws  ConnectionException {
+    public ProxyConnection getConnection() throws ConnectionException {
         ProxyConnection connection = null;
         LOCK_INSTANCE.lock();
         try {
+            fillConnectionPool();
             if (!availableConnection.isEmpty()) {
                 connection = availableConnection.poll();
             } else {
                 try {
-                    connection = (ProxyConnection) ConnectorDB.getConnection();
-                } catch (SQLException | IOException e) {
+                    connection = connectionFactory.getConnection();
+                } catch (SQLException e) {
                     throw new ConnectionException(e);
                 }
             }
             connectionInUse.offer(connection);
-        }finally {
+        } finally {
             LOCK_INSTANCE.unlock();
         }
         return connection;
+    }
+
+
+    private void fillConnectionPool() throws ConnectionException {
+        if (availableConnection == null && connectionInUse == null) {
+            availableConnection = new ArrayDeque<>();
+            for (int i = 0; i < CONNECTIONS_NUMBER; i++) {
+                try {
+                    availableConnection.offer(connectionFactory.getConnection());
+                } catch (SQLException e) {
+                    throw new ConnectionException(e);
+                }
+            }
+            connectionInUse = new ArrayDeque<>();
+        }
     }
 }

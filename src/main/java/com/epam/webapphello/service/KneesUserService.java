@@ -8,20 +8,20 @@ import com.epam.webapphello.exception.ServiceException;
 
 import java.util.Optional;
 
-//public class SimpleUserService implements UserService{
-//
-//    private UserDao dao;
-//
-//    public SimpleUserService(UserDao dao){
-//        this.dao = dao;
-//    }
-//   // @Override
-////    public Optional<User> login(String login, String password) throws ServiceException {
-////        try {
-////            Optional<User> user = dao.findUserByLoginAndPassword(login,password);
-////            return user;
-////        } catch (DAOException e) {
-////            throw new ServiceException(e);
-////        }
-////    }
-//}
+public class KneesUserService implements UserService{
+
+    private UserDao dao;
+
+    public KneesUserService(UserDao dao){
+        this.dao = dao;
+    }
+    @Override
+    public Optional<User> login(String login, String password) throws ServiceException {
+        try {
+            Optional<User> user = dao.findUserByLoginAndPassword(login,password);
+            return user;
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        }
+    }
+}

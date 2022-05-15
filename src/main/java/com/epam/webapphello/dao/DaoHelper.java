@@ -7,7 +7,7 @@ import com.epam.webapphello.exception.DAOException;
 
 import java.sql.SQLException;
 
-public class DaoHelper implements AutoCloseable{
+public class DaoHelper implements AutoCloseable {
 
     public ProxyConnection connection;
 
@@ -18,6 +18,7 @@ public class DaoHelper implements AutoCloseable{
             throw new DAOException(e);
         }
     }
+
     @Override
     public void close() {
         try {
@@ -26,12 +27,13 @@ public class DaoHelper implements AutoCloseable{
             e.printStackTrace();
         }
     }
-    public UserDao createUserDao(){
+
+    public UserDao createUserDao() {
         return new UserDaoImpl(connection);
     }
 
     public void startTransaction() throws DAOException {
-        try{
+        try {
             connection.setAutoCommit(false);
         } catch (SQLException e) {
             throw new DAOException(e);
@@ -39,7 +41,7 @@ public class DaoHelper implements AutoCloseable{
     }
 
     public void endTransaction() throws DAOException {
-        try{
+        try {
             connection.commit();
             connection.setAutoCommit(true);
         } catch (SQLException e) {
