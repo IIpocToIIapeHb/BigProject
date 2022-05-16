@@ -20,11 +20,11 @@ public class DaoHelper implements AutoCloseable {
     }
 
     @Override
-    public void close() {
+    public void close() throws DAOException {
         try {
             connection.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new DAOException(e);
         }
     }
 

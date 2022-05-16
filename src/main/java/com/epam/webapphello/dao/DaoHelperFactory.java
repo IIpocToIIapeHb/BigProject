@@ -8,7 +8,11 @@ public class DaoHelperFactory {
 
     public DaoHelper create() throws DAOException {
 
+        try {
             return new DaoHelper(ConnectionPool.getInstance());
+        } catch (ConnectionException e) {
+            throw new DAOException(e);
+        }
 
     }
 }

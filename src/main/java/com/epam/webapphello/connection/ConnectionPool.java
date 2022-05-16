@@ -18,11 +18,12 @@ public class ConnectionPool {
     private ConnectionFactory connectionFactory = new ConnectionFactory();
 
 
-    private ConnectionPool() {
+    private ConnectionPool() throws ConnectionException {
+        fillConnectionPool();
     }
 
 
-    public static ConnectionPool getInstance() {
+    public static ConnectionPool getInstance() throws ConnectionException {
         ConnectionPool localInstance = instance;
         if (localInstance == null) {
             LOCK_INSTANCE.lock();
@@ -52,15 +53,10 @@ public class ConnectionPool {
         ProxyConnection connection = null;
         LOCK_INSTANCE.lock();
         try {
-            fillConnectionPool();
             if (!availableConnection.isEmpty()) {
                 connection = availableConnection.poll();
             } else {
-                try {
-                    connection = connectionFactory.getConnection();
-                } catch (SQLException e) {
-                    throw new ConnectionException(e);
-                }
+                connection = new ProxyConnection(connectionFactory.getConnection(), this);
             }
             connectionInUse.offer(connection);
         } finally {
@@ -74,11 +70,7 @@ public class ConnectionPool {
         if (availableConnection == null && connectionInUse == null) {
             availableConnection = new ArrayDeque<>();
             for (int i = 0; i < CONNECTIONS_NUMBER; i++) {
-                try {
-                    availableConnection.offer(connectionFactory.getConnection());
-                } catch (SQLException e) {
-                    throw new ConnectionException(e);
-                }
+                    availableConnection.offer(new ProxyConnection(connectionFactory.getConnection(), this));
             }
             connectionInUse = new ArrayDeque<>();
         }

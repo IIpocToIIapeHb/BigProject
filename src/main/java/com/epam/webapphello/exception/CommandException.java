@@ -1,8 +1,7 @@
 package com.epam.webapphello.exception;
 
-import com.epam.webapphello.service.ServiceException;
 
-public class CommandException extends Throwable {
+public class CommandException extends Exception {
     public CommandException(ServiceException e) {
         super(e);
     }

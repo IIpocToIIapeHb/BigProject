@@ -22,7 +22,12 @@ public class KneesUserDao implements UserDao {
 
     public Optional<User> findUserByLoginAndPassword(final String login, final String password) throws DAOException {
 
-        ConnectionPool pool = ConnectionPool.getInstance();
+        ConnectionPool pool = null;
+        try {
+            pool = ConnectionPool.getInstance();
+        } catch (ConnectionException e) {
+            throw new DAOException(e);
+        }
         try (ProxyConnection connection = pool.getConnection()) {
             try (PreparedStatement statement = connection.prepareStatement("select id,name,login from user" +
                     " where login = ? and password = md5(?)")) {
