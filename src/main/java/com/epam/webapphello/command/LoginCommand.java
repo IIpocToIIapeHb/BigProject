@@ -32,7 +32,7 @@ public class LoginCommand implements Command {
         }
 
         if (user.isPresent()) {
-            req.getSession().setAttribute("user", "admin");
+          //  req.getSession().setAttribute("user", "admin");
             return "WEB-INF/view/main.jsp";
         } else {
             req.setAttribute("errorMessage", "Invalid credentials");
