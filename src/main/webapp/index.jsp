@@ -1,6 +1,6 @@
-<%@ page contentType="text.html; charset=UTF-8" isELIgnored="false" %>
+<%@ page pageEncoding="UTF-8" contentType="text.html; charset=UTF-8" isELIgnored="false" %>
 <html>
-  <html lang="en">
+  <html>
   <head>
       <meta charset="UTF-8">
       <meta name = "viewport" content="width-device-width, initial-scale-1.0">
@@ -13,7 +13,7 @@
       <header  class="hello-page-header">
           <div class="header-bottom-logos">
               <a href="/" class="header-bottom-logos-icon">
-                  <img src="./img/icons-health.png" alt="pharmacy">
+                  <img src="./static/img/icons-health.png" alt="pharmacy">
               </a>
 
                <a href="/" class="header-bottom-logos-text">
@@ -27,10 +27,10 @@
           <main>
               <div class="hello-page-main">
                   <div class="hello-page-main-wrapper">
-                      <img src="./img/icon-user.png" alt="" class="hello-page-main-icon">
+                      <img src="./static/img/icon-user.png" alt="" class="hello-page-main-icon">
                       <form method = "post" action = "controller?command=login">
 
-                          <label class = "form-labels" for="login">Логин</label>
+                          <label class = "form-labels" for="login">Login</label>
                           <input class = "text" type="text" name="login" placeholder="Ваш логин...">
 
                           <label class = "form-labels" for="password">Пароль</label>

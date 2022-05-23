@@ -3,8 +3,6 @@ package com.epam.webapphello.dao;
 import com.epam.webapphello.entity.Identifable;
 import com.epam.webapphello.exception.DAOException;
 import com.epam.webapphello.mapper.RowMapper;
-
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

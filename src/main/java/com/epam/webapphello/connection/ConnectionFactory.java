@@ -1,6 +1,6 @@
 package com.epam.webapphello.connection;
 
-import com.epam.webapphello.exception.ConnectionException;
+import com.epam.webapphello.exception.ConnectionPoolException;
 
 import java.io.*;
 import java.sql.Connection;
@@ -10,24 +10,23 @@ import java.util.Properties;
 
 public class ConnectionFactory {
 
-    public ConnectionFactory() throws ConnectionException {
+    public ConnectionFactory() throws ConnectionPoolException {
         try {
             //   Class.forName("com.mysql.jdbc.Driver");
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            throw new ConnectionException("Driver is not found", e);
+            throw new ConnectionPoolException("Driver is not found", e);
         }
     }
 
-    public Connection getConnection() throws ConnectionException {
-
+    public Connection getConnection() throws ConnectionPoolException {
 
         Properties properties = new Properties();
 
         try (InputStream in = ConnectionFactory.class.getResourceAsStream("/database.properties")) {
             properties.load(in);
         } catch (IOException e) {
-            throw new ConnectionException("Could not load database.properties",e);
+            throw new ConnectionPoolException("Could not load database.properties",e);
         }
 
         String url = properties.getProperty("db.url");
@@ -38,7 +37,7 @@ public class ConnectionFactory {
         try {
             connection = DriverManager.getConnection(url, user, pass);
         } catch (SQLException e) {
-            throw new ConnectionException("Failed to connect with database", e);
+            throw new ConnectionPoolException("Failed to connect with database", e);
         }
         return connection;
     }

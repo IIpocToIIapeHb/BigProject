@@ -3,7 +3,7 @@ package com.epam.webapphello;
 
 import com.epam.webapphello.command.Command;
 import com.epam.webapphello.command.CommandFactory;
-import com.epam.webapphello.exception.CommandException;
+import com.epam.webapphello.exception.ServiceException;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -35,7 +35,7 @@ public class Controller extends HttpServlet {
         try {
             page = command.execute(req, resp);
             req.getRequestDispatcher(page).forward(req, resp);
-        } catch (CommandException e) {
+        } catch (ServiceException e) {
             LOGGER.error(e);
         }
     }

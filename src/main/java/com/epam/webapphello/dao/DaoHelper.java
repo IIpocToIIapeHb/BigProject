@@ -2,7 +2,6 @@ package com.epam.webapphello.dao;
 
 import com.epam.webapphello.connection.ConnectionPool;
 import com.epam.webapphello.connection.ProxyConnection;
-import com.epam.webapphello.exception.ConnectionException;
 import com.epam.webapphello.exception.DAOException;
 
 import java.sql.SQLException;
@@ -12,11 +11,7 @@ public class DaoHelper implements AutoCloseable {
     public ProxyConnection connection;
 
     public DaoHelper(ConnectionPool pool) throws DAOException {
-        try {
             this.connection = pool.getConnection();
-        } catch (ConnectionException e) {
-            throw new DAOException(e);
-        }
     }
 
     @Override

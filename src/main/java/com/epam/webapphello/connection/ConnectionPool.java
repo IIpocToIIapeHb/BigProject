@@ -1,8 +1,4 @@
 package com.epam.webapphello.connection;
-
-import com.epam.webapphello.exception.ConnectionException;
-
-import java.sql.SQLException;
 import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.concurrent.locks.Lock;
@@ -14,44 +10,46 @@ public class ConnectionPool {
     private Queue<ProxyConnection> availableConnection;
     private Queue<ProxyConnection> connectionInUse;
     private static final int CONNECTIONS_NUMBER = 10;
-    private static final Lock LOCK_INSTANCE = new ReentrantLock();
+    private static final Lock LOCK = new ReentrantLock();
+    private Lock getConnectionLocker = new ReentrantLock();
+    private Lock returnConnectionLocker = new ReentrantLock();
     private ConnectionFactory connectionFactory = new ConnectionFactory();
 
 
-    private ConnectionPool() throws ConnectionException {
+    private ConnectionPool(){
         fillConnectionPool();
     }
 
 
-    public static ConnectionPool getInstance() throws ConnectionException {
+    public static ConnectionPool getInstance()  {
         ConnectionPool localInstance = instance;
         if (localInstance == null) {
-            LOCK_INSTANCE.lock();
+            LOCK.lock();
             localInstance = instance;
             if (localInstance == null) {
                 instance = localInstance = new ConnectionPool();
             }
-            LOCK_INSTANCE.unlock();
+            LOCK.unlock();
         }
         return localInstance;
     }
 
 
     public void returnConnection(ProxyConnection proxyConnection) {
-        LOCK_INSTANCE.lock();
+        returnConnectionLocker.lock();
         try {
             if (connectionInUse.contains(proxyConnection)) {
                 availableConnection.offer(proxyConnection);
                 connectionInUse.remove(proxyConnection);
             }
         } finally {
-            LOCK_INSTANCE.unlock();
+            returnConnectionLocker.unlock();
         }
     }
 
-    public ProxyConnection getConnection() throws ConnectionException {
+    public ProxyConnection getConnection()  {
         ProxyConnection connection = null;
-        LOCK_INSTANCE.lock();
+        getConnectionLocker.lock();
         try {
             if (!availableConnection.isEmpty()) {
                 connection = availableConnection.poll();
@@ -60,13 +58,13 @@ public class ConnectionPool {
             }
             connectionInUse.offer(connection);
         } finally {
-            LOCK_INSTANCE.unlock();
+            getConnectionLocker.unlock();
         }
         return connection;
     }
 
 
-    private void fillConnectionPool() throws ConnectionException {
+    private void fillConnectionPool() {
         if (availableConnection == null && connectionInUse == null) {
             availableConnection = new ArrayDeque<>();
             for (int i = 0; i < CONNECTIONS_NUMBER; i++) {
