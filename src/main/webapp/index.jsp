@@ -1,6 +1,6 @@
 <%@ page pageEncoding="UTF-8" contentType="text.html; charset=UTF-8" isELIgnored="false" %>
+
 <html>
-  <html>
   <head>
       <meta charset="UTF-8">
       <meta name = "viewport" content="width-device-width, initial-scale-1.0">
@@ -24,34 +24,32 @@
       </header>
 
 
-          <main>
-              <div class="hello-page-main">
+     <main>
+             <div class="hello-page-main">
                   <div class="hello-page-main-wrapper">
                       <img src="./static/img/icon-user.png" alt="" class="hello-page-main-icon">
                       <form method = "post" action = "controller?command=login">
 
                           <label class = "form-labels" for="login">Login</label>
-                          <input class = "text" type="text" name="login" placeholder="Ваш логин...">
+                          <input class = "text" type="text" name="login" placeholder="Your login...">
 
-                          <label class = "form-labels" for="password">Пароль</label>
-                          <input class = "text" type="password" name="password" placeholder="Ваш пароль...">
+                          <label class = "form-labels" for="password">Password</label>
+                          <input class = "text" type="password" name="password" placeholder="Your password...">
 
-                          <label class = "form-labels" for="role">Роль</label>
+                          <!-- <label class = "form-labels" for="role">Роль</label>
                           <select class="text" name="role">
                               <option value="user">Пользователь</option>
                               <option value="chemist">Фармацевт</option>
                               <option value="doctor">Доктор</option>
-                          </select>
-                          <input class = "text" type="submit" value="Войти">
+                          </select> -->
+
+                          <input class = "text" type="submit" value="Log in">
                       </form>
+                        <div class = "error-message" style = "color:red"; >
+                          ${errorMessage}
+                        </div>
                   </div>
-                   <div class = "error-message">
-                              ${errorMessage}
-                   </div>
-              </div>
-
-
-          </main>
-      </body>
-          </html>
+         </div>
+     </main>
+  </body>
 </html>

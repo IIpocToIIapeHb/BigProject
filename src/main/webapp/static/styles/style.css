@@ -477,6 +477,11 @@ textarea {
     color: black;
  }
 
+ .img{
+     max-width: 100%;
+     height: auto;
+ }
+
  .header {
    background-color:#7eb2e6 ;
    width: 100%;
@@ -490,13 +495,12 @@ textarea {
 }
 
 
-
 .header-top {
-   max-width: 1240px;
+   max-width: 1400px;
    margin: 0 auto;
-   z-index: 1000;
+   /* z-index: 1000; */
    min-height:35px;
-   max-height:35px;
+   /* max-height:35px; */
    position: relative;
    display: flex;
    flex-wrap: wrap;
@@ -508,11 +512,12 @@ textarea {
    line-height: 1.2;
    font-weight: normal;
    color: white;
+   padding: 0 10px;
 }
 
 .header-top-wrapper{
   background-color: #4f4f55;
-  padding: 0;
+  padding: 0 10px;
 }
 
 .header-top-logos-facebook:hover, header-top-logos-facebook:active{
@@ -530,12 +535,12 @@ textarea {
 .header-top-nav-items{
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
   }
 
 .header-top-list{
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
 }
 
 .header-top-item{
@@ -546,7 +551,7 @@ textarea {
     text-decoration: none;
     font-size: 24px;
     font-weight: 200;
-    padding-top: 5px;
+    /* padding-top: 5px; */
 }
 
 .header-top-link{
@@ -554,6 +559,12 @@ textarea {
     text-decoration: none;
     display: flex;
     flex-wrap: wrap;
+}
+
+.bag{
+    display:block;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
 }
 
 .header-top-link:hover,.header-top-link:focus,.header-top-link:active{
@@ -591,7 +602,7 @@ textarea {
     font-size: 20px;
     background-color: #f9f9f9;
     min-width: 53px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
     z-index: 1;
   }
 
@@ -618,10 +629,14 @@ textarea {
 
   }
 
+  .header-bottom-wrapper{
+      padding: 0 10px;
+  }
+
 .header-bottom{
-    max-width: 1240px;
+    max-width: 1400px;
     margin: 0 auto;
-    z-index: 1000;
+    /* z-index: 1000; */
     min-height:100px;
     max-height:100px;
     position: relative;
@@ -629,6 +644,7 @@ textarea {
     flex-wrap: wrap;
     align-items:flex-end;
     justify-content: space-between;
+    padding: 0 10px;
 }
 
 
@@ -647,6 +663,10 @@ textarea {
     vertical-align: middle;
     text-decoration: none;
 
+}
+
+.header-bottom-mobile{
+    display: none;
 }
 
 .header-bottom-list{
@@ -717,20 +737,56 @@ textarea {
 
 button:hover, .button:focus{
 opacity: .55;
-  }
+}
+
+.header_burger{
+    display: none;
+    width:40px;
+    height: 28px;
+    position: relative;
+    margin-bottom: 35px;
+
+}
+
+.burger_line{
+    display:block;
+    width:100%;
+    height: 2px;
+    background-color: white;
+    position:absolute;
+}
+
+.burger_line_first{
+    top:0;
+}
+
+.burger_line_second{
+    top:50%;
+    transform:translateY(-50%);
+}
+
+.burger_line_third{
+    bottom:0;
+}
+
+/* Main intro*/
 
 .wrapper-intro{
     margin-left: 100px;
 }
 
 .intro{
+
     height: 100vh;
-    background: url(../img/Hand-chooses-a-emoticon-icons-healthcare-medical-symbol-on-wooden-block-Healthcare-and-medical-Insurance-concept-scaled.jpg) no-repeat center;
+    background: url(../img/Hand-chooses-a-emoticon-icons-healthcare-medical-symbol-on-wooden-block-Healthcare-and-medical-Insurance-concept-scaled.jpg) no-repeat center fixed;
     background-size: cover;
+    width: 100%;
+    /* position: fixed;
+     background-position: 50% 0; */
 }
 
 .intro-text{
-    width: 800px;
+    max-width: 800px;
     padding-top: 250px;
     font-family: 'Rubik';
     font-style: normal;
@@ -738,6 +794,7 @@ opacity: .55;
     line-height: 1.2;
     font-weight: 300;
     color: black;
+
 
 }
 
@@ -784,6 +841,9 @@ opacity: .55;
       color: white;
   }
 
+  /* End intro*/
+
+
   /* Hello-page-begin*/
   .hello-page-header {
     background-color:#7eb2e6 ;
@@ -797,11 +857,10 @@ opacity: .55;
 
  }
 
-
  .hello-page-main {
  height: 100vh;
     background-color: #7eb2e6;
-    padding-top: 150px;
+    padding-top: 100px;
     background-size: cover;
   }
 
@@ -814,6 +873,7 @@ opacity: .55;
     display: block;
     margin: 0 auto;
     filter: invert(100%);
+    width: 50%;
   }
 
   .form-labels{
@@ -837,11 +897,129 @@ opacity: .55;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
   }
 
   input[type=submit]:hover {
     background-color: #45a049;
   }
+
+ .error-message{
+  color:white;
+  }
+
+  /* Hello-page-end*/
+
+  /*Media start*/
+  @media screen and (max-width:960px) {
+
+    .header_burger{
+        display:block;
+    }
+
+    .header-bottom-search{
+     display: none;
+    }
+
+    .header-bottom-nav{
+        display: none;
+    }
+
+  .header-bottom-mobile{
+      display: block;
+      width:100%;
+      height:100%;
+      position:fixed;
+      top:0;
+      left:0;
+      right: 0;
+      background-color: black;
+      z-index: 10;
+      padding:75px;
+      transform:translateX(100%);
+      transition: .2s all linear;
+  }
+
+  .header-bottom-mobile_active{
+    transform:translateX(0);
+  }
+
+  .header-bottom-item{
+      width:100%;
+      margin-right:0;
+      margin-bottom:30px;
+  }
+
+
+  .header-bottom-link{
+      font-size: 42px;
+      line-height:48px;
+  }
+
+  .header-bottom-search-mobile{
+    padding-bottom: 17px;
+    margin-bottom:50px;
+}
+
+
+.header-bottom-search-mobile form {
+  width: auto;
+  float: left;
+}
+
+.header-bottom-search-mobile input {
+  font-family: 'Rubik';
+  width: 170px;
+  height: 30px;
+  padding-left: 15px;
+  border-radius: 42px;
+  border:none;
+  background: #F9F0DA;
+  outline: none;
+  position: relative;
+  transition: .3s linear;
+}
+
+.header-bottom-search-mobile button {
+
+  background: none;
+  border: none;
+
+}
+
+.header-bottom-search-mobile button:before{
+  content: "\f002";
+  font-family: FontAwesome;
+  color: #eff5f1;
+}
+
+.header-nav-close{
+    width:40px;
+    height:40px;
+    position: absolute;
+    top:20px;
+    right:20px;
+    z-index: 11;
+}
+
+ .header-nav-close-line{
+     display:block;
+     width:100%;
+     height:2px;
+     background-color: white;
+     position: absolute;
+     top:50%;
+ }
+
+ .header-nav-close-line:first-child{
+     transform: translateY(-50%) rotate(45deg);
+ }
+
+ .header-nav-close-line:last-child{
+    transform: translateY(-50%) rotate(-45deg);
+}
+
+}
+  /*Media end*/
 
