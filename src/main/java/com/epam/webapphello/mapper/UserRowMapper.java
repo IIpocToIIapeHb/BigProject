@@ -12,10 +12,8 @@ public class UserRowMapper implements RowMapper{
         return new User(resultSet.getLong("id"),
                         resultSet.getString("name"),
                         resultSet.getString("surname"),
-                        resultSet.getString("login"),
-                        resultSet.getString("password"),
                         resultSet.getString("role"),
-                        resultSet.getDouble("amount"),
-                        resultSet.getByte("is_blocked")==0 ? false:true);
+                        resultSet.getDouble("amount"));
+                      //  resultSet.getByte("is_blocked")==0 ? false:true);
     }
 }

@@ -13,7 +13,7 @@ public interface Dao<T extends Identifable> {
 
     List<T> getAll() throws DAOException;
 
-    void save(T item) throws DAOException;
+    boolean save(T item) throws DAOException;
 
     void removeById(Long id) throws DAOException;
 

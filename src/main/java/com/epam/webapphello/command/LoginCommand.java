@@ -29,6 +29,7 @@ public class LoginCommand implements Command {
         if (user.isPresent()) {
           //  req.getSession().setAttribute("user", user.get());
             result = CommandResult.redirect("controller?command=mainPage");
+
         } else {
             req.setAttribute("errorMessage", "Invalid credentials");
             result = CommandResult.forward("/index.jsp");
