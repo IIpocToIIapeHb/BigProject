@@ -36,13 +36,6 @@
                           <label class = "form-labels" for="password">Password</label>
                           <input class = "text" type="password" name="password" placeholder="Your password...">
 
-                          <!-- <label class = "form-labels" for="role">Роль</label>
-                          <select class="text" name="role">
-                              <option value="user">Пользователь</option>
-                              <option value="chemist">Фармацевт</option>
-                              <option value="doctor">Доктор</option>
-                          </select> -->
-
                           <input class = "text" type="submit" value="Log in">
                       </form>
                         <div class = "error-message" style = "color:red"; >

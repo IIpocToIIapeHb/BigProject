@@ -27,7 +27,7 @@ public class LoginCommand implements Command {
 
         CommandResult result;
         if (user.isPresent()) {
-          //  req.getSession().setAttribute("user", user.get());
+            req.getSession().setAttribute("user", user.get());
             result = CommandResult.redirect("controller?command=mainPage");
 
         } else {

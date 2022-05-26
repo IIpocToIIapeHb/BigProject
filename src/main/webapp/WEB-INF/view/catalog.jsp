@@ -1,4 +1,5 @@
 <%@ page contentType="text.html; charset=UTF-8" isELIgnored="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -162,22 +163,12 @@
 
     </header>
 
-     <main class="main">
-         <section class="intro">
-           <div class="wrapper-intro">
-            <h1 class="intro-text">
-                Your health is in our hands
-            </h1>
-            <form class="intro-button" method = "post" action = "controller?command=catalog">
-                <button class="intro-button" type="submit" >
-                         Go
-                </button>
-            </form>
-          </div>
-         </section>
-         <div class="footer">
-            <p  class="footer-text">Copyright © 2022 Dr.Health Inc. All rights reserved.</p>
-        </div>
+     <main class="intro-text">
+        <ul>
+                    <c:forEach var="medicine" items="${medicines}">
+                        <li><c:out value="${medicine.getName()}" /></li>
+                    </c:forEach>
+        </ul>
      </main>
 
      <script src="static/js/main.js"></script>

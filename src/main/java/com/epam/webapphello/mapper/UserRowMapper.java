@@ -10,10 +10,6 @@ public class UserRowMapper implements RowMapper{
     @Override
     public User map(ResultSet resultSet) throws SQLException {
         return new User(resultSet.getLong("id"),
-                        resultSet.getString("name"),
-                        resultSet.getString("surname"),
-                        resultSet.getString("role"),
-                        resultSet.getDouble("amount"));
-                      //  resultSet.getByte("is_blocked")==0 ? false:true);
+                        resultSet.getString("role"));
     }
 }

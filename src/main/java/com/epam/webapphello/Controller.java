@@ -39,16 +39,8 @@ public class Controller extends HttpServlet {
             dispatch(req,resp, result);
         } catch (ServiceException  e) {
             req.setAttribute("errorMessage", e.getMessage());
-            dispatch(req,resp, CommandResult.forward("error.jsp"));
+            dispatch(req,resp, CommandResult.forward("/error.jsp"));
         }
-//        String page = null;
-//        try {
-//            page = command.execute(req, resp);
-//           req.getRequestDispatcher(page).forward(req, resp);
-//           // resp.sendRedirect("https://www.google.com");
-//        } catch (ServiceException e) {
-//            LOGGER.error(e);
-//       }
    }
 
     private void dispatch(HttpServletRequest req, HttpServletResponse resp, CommandResult result) throws ServletException, IOException {

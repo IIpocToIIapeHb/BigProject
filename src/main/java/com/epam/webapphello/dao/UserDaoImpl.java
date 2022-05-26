@@ -28,7 +28,6 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
     @Override
     public Optional<User> findUserByLoginAndPassword(String login, String password) throws DAOException {
         return executeForSingleResult(FIND_BY_LOGIN_AND_PASSWORD,
-                new UserRowMapper(),
                 login,
                 password);
     }
@@ -60,10 +59,7 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
     @Override
     protected Map<String, Object> getFields(User item) {
         Map<String, Object> fields = new LinkedHashMap<>();
-        fields.put(User.NAME, item.getName());
-        fields.put(User.SURNAME, item.getSurname());
         fields.put(User.ROLE, item.getRole());
-        fields.put(User.AMOUNT, item.getAmount());
         return fields;
     }
 

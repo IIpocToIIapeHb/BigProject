@@ -62,7 +62,7 @@ public abstract class AbstractDao<T extends Identifable> implements Dao<T> {
 
 
     protected Optional<T> executeForSingleResult(String query, Object... params) throws DAOException {
-        List<T> items = executeQuery(query, mapper, params);
+        List<T> items = executeQuery(query,params);
         if (items.size() == 1) {
             return Optional.of(items.get(0));
         } else if (items.size() > 1) {
