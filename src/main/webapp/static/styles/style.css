@@ -659,7 +659,7 @@ textarea {
     font-size: 70px;
     line-height: 1.2;
     font-weight: normal;
-    color: white;
+    color: black;
     vertical-align: middle;
     text-decoration: none;
 
@@ -687,7 +687,7 @@ textarea {
 
 .header-bottom-link{
     font-size: 20px;
-    color: white;
+    color:white;
     text-decoration: none;
 }
 
@@ -910,6 +910,25 @@ opacity: .55;
   }
 
   /* Hello-page-end*/
+
+  /*Catalog start*/
+
+.card-pic{
+height:300px;
+width:150px;
+}
+
+.medicine-name{
+ max-width: 800px;
+    padding-top: 250px;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-size: 80px;
+    line-height: 1.2;
+    font-weight: 300;
+    color: pink;
+}
+  /*Catalog end*/
 
   /*Media start*/
   @media screen and (max-width:960px) {

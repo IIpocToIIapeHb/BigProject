@@ -164,11 +164,20 @@
     </header>
 
      <main class="intro-text">
-        <ul>
-                    <c:forEach var="medicine" items="${medicines}">
-                        <li><c:out value="${medicine.getName()}" /></li>
-                    </c:forEach>
-        </ul>
+
+            <ul>
+                        <c:forEach var="medicine" items="${medicines}">
+                        <div class= "card">
+                        <div class= "card-pic">
+                            <img src="static/img/img.png" alt="" class = "card-thumb">
+                        </div>
+                        <div class= "medicine-name">
+                          <li><c:out value="${medicine.getName()}" /></li>
+                         </div>
+                        </div>
+                        </c:forEach>
+            </ul>
+
      </main>
 
      <script src="static/js/main.js"></script>
