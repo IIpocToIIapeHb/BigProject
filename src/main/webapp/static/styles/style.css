@@ -785,6 +785,8 @@ opacity: .55;
      background-position: 50% 0; */
 }
 
+
+
 .intro-text{
     max-width: 800px;
     padding-top: 250px;
@@ -859,7 +861,7 @@ opacity: .55;
 
  .hello-page-main {
  height: 100vh;
-    background-color: #7eb2e6;
+  background-color: #7eb2e6;
     padding-top: 100px;
     background-size: cover;
   }
@@ -913,21 +915,104 @@ opacity: .55;
 
   /*Catalog start*/
 
-.card-pic{
-height:300px;
-width:150px;
+.intro-catalog{
+
+    background:white;
+    background-size: cover;
+    width: 100%;
+
 }
 
+  .catalog-items{
+      padding-top: 250px;
+      padding-left:20px;
+      padding-right:20px;
+      max-width: 1400px;
+  }
+
+
+.cards{
+ max-width: 1400px;
+width:100%;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+grid-gap:45px;
+}
+
+.card{
+align-items:center;
+border: 1px solid #ccc;
+ box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+}
+
+.card-pic{
+align-items:center;
+height:270px;
+width:270px;
+background-color: white;
+margin-bottom:20px;
+}
+
+.card-thumb{
+display: block;
+margin: 0 auto;
+max-height:270px;
+max-width:270px;
+position: relative;
+left: 50%;
+top:50%;
+transform: translate(-50%, -50%);
+}
+
+.medicine-name-wrapper{
+ text-align:center;
+ margin-bottom:20px;
+}
 .medicine-name{
- max-width: 800px;
-    padding-top: 250px;
     font-family: 'Rubik';
     font-style: normal;
-    font-size: 80px;
+    font-size: 40px;
     line-height: 1.2;
     font-weight: 300;
-    color: pink;
+    color: black;
+    text-align:center;
 }
+
+.medicine-price-wrapper{
+ text-align:center;
+ margin-bottom:20px;
+}
+.medicine-price{
+    font-family: 'Rubik';
+    font-style: normal;
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: black;
+    text-align:center;
+}
+
+.form-wrapper{
+align-items:center;
+}
+ .cart_button{
+    width: 60%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
+   .cart_button:hover {
+    background-color: #45a049;
+  }
+
   /*Catalog end*/
 
   /*Media start*/

@@ -163,19 +163,34 @@
 
     </header>
 
-     <main class="intro-text">
-            <ul>
+     <main class="catalog-items">
+<section class="intro-catalog">
+     <div class= "cards">
+
                         <c:forEach var="medicine" items="${medicines}">
+
                         <div class= "card">
-                        <div class= "card-pic">
-                            <img src="static/img/img.png" alt="" class = "card-thumb">
-                        </div>
-                        <div class= "medicine-name">
-                          <li><c:out value="${medicine.getName()}" /></li>
+                            <div class= "card-pic">
+                                <img src="static/img/img_1.png" alt="" class = "card-thumb">
+                            </div>
+                            <div class= "medicine-name-wrapper">
+                              <span class= "medicine-name"><c:out value="${medicine.getName()}" /></span>
+                            </div>
+                            <div class= "medicine-price-wrapper">
+                              <span class= "medicine-price"><c:out value="${medicine.getPrice()}"/>  rub</span>
+                            </div>
+                              <div class= "form-wrapper">
+                                    <form method = "post" action = "controller?command=bag">
+                                      <button class="cart_button" type="submit" >
+                                        add to cart
+                                      </button>
+                                  </form>
+                              </div>
                          </div>
-                        </div>
+
                         </c:forEach>
-            </ul>
+</section>
+    </div>
 
      </main>
 
