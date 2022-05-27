@@ -164,7 +164,6 @@
     </header>
 
      <main class="intro-text">
-
             <ul>
                         <c:forEach var="medicine" items="${medicines}">
                         <div class= "card">
