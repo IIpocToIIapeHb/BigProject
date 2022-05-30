@@ -16,6 +16,7 @@ public class MedicineRowMapper implements RowMapper{
                         resultSet.getString("form"),
                         resultSet.getInt("amount"),
                         resultSet.getInt("package_amount"),
-                        resultSet.getDouble("price"));
+                        resultSet.getDouble("price"),
+                        resultSet.getString("path"));
     }
 }

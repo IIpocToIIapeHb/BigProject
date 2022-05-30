@@ -164,34 +164,42 @@
     </header>
 
      <main class="catalog-items">
-<section class="intro-catalog">
+     <section class="intro-catalog">
      <div class= "cards">
 
                         <c:forEach var="medicine" items="${medicines}">
 
                         <div class= "card">
+
                             <div class= "card-pic">
-                                <img src="static/img/img_1.png" alt="" class = "card-thumb">
+                                <img src="${medicine.getPath()}" alt="" class = "card-thumb">
                             </div>
+
                             <div class= "medicine-name-wrapper">
                               <span class= "medicine-name"><c:out value="${medicine.getName()}" /></span>
                             </div>
+
                             <div class= "medicine-price-wrapper">
                               <span class= "medicine-price"><c:out value="${medicine.getPrice()}"/>  rub</span>
                             </div>
+
                               <div class= "form-wrapper">
-                                    <form method = "post" action = "controller?command=bag">
-                                      <button class="cart_button" type="submit" >
-                                        add to cart
-                                      </button>
+                                    <form method = "post" action = "controller?command=cart">
+                                      <input class = "medicine-id" type="hidden" name="medicine-id" value="${medicine.getId()}">
+                                      <div class= "medicine-number-wrapper">
+                                      <input class = "medicine-number" type="number" name="medicine-number" value="1">
+                                      </div>
+                                      <div class= "cart_button-wrapper">
+                                      <button class="cart_button" type="submit" >add to cart</button>
+                                      </div>
                                   </form>
                               </div>
-                         </div>
+
+                        </div>
 
                         </c:forEach>
-</section>
+    </section>
     </div>
-
      </main>
 
      <script src="static/js/main.js"></script>

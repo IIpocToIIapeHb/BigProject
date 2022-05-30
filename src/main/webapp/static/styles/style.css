@@ -659,7 +659,7 @@ textarea {
     font-size: 70px;
     line-height: 1.2;
     font-weight: normal;
-    color: black;
+    color: white;
     vertical-align: middle;
     text-decoration: none;
 
@@ -994,22 +994,57 @@ transform: translate(-50%, -50%);
 
 .form-wrapper{
 align-items:center;
+ margin: 0 auto;
 }
- .cart_button{
+
+.medicine-number-wrapper{
+    margin: 8px auto;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: black;
+    text-align:center;
+
+
+}
+
+.medicine-number{
+    width:50px;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: black;
+    text-align:center;
+    border: 1px solid #ccc;
+}
+
+
+ .cart_button-wrapper{
     width: 60%;
     background-color: #4CAF50;
     color: white;
     padding: 14px 20px;
-    margin: 8px 0;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    position: relative;
-    left: 50%;
-    transform: translate(-50%, 0);
+    margin: 8px auto;
+     text-align:center;
   }
 
-   .cart_button:hover {
+   .cart_button{
+      background-color: #4CAF50;
+      color: white;
+      border:none;
+      text-align:center;
+      margin:auto 0;
+
+    }
+
+   .cart_button-wrapper:hover {
     background-color: #45a049;
   }
 

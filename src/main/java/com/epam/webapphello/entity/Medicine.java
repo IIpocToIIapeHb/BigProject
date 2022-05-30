@@ -24,8 +24,9 @@ public class Medicine implements Identifable, Serializable {
     private Integer amount;
     private Integer package_amount;
     private Double price;
+    private String path;
 
-    public Medicine(Long id, String name, Integer dosage, Byte with_recipe, String form, Integer amount, Integer package_amount, Double price) {
+    public Medicine(Long id, String name, Integer dosage, Byte with_recipe, String form, Integer amount, Integer package_amount, Double price, String path) {
         this.id = id;
         this.name = name;
         this.dosage = dosage;
@@ -34,6 +35,7 @@ public class Medicine implements Identifable, Serializable {
         this.amount = amount;
         this.package_amount = package_amount;
         this.price = price;
+        this.path = path;
     }
 
     public Medicine(String name, Integer dosage, Byte with_recipe, String form, Integer amount, Integer package_amount, Double price) {
@@ -109,6 +111,10 @@ public class Medicine implements Identifable, Serializable {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public String getPath() {
+        return path;
     }
 
     @Override

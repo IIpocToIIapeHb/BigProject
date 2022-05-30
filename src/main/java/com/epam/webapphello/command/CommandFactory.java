@@ -15,6 +15,8 @@ public class CommandFactory {
                 return new ShowPageCommand("/WEB-INF/view/main.jsp");
             case "catalog":
                 return new CatalogCommand(new MedicineServiceImpl(new DaoHelperFactory()));
+            case "cart":
+                return new CreateCartCommand();
             default:
                 throw new IllegalArgumentException("Unknown command" + command);
         }
