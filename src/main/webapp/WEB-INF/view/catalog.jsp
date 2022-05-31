@@ -183,7 +183,7 @@
                               <span class= "medicine-price"><c:out value="${medicine.getPrice()}"/>  rub</span>
                             </div>
 
-                              <div class= "form-wrapper">
+                             <div class= "form-wrapper">
                                     <form method = "post" action = "controller?command=cart">
                                       <input class = "medicine-id" type="hidden" name="medicine-id" value="${medicine.getId()}">
                                       <div class= "medicine-number-wrapper">
@@ -193,13 +193,14 @@
                                       <button class="cart_button" type="submit" >add to cart</button>
                                       </div>
                                   </form>
-                              </div>
+                             </div>
 
                         </div>
 
-                        </c:forEach>
+                    </c:forEach>
+     </div>
     </section>
-    </div>
+
      </main>
 
      <script src="static/js/main.js"></script>

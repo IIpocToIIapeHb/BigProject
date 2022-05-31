@@ -1,6 +1,7 @@
 package com.epam.webapphello.dao;
 
 import com.epam.webapphello.entity.Medicine;
+import com.epam.webapphello.entity.OrderMedicine;
 import com.epam.webapphello.entity.User;
 import com.epam.webapphello.exception.DAOException;
 import com.epam.webapphello.mapper.MedicineRowMapper;
@@ -8,6 +9,7 @@ import com.epam.webapphello.mapper.RowMapper;
 import com.epam.webapphello.mapper.UserRowMapper;
 
 import java.sql.Connection;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 

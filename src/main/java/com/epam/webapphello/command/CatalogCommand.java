@@ -25,9 +25,8 @@ public class CatalogCommand implements Command {
 
         List<Medicine> medicines = null;
         medicines = medicineService.getAll();
-        req.setAttribute("medicines", medicines);
+        req.getSession().setAttribute("medicines", medicines);
         CommandResult result = CommandResult.forward("/WEB-INF/view/catalog.jsp");
-
         return result;
     }
 }

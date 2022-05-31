@@ -12,11 +12,19 @@ public class OrderMedicine implements Identifable, Serializable {
     public final static String ORDER_ID = "order_id";
 
     private Long id;
-    private Integer medicine_id;
+    private Long medicine_id;
     private Integer required_amount;
-    private Integer order_id;
+    private Long order_id;
 
-    public OrderMedicine(Long id, Integer medicine_id, Integer required_amount, Integer order_id) {
+    public OrderMedicine(Long id, Long medicine_id, Integer required_amount, Long order_id) {
+        this.id = id;
+        this.medicine_id = medicine_id;
+        this.required_amount = required_amount;
+        this.order_id = order_id;
+    }
+
+
+    public OrderMedicine(Long medicine_id, Integer required_amount, Long order_id) {
         this.id = id;
         this.medicine_id = medicine_id;
         this.required_amount = required_amount;
@@ -32,11 +40,11 @@ public class OrderMedicine implements Identifable, Serializable {
         this.id = id;
     }
 
-    public Integer getMedicine_id() {
+    public Long getMedicine_id() {
         return medicine_id;
     }
 
-    public void setMedicine_id(Integer medicine_id) {
+    public void setMedicine_id(Long medicine_id) {
         this.medicine_id = medicine_id;
     }
 
@@ -48,11 +56,11 @@ public class OrderMedicine implements Identifable, Serializable {
         this.required_amount = required_amount;
     }
 
-    public Integer getOrder_id() {
+    public Long getOrder_id() {
         return order_id;
     }
 
-    public void setOrder_id(Integer order_id) {
+    public void setOrder_id(Long order_id) {
         this.order_id = order_id;
     }
 }

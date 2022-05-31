@@ -3,6 +3,7 @@ package com.epam.webapphello.dao;
 import com.epam.webapphello.connection.ConnectionPool;
 import com.epam.webapphello.connection.ProxyConnection;
 import com.epam.webapphello.entity.Medicine;
+import com.epam.webapphello.entity.OrderMedicine;
 import com.epam.webapphello.exception.DAOException;
 
 import java.sql.SQLException;
@@ -30,6 +31,19 @@ public class DaoHelper implements AutoCloseable {
 
     public Dao createMedicineDao() {
         return new MedicineDaoImpl(connection);
+    }
+
+    public OrderDao createOrderDao() {
+        return new OrderDaoImpl(connection);
+    }
+    public Dao createOrderSimpleDao() {
+        return new OrderDaoImpl(connection);
+    }
+
+
+
+    public Dao createOrderMedicineDao() {
+        return new OrderMedicineDaoImpl(connection);
     }
 
     public void startTransaction() throws DAOException {

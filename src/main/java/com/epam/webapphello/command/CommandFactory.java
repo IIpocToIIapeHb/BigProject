@@ -1,9 +1,7 @@
 package com.epam.webapphello.command;
 
 import com.epam.webapphello.dao.DaoHelperFactory;
-import com.epam.webapphello.service.MedicineServiceImpl;
-import com.epam.webapphello.service.UserService;
-import com.epam.webapphello.service.UserServiceImpl;
+import com.epam.webapphello.service.*;
 
 public class CommandFactory {
 
@@ -16,7 +14,7 @@ public class CommandFactory {
             case "catalog":
                 return new CatalogCommand(new MedicineServiceImpl(new DaoHelperFactory()));
             case "cart":
-                return new CreateCartCommand();
+                return new CreateCartCommand(new OrderServiceImpl(new DaoHelperFactory()),new OrderMedicineServiceImpl(new DaoHelperFactory()));
             default:
                 throw new IllegalArgumentException("Unknown command" + command);
         }
