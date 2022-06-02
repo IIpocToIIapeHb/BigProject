@@ -46,6 +46,10 @@ public class DaoHelper implements AutoCloseable {
         return new OrderMedicineDaoImpl(connection);
     }
 
+    public PositionInfoDao createPositionInfoDao() {
+        return new PositionInfoDaoImpl(connection);
+    }
+
     public void startTransaction() throws DAOException {
         try {
             connection.setAutoCommit(false);

@@ -28,14 +28,15 @@
                     <nav class="header-top-nav">
                         <ul class="header-top-list">
                             <li class="header-top-item">
-                                <a href="#!" class="header-top-link">
+                                <a href="#!" class="header-top-link user">
                                     <img src="static/img/svg/user_icon.svg" alt="">
                                 </a>
                             </li>
                             <li class="header-top-item">
-                                <a href="#!" class="header-top-link bag">
-                                    <img class = "bag" src="static/img/icon-bag.png" alt="">
-                                </a>
+                              <form  method="POST"  action="controller?command=showCart">
+                                  <button class="header-top-link bag" type="submit" ><img class = "bag" src="static/img/icon-bag.png" alt="">
+                                  </button>
+                              </form>
                             </li>
                         </ul>
                     </nav>

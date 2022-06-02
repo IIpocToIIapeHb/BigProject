@@ -157,8 +157,45 @@
 
             </div>
         </div>
-
-
-
-
     </header>
+
+    <main class="catalog-items">
+         <section class="intro-catalog">
+         <div class= "cards">
+
+                            <c:forEach var="position" items="${positions}">
+
+                            <div class= "card">
+
+                                <div class= "card-pic">
+                                     <span class= "medicine-name"><c:out value="${position.getMedicineName()}"/></span>
+                                </div>
+
+                                <div class= "medicine-name-wrapper">
+                                  <span class= "medicine-name"><c:out value="${position.getName()}" /></span>
+                                </div>
+
+                                <div class= "medicine-price-wrapper">
+                                  <span class= "medicine-price"><c:out value="${position.getMedicinePrice()}"/></span>
+                                </div>
+
+                                <div class= "medicine-price-wrapper">
+                                  <span class= "medicine-price"><c:out value="${position.getRequiredAmount()}"/></span>
+                                </div>
+
+
+                                 <div class= "medicine-price-wrapper">
+                                    <span class= "medicine-price"><c:out value="${position.getTotal()}"/></span>
+                                 </div>
+
+                            </div>
+
+                        </c:forEach>
+         </div>
+        </section>
+
+         </main>
+
+         <script src="static/js/main.js"></script>
+    </body>
+    </html>

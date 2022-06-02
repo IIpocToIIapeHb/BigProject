@@ -158,9 +158,6 @@
             </div>
         </div>
 
-
-
-
     </header>
 
      <main class="catalog-items">
