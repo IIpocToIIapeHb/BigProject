@@ -16,6 +16,8 @@ public class PositionInfo implements Identifable, Serializable {
     public final static String STATUS = "status";
     public final static String MEDICINE_ID = "medicine_id";
     public final static String  MEDICINE_NAME = "Medicine.name";
+    public final static String  MEDICINE_WITH_RECIPE = "with_recipe";
+    public final static String  MEDICINE_PATH = "path";
     public final static String  REQUIRED_AMOUNT = "required_amount";
     public final static String  RECIPE_ID = "id";
     public final static String  RECIPE_STATUS = "status";
@@ -33,6 +35,8 @@ public class PositionInfo implements Identifable, Serializable {
     private String status;
     private Long medicineId;
     private String medicineName;
+    private Byte medicineWithRecipe;
+    private String medicinePath;
     private Integer requiredAmount;
     private Long recipeId;
     private String recipeStatus;
@@ -43,6 +47,7 @@ public class PositionInfo implements Identifable, Serializable {
     public PositionInfo(Long id, Long user_id, String name,
                         String surname, Long orderId, Date date,
                         String status, Long medicineId, String medicineName,
+                        Byte medicineWithRecipe, String medicinePath,
                         Integer requiredAmount, Long recipeId,
                         String recipeStatus, Date recipeValidUntil,
                         Double medicinePrice) {
@@ -55,11 +60,13 @@ public class PositionInfo implements Identifable, Serializable {
         this.status = status;
         this.medicineId = medicineId;
         this.medicineName = medicineName;
+        this.medicinePath = medicinePath;
         this.requiredAmount = requiredAmount;
         this.recipeId = recipeId;
         this.recipeStatus = recipeStatus;
         this.recipeValidUntil = recipeValidUntil;
         this.medicinePrice = medicinePrice;
+        this.medicineWithRecipe = medicineWithRecipe;
         total = requiredAmount * medicinePrice;
     }
 
@@ -136,6 +143,27 @@ public class PositionInfo implements Identifable, Serializable {
         this.medicineName = medicineName;
     }
 
+    public Byte getMedicineWithRecipe() {
+        return medicineWithRecipe;
+    }
+
+    public void setMedicineWithRecipe(Byte MedicineWithRecipe) {
+        this.medicineWithRecipe = medicineWithRecipe;
+    }
+
+    public String getStringMedicineWithRecipe(){
+        String result = medicineWithRecipe==0 ? "no":"yes";
+        return  result;
+    }
+
+    public String getMedicinePath() {
+        return medicinePath;
+    }
+
+    public void setMedicinePath(String medicinePath) {
+        this.medicinePath = medicinePath;
+    }
+
     public Integer getRequiredAmount() {
         return requiredAmount;
     }
@@ -183,4 +211,5 @@ public class PositionInfo implements Identifable, Serializable {
     public void setTotal(Double total) {
         this.total = total;
     }
+
 }

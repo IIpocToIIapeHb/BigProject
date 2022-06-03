@@ -31,6 +31,13 @@ public class ShowCartCommand implements Command {
         positions = positionInfoService.getPositions(userId, orderStatus);
         req.getSession().setAttribute("positions", positions);
 
+        Double totalPrice = 0.0;
+        for (PositionInfo position:positions) {
+            totalPrice+=position.getTotal();
+        }
+
+        req.setAttribute("totalPrice", totalPrice);
+
         CommandResult result = CommandResult.forward("/WEB-INF/view/cart.jsp");
         return result;
     }

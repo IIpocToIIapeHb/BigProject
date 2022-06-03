@@ -932,7 +932,7 @@ opacity: .55;
 
 
 .cards{
- max-width: 1400px;
+max-width: 1400px;
 width:100%;
 display:grid;
 grid-template-columns:repeat(4,1fr);
@@ -1049,6 +1049,220 @@ align-items:center;
   }
 
   /*Catalog end*/
+
+   /*Cart start*/
+    .cart-items{
+         padding-top: 250px;
+         padding-left:20px;
+         padding-right:20px;
+         max-width: 1400px;
+     }
+
+     .position-captain{
+        margin-bottom:10px;
+        display: flex;
+        flex-wrap: wrap;
+     }
+
+     .position-captain-name{
+              font-family: 'Rubik';
+              font-style: normal;
+              font-size: 20px;
+              font-weight: 500;
+              color: #7eb2e6;
+               text-align:center;
+               width:400px;
+     }
+
+     .position-captain-item{
+                   font-family: 'Rubik';
+                   font-style: normal;
+                   font-size: 20px;
+                   font-weight: 500;
+                   color: #7eb2e6;
+                    text-align:center;
+                    width:100px;
+     }
+
+
+     .position-cards{
+     max-width: 1400px;
+     width:100%;
+     margin-bottom:30px;
+     }
+
+     .position-card{
+     align-items:center;
+     border: 1px solid #ccc;
+      display: flex;
+      flex-wrap: wrap;
+
+     }
+
+     .position-card-pic{
+     align-items:center;
+     height:100px;
+     width:100px;
+     background-color: white;
+     }
+
+     .position-card-thumb{
+     display: block;
+     margin: 0 auto;
+     max-height:100px;
+     max-width:100px;
+     position: relative;
+     left: 50%;
+     top:50%;
+     transform: translate(-50%, -50%);
+     }
+
+     .position-medicine-name-wrapper{
+      text-align:center;
+      width:300px;
+     }
+     .position-medicine-name{
+         font-family: 'Rubik';
+         font-style: normal;
+         font-size: 20px;
+         line-height: 1.2;
+         font-weight: 300;
+         color: black;
+         text-align:center;
+     }
+
+     .position-medicine-price-wrapper{
+     text-align:center;
+           width:100px;
+     }
+
+      .position-medicine-price{
+              font-family: 'Rubik';
+              font-style: normal;
+              font-size: 20px;
+              line-height: 1.2;
+              font-weight: 300;
+              color: black;
+              text-align:center;
+       }
+
+      .position-medicine-required-amount-wrapper{
+       text-align:center;
+       width:100px;
+      }
+
+    .position-medicine-price{
+        font-family: 'Rubik';
+        font-style: normal;
+        font-size: 20px;
+        line-height: 1.2;
+        font-weight: 300;
+        color: black;
+        text-align:center;
+    }
+
+    .position-medicine-recipe-status-wrapper{
+      text-align:center;
+      width:100px;
+    }
+
+    .position-medicine-recipe-status{
+            font-family: 'Rubik';
+            font-style: normal;
+            font-size: 20px;
+            line-height: 1.2;
+            font-weight: 300;
+            color: black;
+            text-align:center;
+    }
+
+
+    .get-recipe-button {
+        width: 100px;
+        height: 40px;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        border: none;
+        border-radius: 100px;
+        background: #7eb2e6;
+        box-shadow: rgba(0,0,0,.8) 0 2px 5px -1px;
+        color: white;
+        user-select: none;
+      }
+      .intro-button:hover {
+        background:#58a2eb;
+        cursor: pointer;
+
+      }
+      .intro-button:active {
+        padding-bottom: 1px;
+        box-shadow:
+         inset rgba(0,0,0,1) 0 1px 3px,
+         inset rgba(0,0,0,.6) 0 -2px 5px,
+         inset rgba(252,255,255,.7) 0 2px 5px,
+         0 1px rgba(255,255,255,.08);
+
+      }
+
+      .position-recipe-status-wrapper{
+       text-align:center;
+       width:100px;
+      }
+
+
+      .position-recipe-status{
+        font-family: 'Rubik';
+         font-style: normal;
+         font-size: 20px;
+         line-height: 1.2;
+         font-weight: 300;
+         color: black;
+         text-align:center;
+      }
+
+      .position-recipe-status-wrapper{
+      text-align:center;
+          width:100px;
+      }
+
+      .position-recipe-activity-wrapper{
+       text-align:center;
+                width:100px;
+      }
+
+       .position-recipe-number-wrapper{
+             text-align:center;
+             width:100px;
+       }
+
+       .position-medicine-total-price-wrapper{
+        text-align:center;
+                    width:100px;
+       }
+
+           .position-medicine-total-price{
+               font-family: 'Rubik';
+                font-style: normal;
+                font-size: 20px;
+                line-height: 1.2;
+                font-weight: 300;
+                color: black;
+                text-align:center;
+             }
+
+       .total-price{
+        font-family: 'Rubik';
+                       font-style: normal;
+                       font-size: 50px;
+                       line-height: 1.2;
+                       font-weight: 900;
+                       color: black;
+                       text-align:right;
+                      color: green;
+       }
+
+   /*Cart end*/
 
   /*Media start*/
   @media screen and (max-width:960px) {

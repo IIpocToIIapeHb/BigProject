@@ -22,7 +22,7 @@ public class PositionInfoDaoImpl extends AbstractDao<PositionInfo> implements Po
             " user.name,user.surname,order_medicine.order_id, " +
             "Pharmacy.order.creation_date, Pharmacy.order.status," +
             " order_medicine.medicine_id, order_medicine.required_amount," +
-            " medicine.name, medicine.with_recipe, medicine.price, " +
+            " medicine.name,medicine.path, medicine.with_recipe, medicine.price, " +
             "recipe.id, recipe.status, recipe.valid_until " +
 
             "FROM Pharmacy.order " +

@@ -159,42 +159,93 @@
         </div>
     </header>
 
-    <main class="catalog-items">
-         <section class="intro-catalog">
-         <div class= "cards">
+    <main class="cart-items">
 
-                            <c:forEach var="position" items="${positions}">
+         <section class="intro-cart">
 
-                            <div class= "card">
+              <div class="position-captain">
+                <div class="position-captain-name">Medicine name</div>
+                <div class="position-captain-item">Price</div>
+                <div class="position-captain-item">Number</div>
+                <div class="position-captain-item">Recipe</div>
+                <div class="position-captain-item"></div>
+                <div class="position-captain-item">Recipe status</div>
+                <div class="position-captain-item">Recipe activity</div>
+                <div class="position-captain-item">Recipe number</div>
+                <div class="position-captain-item">Total</div>
+              </div>
 
-                                <div class= "card-pic">
-                                     <span class= "medicine-name"><c:out value="${position.getMedicineName()}"/></span>
+              <div class= "position-cards">
+                     <c:forEach var="position" items="${positions}">
+
+                            <div class= "position-card">
+
+                                <div class= "position-card-pic">
+                                      <img src="${position.getMedicinePath()}" alt="" class = "position-card-thumb">
                                 </div>
 
-                                <div class= "medicine-name-wrapper">
-                                  <span class= "medicine-name"><c:out value="${position.getName()}" /></span>
+                                <div class= "position-medicine-name-wrapper">
+                                  <span class= "position-medicine-name"><c:out value="${position.getMedicineName()}" /></span>
                                 </div>
 
-                                <div class= "medicine-price-wrapper">
-                                  <span class= "medicine-price"><c:out value="${position.getMedicinePrice()}"/></span>
+                                <div class= "position-medicine-price-wrapper">
+                                  <span class= "position-medicine-price"><c:out value="${position.getMedicinePrice()}"/></span>
                                 </div>
 
-                                <div class= "medicine-price-wrapper">
-                                  <span class= "medicine-price"><c:out value="${position.getRequiredAmount()}"/></span>
+                                <div class= "position-medicine-required-amount-wrapper">
+                                    <span class= "position-medicine-required-amount"><c:out value="${position.getRequiredAmount()}"/></span>
                                 </div>
 
+                                <div class= "position-medicine-recipe-status-wrapper">
+                                   <span class= "position-medicine-recipe-status"><c:out value="${position.getStringMedicineWithRecipe()}"/></span>
+                                </div>
 
-                                 <div class= "medicine-price-wrapper">
-                                    <span class= "medicine-price"><c:out value="${position.getTotal()}"/></span>
+                                 <div class= "position-form-wrapper">
+                                        <form method = "post" action = "controller?command=getRecipe">
+                                             <input class = "medicine-id" type="hidden" name="medicine-id" value="${position.getMedicineId()}">
+                                             <input class = "medicine-required-amount" type="hidden" name="medicine-required-amount" value="${position.getRequiredAmount()}">
+
+                                             <div class= "get-recipe-button-wrapper">
+                                             <button class="get-recipe-button" type="submit" >request recipe</button>
+                                             </div>
+
+                                         </form>
                                  </div>
+
+                                 <div class= "position-recipe-status-wrapper">
+                                     <span class= "position-recipe-status">${positionRecipeStatus}</span>
+                                 </div>
+
+                                 <div class= "position-recipe-activity-wrapper">
+                                      <span class= "position-recipe-activity">${positionRecipeActivity}</span>
+                                 </div>
+
+                                 <div class= "position-recipe-number-wrapper">
+                                       <span class= "position-recipe-number">${positionRecipeNumber}</span>
+                                 </div>
+
+                                 <div class= "position-medicine-total-price-wrapper">
+                                    <span class= "position-medicine-total-price"><c:out value="${position.getTotal()}"/></span>
+                                 </div>
+
 
                             </div>
 
-                        </c:forEach>
-         </div>
+
+
+
+                     </c:forEach>
+              </div>
+
+                    <div class= "total-price">
+                     Total price:
+                     ${totalPrice}
+                      rub
+                    </div>
+
         </section>
 
-         </main>
+    </main>
 
          <script src="static/js/main.js"></script>
     </body>

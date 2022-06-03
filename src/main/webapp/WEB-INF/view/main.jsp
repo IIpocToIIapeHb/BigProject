@@ -33,10 +33,9 @@
                                 </a>
                             </li>
                             <li class="header-top-item">
-                              <form  method="POST"  action="controller?command=showCart">
-                                  <button class="header-top-link bag" type="submit" ><img class = "bag" src="static/img/icon-bag.png" alt="">
-                                  </button>
-                              </form>
+                              <a  href="controller?command=showCart" >
+                                  <img class = "header-top-link bag" src="static/img/icon-bag.png" alt="">
+                              </a>
                             </li>
                         </ul>
                     </nav>

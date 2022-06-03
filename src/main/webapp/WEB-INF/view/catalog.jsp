@@ -34,9 +34,9 @@
                                 </a>
                             </li>
                             <li class="header-top-item">
-                                <a href="#!" class="header-top-link bag">
-                                    <img class = "bag" src="static/img/icon-bag.png" alt="">
-                                </a>
+                                 <a  href="controller?command=showCart" >
+                                 <img class = "header-top-link bag" src="static/img/icon-bag.png" alt="">
+                                 </a>
                             </li>
                         </ul>
                     </nav>
