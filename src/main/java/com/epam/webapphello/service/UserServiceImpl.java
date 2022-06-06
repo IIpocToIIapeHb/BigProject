@@ -22,10 +22,8 @@ public class UserServiceImpl implements UserService {
     public Optional<User> login(String login, String password) throws ServiceException {
         Optional<User> user = null;
         try (DaoHelper helper = daoHelperFactory.create()) {
-            helper.startTransaction();
             UserDao userDao = helper.createUserDao();
             user = userDao.findUserByLoginAndPassword(login, password);
-            helper.endTransaction();
         } catch (DAOException e) {
             throw new ServiceException(e);
         }

@@ -1175,7 +1175,9 @@ align-items:center;
             color: black;
             text-align:center;
     }
-
+    .get-recipe-button-wrapper {
+     width: 100px;
+    }
 
     .get-recipe-button {
         width: 100px;

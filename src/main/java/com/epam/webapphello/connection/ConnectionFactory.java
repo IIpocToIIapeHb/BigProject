@@ -10,6 +10,12 @@ import java.util.Properties;
 
 public class ConnectionFactory {
 
+
+    String url;
+    String user;
+    String pass;
+
+
     public ConnectionFactory() throws ConnectionPoolException {
         try {
             //   Class.forName("com.mysql.jdbc.Driver");
@@ -17,22 +23,19 @@ public class ConnectionFactory {
         } catch (ClassNotFoundException e) {
             throw new ConnectionPoolException("Driver is not found", e);
         }
-    }
-
-    public Connection getConnection() throws ConnectionPoolException {
 
         Properties properties = new Properties();
-
         try (InputStream in = ConnectionFactory.class.getResourceAsStream("/database.properties")) {
             properties.load(in);
         } catch (IOException e) {
             throw new ConnectionPoolException("Could not load database.properties",e);
         }
+        url = properties.getProperty("db.url");
+        user = properties.getProperty("db.user");
+        pass = properties.getProperty("db.password");
+    }
 
-        String url = properties.getProperty("db.url");
-        String user = properties.getProperty("db.user");
-        String pass = properties.getProperty("db.password");
-
+    public Connection getConnection() throws ConnectionPoolException {
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(url, user, pass);

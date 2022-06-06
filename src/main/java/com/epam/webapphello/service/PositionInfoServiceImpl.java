@@ -13,6 +13,7 @@ import java.util.Optional;
 public class PositionInfoServiceImpl implements PositionInfoService {
 
     private DaoHelperFactory daoHelperFactory;
+    List<PositionInfo> positions = null;
 
     public PositionInfoServiceImpl(DaoHelperFactory daoHelperFactory) {
         this.daoHelperFactory = daoHelperFactory;
@@ -21,7 +22,7 @@ public class PositionInfoServiceImpl implements PositionInfoService {
 
     @Override
     public List<PositionInfo> getPositions(Long userId, String orderStatus) throws ServiceException {
-        List<PositionInfo> positions = null;
+         positions = null;
         try (DaoHelper helper = daoHelperFactory.create()) {
             PositionInfoDao PositionDao = helper.createPositionInfoDao();
             positions = PositionDao.getPositionsByUserIdAndOrderStatus(userId,orderStatus);
@@ -29,5 +30,13 @@ public class PositionInfoServiceImpl implements PositionInfoService {
             throw new ServiceException(e);
         }
         return positions;
+    }
+
+    public Double calcTotalPrice(){
+        Double totalPrice = 0.0;
+        for (PositionInfo position:positions) {
+            totalPrice+=position.getTotal();
+        }
+        return totalPrice;
     }
 }

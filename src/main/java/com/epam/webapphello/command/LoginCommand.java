@@ -33,15 +33,6 @@ public class LoginCommand implements Command {
         } else {
             req.setAttribute("errorMessage", "Invalid credentials");
             result = CommandResult.forward("/index.jsp");
-
-//
-//            if (user.isPresent()) {
-//                  req.getSession().setAttribute("user", user.get());
-//                  return "WEB-INF/view/main.jsp";
-//            } else {
-//                req.setAttribute("errorMessage", "Invalid credentials");
-//                 return "index.jsp";
-
         }
         return result;
     }

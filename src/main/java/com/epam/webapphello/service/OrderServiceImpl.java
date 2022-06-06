@@ -34,6 +34,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void save(Order order, Long medicine_id, Integer required_amount) throws ServiceException {
+
         try (DaoHelper helper = daoHelperFactory.create()) {
             helper.startTransaction();
 
@@ -50,6 +51,7 @@ public class OrderServiceImpl implements OrderService {
             orderMedicineDao.save(orderMedicine);
             helper.endTransaction();
         } catch (DAOException e) {
+
             throw new ServiceException(e);
         }
     }

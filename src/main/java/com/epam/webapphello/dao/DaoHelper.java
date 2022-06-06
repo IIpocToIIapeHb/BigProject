@@ -12,8 +12,11 @@ public class DaoHelper implements AutoCloseable {
 
     public ProxyConnection connection;
 
-    public DaoHelper(ConnectionPool pool) throws DAOException {
+    public DaoHelper(ConnectionPool pool) {
             this.connection = pool.getConnection();
+    }
+    public ProxyConnection gerConnection(){
+        return connection;
     }
 
     @Override
@@ -66,4 +69,5 @@ public class DaoHelper implements AutoCloseable {
             throw new DAOException(e);
         }
     }
+
 }

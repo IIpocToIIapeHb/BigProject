@@ -10,9 +10,11 @@ public class ConnectionPool {
     private Queue<ProxyConnection> availableConnection;
     private Queue<ProxyConnection> connectionInUse;
     private static final int CONNECTIONS_NUMBER = 10;
+
     private static final Lock LOCK = new ReentrantLock();
     private Lock getConnectionLocker = new ReentrantLock();
     private Lock returnConnectionLocker = new ReentrantLock();
+
     private ConnectionFactory connectionFactory = new ConnectionFactory();
 
 
