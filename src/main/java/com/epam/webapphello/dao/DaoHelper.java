@@ -15,7 +15,7 @@ public class DaoHelper implements AutoCloseable {
     public DaoHelper(ConnectionPool pool) {
             this.connection = pool.getConnection();
     }
-    public ProxyConnection gerConnection(){
+    public ProxyConnection getConnection(){
         return connection;
     }
 
@@ -43,10 +43,12 @@ public class DaoHelper implements AutoCloseable {
         return new OrderDaoImpl(connection);
     }
 
-
-
     public Dao createOrderMedicineDao() {
         return new OrderMedicineDaoImpl(connection);
+    }
+
+    public RecipeDao createRecipeDao() {
+        return new RecipeDaoImpl(connection);
     }
 
     public PositionInfoDao createPositionInfoDao() {

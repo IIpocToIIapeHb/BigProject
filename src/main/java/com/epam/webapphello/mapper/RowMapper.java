@@ -1,9 +1,7 @@
 package com.epam.webapphello.mapper;
 
-import com.epam.webapphello.entity.Identifable;
-import com.epam.webapphello.entity.Medicine;
-import com.epam.webapphello.entity.Order;
-import com.epam.webapphello.entity.User;
+import com.epam.webapphello.entity.*;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -19,6 +17,8 @@ public interface RowMapper <T extends Identifable> {
                 return new MedicineRowMapper();
             case Order.TABLE:
                 return new OrderRowMapper();
+            case Recipe.TABLE:
+                return new RecipeRowMapper();
             default:
                 throw new IllegalArgumentException("Unknown table " + table);
         }

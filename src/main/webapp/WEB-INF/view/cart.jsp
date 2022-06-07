@@ -62,22 +62,28 @@
                                              <div class= "get-recipe-button-wrapper">
                                              <c:if  test="${position.getStringMedicineWithRecipe().equals('yes')}">
                                              <button class="get-recipe-button" type="submit" >request recipe</button>
+
+
                                              </c:if>
                                              </div>
 
                                          </form>
                                  </div>
 
-                                 <div class= "position-recipe-status-wrapper">
-                                     <span class= "position-recipe-status">${positionRecipeStatus}</span>
-                                 </div>
+                                   <div class= "position-recipe-status-wrapper">
+                                    <span class= "position-recipe-status">${position.getRecipeStatus()}</span>
+                                   </div>
 
                                  <div class= "position-recipe-activity-wrapper">
-                                      <span class= "position-recipe-activity">${positionRecipeActivity}</span>
+
+                                      <span class= "position-recipe-activity">${recipe.getValidUntil()}</span>
+
                                  </div>
 
                                  <div class= "position-recipe-number-wrapper">
-                                       <span class= "position-recipe-number">${positionRecipeNumber}</span>
+
+                                       <span class= "position-recipe-number">${recipe.getAmount()}</span>
+
                                  </div>
 
                                  <div class= "position-medicine-total-price-wrapper">
@@ -91,7 +97,7 @@
 
 
                      </c:forEach>
-              </div>
+                     </div>
 
                     <div class= "total-price">
                      Total price:

@@ -20,7 +20,7 @@ public class PositionInfo implements Identifable, Serializable {
     public final static String  MEDICINE_PATH = "path";
     public final static String  REQUIRED_AMOUNT = "required_amount";
     public final static String  RECIPE_ID = "id";
-    public final static String  RECIPE_STATUS = "status";
+    public final static String  RECIPE_STATUS = "recipe.status";
     public final static String  RECIPE_VALID_UNTIL = "valid_until";
     public final static String  MEDICINE_PRICE = "price";
 
