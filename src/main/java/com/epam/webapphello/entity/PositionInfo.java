@@ -19,8 +19,9 @@ public class PositionInfo implements Identifable, Serializable {
     public final static String  MEDICINE_WITH_RECIPE = "with_recipe";
     public final static String  MEDICINE_PATH = "path";
     public final static String  REQUIRED_AMOUNT = "required_amount";
-    public final static String  RECIPE_ID = "id";
+    public final static String  RECIPE_ID = "recipe.id";
     public final static String  RECIPE_STATUS = "recipe.status";
+    public final static String  RECIPE_AMOUNT = "recipe.amount";
     public final static String  RECIPE_VALID_UNTIL = "valid_until";
     public final static String  MEDICINE_PRICE = "price";
 
@@ -40,6 +41,7 @@ public class PositionInfo implements Identifable, Serializable {
     private Integer requiredAmount;
     private Long recipeId;
     private String recipeStatus;
+    private Integer recipeAmount;
     private Date recipeValidUntil;
     private Double medicinePrice;
     private Double total;
@@ -49,7 +51,7 @@ public class PositionInfo implements Identifable, Serializable {
                         String status, Long medicineId, String medicineName,
                         Byte medicineWithRecipe, String medicinePath,
                         Integer requiredAmount, Long recipeId,
-                        String recipeStatus, Date recipeValidUntil,
+                        String recipeStatus,Integer recipeAmount, Date recipeValidUntil,
                         Double medicinePrice) {
         this.id = id;
         this.userId = user_id;
@@ -64,11 +66,14 @@ public class PositionInfo implements Identifable, Serializable {
         this.requiredAmount = requiredAmount;
         this.recipeId = recipeId;
         this.recipeStatus = recipeStatus;
+        this.recipeAmount = recipeAmount;
         this.recipeValidUntil = recipeValidUntil;
         this.medicinePrice = medicinePrice;
         this.medicineWithRecipe = medicineWithRecipe;
         total = requiredAmount * medicinePrice;
     }
+
+
 
     @Override
     public Long getId() {
@@ -186,6 +191,14 @@ public class PositionInfo implements Identifable, Serializable {
 
     public void setRecipeStatus(String recipeStatus) {
         this.recipeStatus = recipeStatus;
+    }
+
+    public Integer getRecipeAmount() {
+        return recipeAmount;
+    }
+
+    public void setRecipeAmount(Integer recipeAmount) {
+        this.recipeAmount = recipeAmount;
     }
 
     public Date getRecipeValidUntil() {

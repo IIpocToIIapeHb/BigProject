@@ -17,6 +17,8 @@ import java.util.Optional;
 
 public class OrderMedicineDaoImpl extends AbstractDao<OrderMedicine> implements OrderMedicineDao {
 
+    private static final String FIND_BY_ORDER_AND_MEDICINE = "select * from order_medicine where order_id = ? and medicine_id = ?";
+    private static final String CHANGE_MEDICINE_ORDER_AMOUNT ="UPDATE order_medicine SET required_amount = ? WHERE (id = ?);";
 
     public OrderMedicineDaoImpl(Connection connection) {
         super(connection, new OrderMedicineRowMapper());
@@ -45,6 +47,22 @@ public class OrderMedicineDaoImpl extends AbstractDao<OrderMedicine> implements 
     public void removeById(Long id) throws DAOException {
 
     }
+
+    @Override
+    public Optional<OrderMedicine> findOrderMedicineByUserAndMedicine(Long orderId, Long medicineId) throws DAOException {
+        return executeForSingleResult(FIND_BY_ORDER_AND_MEDICINE,
+                orderId,
+                medicineId);
+    }
+
+    @Override
+    public boolean changeMedicineOrderAmount(Long orderMedicineId, Integer medicineNumber) throws DAOException {
+        return executeUpdate(CHANGE_MEDICINE_ORDER_AMOUNT,
+                medicineNumber,
+                orderMedicineId);
+    }
+
+
 }
 
 

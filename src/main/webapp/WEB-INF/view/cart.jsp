@@ -51,42 +51,68 @@
                                 </div>
 
                                 <div class= "position-medicine-recipe-status-wrapper">
-                                   <span class= "position-medicine-recipe-status"><c:out value="${position.getStringMedicineWithRecipe()}"/></span>
+                                    <span class= "position-medicine-recipe-status "><c:out value="${position.getStringMedicineWithRecipe()}"/></span>
                                 </div>
 
-                                 <div class= "position-form-wrapper">
+
+				                 <div class= "position-form-wrapper">
                                         <form method = "post" action = "controller?command=getRecipe">
-                                             <input class = "medicine-id" type="hidden" name="medicine-id" value="${position.getMedicineId()}">
-                                             <input class = "medicine-required-amount" type="hidden" name="medicine-required-amount" value="${position.getRequiredAmount()}">
+                                        <input class = "medicine-id" type="hidden" name="medicine-id" value="${position.getMedicineId()}">
+                                        <input class = "medicine-required-amount" type="hidden" name="medicine-required-amount" value="${position.getRequiredAmount()}">
+                                        <input class = "medicine-recipe-status" type="hidden" name="medicine-recipe-status" value="${position.getRecipeStatus()}">
+                                        <input class = "medicine-recipe-id" type="hidden" name="medicine-recipe-id" value="${position.getRecipeId()}">
 
-                                             <div class= "get-recipe-button-wrapper">
-                                             <c:if  test="${position.getStringMedicineWithRecipe().equals('yes')}">
-                                             <button class="get-recipe-button" type="submit" >request recipe</button>
+                                        <div class= "get-recipe-button-wrapper">
+                                         <c:if  test="${position.getStringMedicineWithRecipe().equals('yes')}">
+                                         <c:if  test="${!position.getRecipeStatus().equals('approved') && !position.getRecipeStatus().equals('overdue') && !position.getRecipeStatus().equals('declined') }">
+
+                                         <button class="get-recipe-button" type="submit">request recipe</button>
+                                         </c:if>
+                                          <c:if  test="${position.getRecipeStatus().equals('overdue') && position.getRequiredAmount()<=position.getRecipeAmount()}">
+                                          <button class="get-recipe-button" type="submit">request extension</button>
+                                          </c:if>
+                                          </c:if>
+                                          </div>
+
+                                          </form>
+
+                                           <c:if  test="${position.getStringMedicineWithRecipe().equals('no') || (position.getRecipeStatus().equals('approved') && position.getRequiredAmount()<=position.getRecipeAmount())}">
+                                                  <div class= "check-icon-wrapper">
+                                                  <img src="./static/img/icons-check.png" alt="" class="check-icon">
+                                                   </div>
+                                           </c:if>
+
+                                                    <c:if  test="${position.getStringMedicineWithRecipe().equals('yes') && (!position.getRecipeStatus().equals('pending approval'))  && (position.getRecipeStatus().equals('declined') || position.getRequiredAmount()>position.getRecipeAmount())}">
+                                                       <div class= "cross-icon-wrapper">
+                                                          <img src="./static/img/icons-cross.png" alt="" class="cross-icon">
+                                                       </div>
+                                                    </c:if>
 
 
-                                             </c:if>
-                                             </div>
+                                </div>
 
-                                         </form>
-                                 </div>
+                                <div class= "position-recipe-status-wrapper">
+                                   <span class= "position-recipe-status"><c:out value="${position.getRecipeStatus()}"/></span>
+                                </div>
 
-                                   <div class= "position-recipe-status-wrapper">
-                                    <span class= "position-recipe-status">${position.getRecipeStatus()}</span>
-                                   </div>
+                                 <div class= "position-recipe-status-wrapper">
 
-                                 <div class= "position-recipe-activity-wrapper">
-
-                                      <span class= "position-recipe-activity">${recipe.getValidUntil()}</span>
+                                      <span class= "position-recipe-status"><c:out value="${position.getRecipeValidUntil()}"/></span>
 
                                  </div>
 
                                  <div class= "position-recipe-number-wrapper">
-
-                                       <span class= "position-recipe-number">${recipe.getAmount()}</span>
-
+                                      <c:if  test="${position.getStringMedicineWithRecipe().equals('yes') && position.getRecipeAmount()!=0 }">
+                                           <span class= "position-recipe-number"><c:out value="${position.getRecipeAmount()}"/></span>
+                                             <c:if  test="${position.getRequiredAmount()>position.getRecipeAmount()}">
+                                                <div class = "error-message" style = "color:red"; >
+                                                     ${errorMessage = "exceeding the limit"}
+                                                </div>
+                                             </c:if>
+                                      </c:if>
                                  </div>
 
-                                 <div class= "position-medicine-total-price-wrapper">
+   <div class= "position-medicine-total-price-wrapper">
                                     <span class= "position-medicine-total-price"><c:out value="${position.getTotal()}"/></span>
                                  </div>
 

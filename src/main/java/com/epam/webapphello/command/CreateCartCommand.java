@@ -30,8 +30,8 @@ public class CreateCartCommand implements Command {
 
     @Override
     public CommandResult execute(HttpServletRequest req, HttpServletResponse resp) throws ServiceException {
-        String medicine_id = req.getParameter("medicine-id");
-        String medicine_number = req.getParameter("medicine-number");
+        String medicineId = req.getParameter("medicine-id");
+        String medicineNumber = req.getParameter("medicine-number");
 
         User user = (User)req.getSession().getAttribute("user");
 
@@ -39,11 +39,17 @@ public class CreateCartCommand implements Command {
         order = orderService.findOrderByStatusAndUser("not_paid",user.getId());
 
         if (order.isPresent()) {
-            OrderMedicine orderMedicine = new OrderMedicine(parseLong(medicine_id),parseInt(medicine_number),order.get().getId());
-            orderMedicineService.save(orderMedicine);
+            Optional<OrderMedicine> orderMedicine = null;
+            orderMedicine = orderMedicineService.findOrderMedicine(order.get().getId(),parseLong(medicineId));
+                if (orderMedicine.isPresent()) {
+                    orderMedicineService.addMedicineOrderAmount(orderMedicine.get().getId(),orderMedicine.get().getRequired_amount(),parseInt(medicineNumber));
+                } else {
+                    OrderMedicine newOrderMedicine = new OrderMedicine(parseLong(medicineId), parseInt(medicineNumber), order.get().getId());
+                    orderMedicineService.save(newOrderMedicine);
+                }
         } else {
             Order newOrder = new Order(user.getId(),new Date(System.currentTimeMillis()), "not_paid");
-            orderService.save(newOrder,parseLong(medicine_id),parseInt(medicine_number));
+            orderService.save(newOrder,parseLong(medicineId),parseInt(medicineNumber));
         }
         CommandResult result = CommandResult.forward("/WEB-INF/view/catalog.jsp");
         return result;

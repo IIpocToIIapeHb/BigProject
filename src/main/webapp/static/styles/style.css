@@ -1151,7 +1151,7 @@ align-items:center;
        width:100px;
       }
 
-    .position-medicine-price{
+    .position-medicine--required-amount{
         font-family: 'Rubik';
         font-style: normal;
         font-size: 20px;
@@ -1177,6 +1177,7 @@ align-items:center;
     }
     .get-recipe-button-wrapper {
      width: 100px;
+     align-items:center;
     }
 
     .get-recipe-button {
@@ -1223,15 +1224,12 @@ align-items:center;
          text-align:center;
       }
 
-      .position-recipe-status-wrapper{
-      text-align:center;
-          width:100px;
-      }
-
       .position-recipe-activity-wrapper{
        text-align:center;
                 width:100px;
       }
+
+
 
        .position-recipe-number-wrapper{
              text-align:center;
@@ -1264,6 +1262,29 @@ align-items:center;
                       color: green;
        }
 
+       .check-icon-wrapper{
+        align-items:center;
+        text-align:center;
+        margin: 0px auto;
+       }
+
+       .check-icon{
+        width: 30px;
+        height: 30px;
+        align-items:center;
+        text-align:center;
+       }
+
+       .cross-icon-wrapper{
+         align-items:center;
+         text-align:center;
+         margin: 0px auto;
+       }
+
+       .cross-icon{
+        width: 30px;
+        height: 30px;
+       }
    /*Cart end*/
 
   /*Media start*/

@@ -25,6 +25,7 @@ public class PositionInfoRowMapper implements RowMapper{
                         resultSet.getInt(REQUIRED_AMOUNT),
                         resultSet.getLong(RECIPE_ID),
                         resultSet.getString(RECIPE_STATUS),
+                        resultSet.getInt(RECIPE_AMOUNT),
                         resultSet.getDate(RECIPE_VALID_UNTIL),
                         resultSet.getDouble(MEDICINE_PRICE));
 

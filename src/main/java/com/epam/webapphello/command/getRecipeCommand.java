@@ -26,14 +26,18 @@ public class getRecipeCommand implements Command {
     public CommandResult execute(HttpServletRequest req, HttpServletResponse resp) throws ServiceException {
         String medicineId = req.getParameter("medicine-id");
         String medicineRequiredAmount = req.getParameter("medicine-required-amount");
+        String medicineRecipeStatus = req.getParameter("medicine-recipe-status");
+        String medicineRecipeId = req.getParameter("medicine-recipe-id");
         User user = (User)req.getSession().getAttribute("user");
 
+        if (medicineRecipeStatus.isEmpty()){
+            recipeService.requestRecipe(user.getId(),parseLong(medicineId));
 
-        Recipe recipe = recipeService.getRecipe(user.getId(), parseLong(medicineId));
+        } else {
+            recipeService.changeRecipeStatus(parseLong(medicineRecipeId),medicineRecipeStatus);
+        }
 
-        req.getSession().setAttribute("recipe", recipe);
-
-        CommandResult result = CommandResult.redirect("controller?command=showCart");;
+        CommandResult result = CommandResult.redirect("controller?command=showCart");
         return result;
     }
 }

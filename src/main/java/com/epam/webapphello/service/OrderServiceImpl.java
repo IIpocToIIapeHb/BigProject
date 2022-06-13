@@ -47,7 +47,7 @@ public class OrderServiceImpl implements OrderService {
 
 
             OrderMedicine orderMedicine = new OrderMedicine(medicine_id, required_amount,orderWithId.get().getId());
-            Dao orderMedicineDao = helper.createOrderMedicineDao();
+            Dao orderMedicineDao = helper.createOrderMedicineSimpleDao();
             orderMedicineDao.save(orderMedicine);
             helper.endTransaction();
         } catch (DAOException e) {

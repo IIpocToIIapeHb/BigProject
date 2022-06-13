@@ -40,6 +40,12 @@ public class Recipe implements Identifable, Serializable {
         this.amount = amount;
     }
 
+    public Recipe(Long userId, Long medicineId, String status) {
+        this.userId = userId;
+        this.medicineId = medicineId;
+        this.status = status;
+    }
+
     @Override
     public Long getId() {
         return null;

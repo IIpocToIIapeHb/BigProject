@@ -10,6 +10,7 @@ import com.epam.webapphello.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.math.BigDecimal;
 import java.util.List;
 
 public class ShowCartCommand implements Command {
@@ -31,7 +32,7 @@ public class ShowCartCommand implements Command {
         positions = positionInfoService.getPositions(userId, orderStatus);
         req.getSession().setAttribute("positions", positions);
 
-        Double totalPrice =positionInfoService.calcTotalPrice();
+        BigDecimal totalPrice =positionInfoService.calcTotalPrice();
         req.setAttribute("totalPrice", totalPrice);
 
         CommandResult result = CommandResult.forward("/WEB-INF/view/cart.jsp");

@@ -43,7 +43,11 @@ public class DaoHelper implements AutoCloseable {
         return new OrderDaoImpl(connection);
     }
 
-    public Dao createOrderMedicineDao() {
+    public Dao createOrderMedicineSimpleDao() {
+        return new OrderMedicineDaoImpl(connection);
+    }
+
+    public OrderMedicineDao createOrderMedicineDao() {
         return new OrderMedicineDaoImpl(connection);
     }
 

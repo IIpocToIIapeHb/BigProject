@@ -19,16 +19,55 @@ public class RecipeServiceImpl implements RecipeService {
 
 
 
-    @Override
-    public Recipe getRecipe(Long userId, Long medicineId) throws ServiceException {
+//    @Override
+//    public Recipe getRecipe(Long userId, Long medicineId) throws ServiceException {
+//
+//        Optional<Recipe> recipe = null;
+//        try (DaoHelper helper = daoHelperFactory.create()) {
+//            RecipeDao recipeDao = helper.createRecipeDao();
+//            recipe = recipeDao.findRecipeByUserAndMedicine(userId, medicineId);
+//        } catch (DAOException e) {
+//            throw new ServiceException(e);
+//        }
+//        return recipe.get();
+//    }
 
-        Optional<Recipe> recipe = null;
+    public void requestRecipe(Long userId, Long medicineId) throws ServiceException {
+        Recipe recipe;
         try (DaoHelper helper = daoHelperFactory.create()) {
             RecipeDao recipeDao = helper.createRecipeDao();
-            recipe = recipeDao.findRecipeByUserAndMedicine(userId, medicineId);
+            recipeDao.requestRecipeByUserAndMedicine(userId, medicineId);
         } catch (DAOException e) {
             throw new ServiceException(e);
         }
-        return recipe.get();
+
     }
+
+    @Override
+    public void changeRecipeStatus(Long recipeId, String recipeStatus) throws ServiceException {
+        String newRecipeStatus= null;
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            RecipeDao recipeDao = helper.createRecipeDao();
+            switch (recipeStatus){
+                case("pending approval"):
+                case("extension requested"):
+                    break;
+                case ("declined"):
+                    newRecipeStatus = "pending approval";
+                    recipeDao.changeStatus(recipeId, newRecipeStatus);
+                    break;
+                case ("overdue"):
+                    newRecipeStatus = "extension requested";
+                    recipeDao.changeStatus(recipeId, newRecipeStatus);
+                    break;
+                default:
+                    throw new IllegalArgumentException("Unknown recipe status" + recipeStatus);
+            }
+
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+
 }
