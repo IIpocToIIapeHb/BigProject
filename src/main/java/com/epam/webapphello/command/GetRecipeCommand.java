@@ -1,23 +1,20 @@
 package com.epam.webapphello.command;
 
-import com.epam.webapphello.entity.Recipe;
 import com.epam.webapphello.entity.User;
 import com.epam.webapphello.exception.ServiceException;
 import com.epam.webapphello.service.RecipeService;
-import com.epam.webapphello.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Optional;
 
 import static java.lang.Integer.parseInt;
 import static java.lang.Long.parseLong;
 
-public class getRecipeCommand implements Command {
+public class GetRecipeCommand implements Command {
 
     private final RecipeService recipeService;
 
-    public getRecipeCommand(RecipeService recipeService) {
+    public GetRecipeCommand(RecipeService recipeService) {
         this.recipeService = recipeService;
     }
 

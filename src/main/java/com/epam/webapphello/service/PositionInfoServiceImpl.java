@@ -29,14 +29,7 @@ public class PositionInfoServiceImpl implements PositionInfoService {
             PositionInfoDao PositionDao = helper.createPositionInfoDao();
             positions = PositionDao.getPositionsByUserIdAndOrderStatus(userId,orderStatus);
 
-            Date currentDate = new Date(System.currentTimeMillis());
-            for (PositionInfo position:positions) {
-                if (position.getRecipeValidUntil()!=null && position.getRecipeValidUntil().before(currentDate)
-                                                         && position.getRecipeStatus().equals("approved")){
-                    RecipeDao recipeDao = helper.createRecipeDao();
-                    recipeDao.changeStatus(position.getRecipeId(), "overdue");
-                }
-            }
+            dateValidation(helper,positions);
 
         } catch (DAOException e) {
             throw new ServiceException(e);
@@ -49,9 +42,19 @@ public class PositionInfoServiceImpl implements PositionInfoService {
         for (PositionInfo position:positions) {
             totalPrice+=position.getTotal();
         }
-
         BigDecimal result = new BigDecimal(totalPrice);
         result  = result.setScale(2,RoundingMode.HALF_UP);
         return result;
+    }
+
+    public void dateValidation(DaoHelper helper, List<PositionInfo> positions) throws DAOException {
+        Date currentDate = new Date(System.currentTimeMillis());
+        for (PositionInfo position:positions) {
+            if (position.getRecipeValidUntil()!=null && position.getRecipeValidUntil().before(currentDate)
+                    && position.getRecipeStatus().equals("approved")){
+                RecipeDao recipeDao = helper.createRecipeDao();
+                recipeDao.changeStatus(position.getRecipeId(), "overdue");
+            }
+        }
     }
 }

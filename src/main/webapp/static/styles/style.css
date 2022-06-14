@@ -1071,7 +1071,7 @@ align-items:center;
               font-weight: 500;
               color: #7eb2e6;
                text-align:center;
-               width:400px;
+               width:350px;
      }
 
      .position-captain-item{
@@ -1119,7 +1119,7 @@ align-items:center;
 
      .position-medicine-name-wrapper{
       text-align:center;
-      width:300px;
+      width:250px;
      }
      .position-medicine-name{
          font-family: 'Rubik';
@@ -1284,6 +1284,21 @@ align-items:center;
        .cross-icon{
         width: 30px;
         height: 30px;
+       }
+
+
+       .position-delete-button-wrapper{
+          width: 30px;
+          height: 30px;
+       }
+
+       .delete-button{
+        border: none;
+        background:white;
+       }
+
+       .delete-icon:hover {
+        opacity:0.75;
        }
    /*Cart end*/
 

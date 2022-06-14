@@ -1,5 +1,6 @@
 package com.epam.webapphello.dao;
 
+import com.epam.webapphello.entity.Order;
 import com.epam.webapphello.entity.Recipe;
 import com.epam.webapphello.exception.DAOException;
 import com.epam.webapphello.mapper.RecipeRowMapper;
@@ -52,7 +53,7 @@ public class RecipeDaoImpl extends AbstractDao<Recipe> implements RecipeDao {
 
     @Override
     protected String getTableName() {
-        return null;
+        return Recipe.TABLE;
     }
 
     @Override
@@ -64,12 +65,6 @@ public class RecipeDaoImpl extends AbstractDao<Recipe> implements RecipeDao {
     public Optional<Recipe> getById(Long id) throws DAOException {
         return Optional.empty();
     }
-
-    @Override
-    public void removeById(Long id) throws DAOException {
-
-    }
-
 
 
 }

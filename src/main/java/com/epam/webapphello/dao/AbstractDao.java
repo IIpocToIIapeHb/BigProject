@@ -15,6 +15,8 @@ import java.util.Optional;
 
 public abstract class AbstractDao<T extends Identifable> implements Dao<T> {
 
+    public static final String DELETE_BY_ID_1 = "DELETE FROM ";
+    public static final String DELETE_BY_ID_2 = " WHERE (id = ?);";
 
     private final Connection connection;
     private final RowMapper<T> mapper;
@@ -150,5 +152,10 @@ public abstract class AbstractDao<T extends Identifable> implements Dao<T> {
     }
 
     protected abstract Map<String, Object> getFields(T item);
+
+    public boolean removeById(Long id) throws DAOException{
+       String request = DELETE_BY_ID_1 + getTableName() + DELETE_BY_ID_2;
+       return executeUpdate(request,id);
+    }
 
 }

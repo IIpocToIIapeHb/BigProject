@@ -65,10 +65,10 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
 
 
     @Override
-    public void removeById(Long id) throws DAOException {
+    public boolean removeById(Long id) throws DAOException {
         try {
             PreparedStatement statement = createStatement(DELETE_BY_ID, id);
-            statement.executeUpdate();
+            return statement.executeUpdate()>0;
         } catch (SQLException e) {
             throw new DAOException(e);
         }

@@ -34,9 +34,6 @@ public class MedicineDaoImpl extends AbstractDao<Medicine> implements MedicineDa
         return Optional.empty();
     }
 
-    @Override
-    public void removeById(Long id) throws DAOException {
 
-    }
 
 }

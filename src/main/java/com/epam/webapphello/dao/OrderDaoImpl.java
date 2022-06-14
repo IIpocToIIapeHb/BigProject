@@ -45,10 +45,6 @@ public class OrderDaoImpl extends AbstractDao<Order> implements OrderDao{
         return Optional.empty();
     }
 
-    @Override
-    public void removeById(Long id) throws DAOException {
-
-    }
 
 
 }

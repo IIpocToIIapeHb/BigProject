@@ -18,7 +18,9 @@ public class CommandFactory {
             case "showCart":
                 return new ShowCartCommand(new PositionInfoServiceImpl(new DaoHelperFactory()));
             case "getRecipe":
-                return new getRecipeCommand(new RecipeServiceImpl(new DaoHelperFactory()));
+                return new GetRecipeCommand(new RecipeServiceImpl(new DaoHelperFactory()));
+            case "deleteFromCart":
+                return new DeleteFromCart(new OrderMedicineServiceImpl(new DaoHelperFactory()));
             default:
                 throw new IllegalArgumentException("Unknown command" + command);
         }

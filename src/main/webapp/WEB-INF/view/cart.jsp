@@ -112,12 +112,26 @@
                                       </c:if>
                                  </div>
 
-   <div class= "position-medicine-total-price-wrapper">
-                                    <span class= "position-medicine-total-price"><c:out value="${position.getTotal()}"/></span>
-                                 </div>
+                             <div class= "position-medicine-total-price-wrapper">
+                                 <span class= "position-medicine-total-price"><c:out value="${position.getTotal()}"/></span>
+                              </div>
 
+                              <div class= "position-delete-button-wrapper">
+                              <form method = "post" action = "controller?command=deleteFromCart">
+                              <input class = "medicine-id" type="hidden" name="order-medicine-id" value="${position.getId()}">
+                              <input class = "medicine-id" type="hidden" name="recipe-id" value="${position.getRecipeId()}">
+                              <input class = "medicine-id" type="hidden" name="recipe-status" value="${position.getRecipeStatus()}">
+
+                              <button class="delete-button" type="submit">
+                              <img src="./static/img/svg/icons-delete.svg" alt="" class="delete-icon">
+                              </button>
+
+                              </form>
+                              </div>
 
                             </div>
+
+
 
 
 

@@ -53,5 +53,20 @@ public class OrderMedicineServiceImpl implements OrderMedicineService {
             throw new ServiceException(e);
         }
     }
+
+    @Override
+    public void removeMedicine(Long orderMedicineId, Long recipeId, String recipeStatus) throws ServiceException {
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            Dao orderMedicineDao = helper.createOrderMedicineSimpleDao();
+            orderMedicineDao.removeById(orderMedicineId);
+
+            if (recipeStatus.equals("pending approval")){
+                Dao recipeDao = helper.createRecipeSimpleDao();
+                recipeDao.removeById(recipeId);
+            }
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        }
+    }
 }
 

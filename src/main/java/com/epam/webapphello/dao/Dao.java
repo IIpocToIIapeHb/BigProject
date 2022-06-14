@@ -15,6 +15,6 @@ public interface Dao<T extends Identifable> {
 
     boolean save(T item) throws DAOException;
 
-    void removeById(Long id) throws DAOException;
+    boolean removeById(Long id) throws DAOException;
 
 }

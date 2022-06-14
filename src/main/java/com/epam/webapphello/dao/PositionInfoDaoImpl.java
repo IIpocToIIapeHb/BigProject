@@ -71,10 +71,6 @@ public class PositionInfoDaoImpl extends AbstractDao<PositionInfo> implements Po
         return Optional.empty();
     }
 
-    @Override
-    public void removeById(Long id) throws DAOException {
-
-    }
 
 }
 

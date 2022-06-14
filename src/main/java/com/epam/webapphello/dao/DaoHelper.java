@@ -54,6 +54,9 @@ public class DaoHelper implements AutoCloseable {
     public RecipeDao createRecipeDao() {
         return new RecipeDaoImpl(connection);
     }
+    public Dao createRecipeSimpleDao() {
+        return new RecipeDaoImpl(connection);
+    }
 
     public PositionInfoDao createPositionInfoDao() {
         return new PositionInfoDaoImpl(connection);

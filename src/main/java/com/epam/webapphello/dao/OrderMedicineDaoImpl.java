@@ -43,10 +43,6 @@ public class OrderMedicineDaoImpl extends AbstractDao<OrderMedicine> implements 
         return Optional.empty();
     }
 
-    @Override
-    public void removeById(Long id) throws DAOException {
-
-    }
 
     @Override
     public Optional<OrderMedicine> findOrderMedicineByUserAndMedicine(Long orderId, Long medicineId) throws DAOException {
