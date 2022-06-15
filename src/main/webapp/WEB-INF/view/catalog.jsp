@@ -38,6 +38,7 @@
                              <div class= "form-wrapper">
                                     <form method = "post" action = "controller?command=cart">
                                       <input class = "medicine-id" type="hidden" name="medicine-id" value="${medicine.getId()}">
+                                       <input class = "medicine-id" type="hidden" name="medicine-with-recipe" value="${medicine.getWithRecipe()}">
                                       <div class= "medicine-number-wrapper">
                                       <input class = "medicine-number" type="number" name="medicine-number" value="1">
                                       </div>

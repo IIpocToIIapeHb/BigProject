@@ -1300,6 +1300,46 @@ align-items:center;
        .delete-icon:hover {
         opacity:0.75;
        }
+
+      .pay-button-wrapper{
+           text-align: center;
+           margin-top: 50px;
+           margin-bottom: 50px;
+      }
+
+       .pay-button{
+           display: inline-block;
+           width: 500px;
+           height: 80px;
+           line-height: 50px;
+           font-size: 50px;
+           text-align: center;
+           text-decoration: none;
+           outline: none;
+           border: none;
+           border-radius: 100px;
+           background:#4CAF50;
+           box-shadow: rgba(0,0,0,.8) 0 2px 5px -1px;
+           color: white;
+           user-select: none;
+         }
+
+        .pay-button:hover {
+          opacity: 0.7;
+           cursor: pointer;
+
+         }
+
+        .pay-button:active {
+           padding-bottom: 1px;
+           box-shadow:
+            inset rgba(0,0,0,1) 0 1px 3px,
+            inset rgba(0,0,0,.6) 0 -2px 5px,
+            inset rgba(252,255,255,.7) 0 2px 5px,
+            0 1px rgba(255,255,255,.08);
+
+         }
+
    /*Cart end*/
 
   /*Media start*/

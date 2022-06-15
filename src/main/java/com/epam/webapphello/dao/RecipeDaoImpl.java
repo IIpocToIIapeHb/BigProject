@@ -18,8 +18,10 @@ import java.util.Optional;
 public class RecipeDaoImpl extends AbstractDao<Recipe> implements RecipeDao {
 
     private static final String FIND_BY_USER_AND_MEDICINE = "select * from recipe where user_id = ? and medicine_id = ?";
+    private static final String FIND_BY_USER_AND_MEDICINE_AND_STATUS = "select * from recipe where user_id = ? and medicine_id = ? and status != ?";
     private static final String REQUEST_RECIPE_BY_USER = "INSERT INTO pharmacy.recipe (`user_id`, `medicine_id`, `status`) VALUES (?, ?, ?);";
     private static final String CHANGE_RECIPE_STATUS = "UPDATE recipe SET status = ? WHERE (id = ?);";
+    private static final String SAVE_EMPTY_RECIPE = "INSERT INTO pharmacy.recipe (`user_id`, `medicine_id`) VALUES (?, ?);";
     private static final String STATUS_REQUEST_RECIPE = "pending approval";
 
 
@@ -49,6 +51,22 @@ public class RecipeDaoImpl extends AbstractDao<Recipe> implements RecipeDao {
         return executeUpdate(CHANGE_RECIPE_STATUS,
                 newRecipeStatus,
                 recipeId);
+    }
+
+    @Override
+    public Optional<Recipe> findRecipeByUserAndMedicineAndUnwantedStatus(Long userId, Long medicineId, String recipeStatus) throws DAOException {
+        return executeForSingleResult(FIND_BY_USER_AND_MEDICINE_AND_STATUS,
+                userId,
+                medicineId,
+                recipeStatus);
+    }
+
+    @Override
+    public boolean saveEmptyRecipe(Long userId, Long medicineId) throws DAOException {
+       boolean result =  executeUpdate(SAVE_EMPTY_RECIPE,
+                userId,
+                medicineId);
+       return result;
     }
 
     @Override

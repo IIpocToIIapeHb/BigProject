@@ -27,12 +27,9 @@ public class GetRecipeCommand implements Command {
         String medicineRecipeId = req.getParameter("medicine-recipe-id");
         User user = (User)req.getSession().getAttribute("user");
 
-        if (medicineRecipeStatus.isEmpty()){
-            recipeService.requestRecipe(user.getId(),parseLong(medicineId));
 
-        } else {
             recipeService.changeRecipeStatus(parseLong(medicineRecipeId),medicineRecipeStatus);
-        }
+
 
         CommandResult result = CommandResult.redirect("controller?command=showCart");
         return result;

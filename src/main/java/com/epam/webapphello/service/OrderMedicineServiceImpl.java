@@ -1,13 +1,11 @@
 package com.epam.webapphello.service;
 
 import com.epam.webapphello.dao.*;
-import com.epam.webapphello.entity.Medicine;
 import com.epam.webapphello.entity.OrderMedicine;
-import com.epam.webapphello.entity.User;
+import com.epam.webapphello.entity.Recipe;
 import com.epam.webapphello.exception.DAOException;
 import com.epam.webapphello.exception.ServiceException;
 
-import java.util.List;
 import java.util.Optional;
 
 public class OrderMedicineServiceImpl implements OrderMedicineService {
@@ -20,10 +18,11 @@ public class OrderMedicineServiceImpl implements OrderMedicineService {
 
 
     @Override
-    public void save(OrderMedicine orderMedicine) throws ServiceException {
+    public void save(OrderMedicine orderMedicine, Byte medicineWithRecipe, Long userId) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             Dao orderMedicineDao = helper.createOrderMedicineSimpleDao();
             orderMedicineDao.save(orderMedicine);
+            createRecipeIfAbsent(helper,userId,medicineWithRecipe,orderMedicine.getMedicine_id());
         } catch (DAOException e) {
             throw new ServiceException(e);
         }
@@ -60,12 +59,24 @@ public class OrderMedicineServiceImpl implements OrderMedicineService {
             Dao orderMedicineDao = helper.createOrderMedicineSimpleDao();
             orderMedicineDao.removeById(orderMedicineId);
 
-            if (recipeStatus.equals("pending approval")){
+            if (recipeStatus.equals("pending approval") || recipeStatus.isEmpty()){
                 Dao recipeDao = helper.createRecipeSimpleDao();
                 recipeDao.removeById(recipeId);
             }
         } catch (DAOException e) {
             throw new ServiceException(e);
+        }
+    }
+
+    public void createRecipeIfAbsent(DaoHelper helper,Long userId, Byte medicineWithRecipe, Long medicineId) throws DAOException {
+
+        RecipeDao recipeDao = helper.createRecipeDao();
+        if (medicineWithRecipe==1) {
+            Optional<Recipe> recipe= recipeDao.findRecipeByUserAndMedicineAndUnwantedStatus(userId, medicineId,"used");
+            if (recipe.isPresent()){
+            } else {
+                recipeDao.saveEmptyRecipe(userId,medicineId);
+            }
         }
     }
 }

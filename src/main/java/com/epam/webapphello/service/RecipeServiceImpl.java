@@ -48,6 +48,8 @@ public class RecipeServiceImpl implements RecipeService {
         String newRecipeStatus= null;
         try (DaoHelper helper = daoHelperFactory.create()) {
             RecipeDao recipeDao = helper.createRecipeDao();
+
+
             switch (recipeStatus){
                 case("pending approval"):
                 case("extension requested"):
@@ -58,6 +60,10 @@ public class RecipeServiceImpl implements RecipeService {
                     break;
                 case ("overdue"):
                     newRecipeStatus = "extension requested";
+                    recipeDao.changeStatus(recipeId, newRecipeStatus);
+                    break;
+                case (""):
+                    newRecipeStatus = "pending approval";
                     recipeDao.changeStatus(recipeId, newRecipeStatus);
                     break;
                 default:

@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface OrderMedicineService {
-     void save(OrderMedicine item) throws ServiceException;
+     void save(OrderMedicine item, Byte medicineWithRecipe, Long userId) throws ServiceException;
      Optional<OrderMedicine> findOrderMedicine(Long orderId, Long medicine) throws ServiceException;
      void addMedicineOrderAmount(Long orderMedicineId, Integer oldMedicineOrderAmount, Integer addMedicineOrderAmount) throws ServiceException;
      void removeMedicine(Long orderMedicineId, Long recipeId, String recipeStatus) throws ServiceException;

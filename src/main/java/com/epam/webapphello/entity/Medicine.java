@@ -19,18 +19,18 @@ public class Medicine implements Identifable, Serializable {
     private Long id;
     private String name;
     private Integer dosage;
-    private Byte with_recipe;
+    private Byte withRecipe;
     private String form;
     private Integer amount;
     private Integer package_amount;
     private Double price;
     private String path;
 
-    public Medicine(Long id, String name, Integer dosage, Byte with_recipe, String form, Integer amount, Integer package_amount, Double price, String path) {
+    public Medicine(Long id, String name, Integer dosage, Byte withRecipe, String form, Integer amount, Integer package_amount, Double price, String path) {
         this.id = id;
         this.name = name;
         this.dosage = dosage;
-        this.with_recipe = with_recipe;
+        this.withRecipe = withRecipe;
         this.form = form;
         this.amount = amount;
         this.package_amount = package_amount;
@@ -38,10 +38,10 @@ public class Medicine implements Identifable, Serializable {
         this.path = path;
     }
 
-    public Medicine(String name, Integer dosage, Byte with_recipe, String form, Integer amount, Integer package_amount, Double price) {
+    public Medicine(String name, Integer dosage, Byte withRecipe, String form, Integer amount, Integer package_amount, Double price) {
         this.name = name;
         this.dosage = dosage;
-        this.with_recipe = with_recipe;
+        this.withRecipe = withRecipe;
         this.form = form;
         this.amount = amount;
         this.package_amount = package_amount;
@@ -73,12 +73,12 @@ public class Medicine implements Identifable, Serializable {
         this.dosage = dosage;
     }
 
-    public Byte getWith_recipe() {
-        return with_recipe;
+    public Byte getWithRecipe() {
+        return withRecipe;
     }
 
-    public void setWith_recipe(Byte with_recipe) {
-        this.with_recipe = with_recipe;
+    public void setWithRecipe(Byte with_recipe) {
+        this.withRecipe = with_recipe;
     }
 
     public String getForm() {
@@ -123,7 +123,7 @@ public class Medicine implements Identifable, Serializable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", dosage=" + dosage +
-                ", with_recipe=" + with_recipe +
+                ", with_recipe=" + withRecipe +
                 ", form='" + form + '\'' +
                 ", amount=" + amount +
                 ", package_amount=" + package_amount +

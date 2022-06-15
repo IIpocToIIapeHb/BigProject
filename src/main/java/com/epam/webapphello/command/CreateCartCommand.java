@@ -14,6 +14,7 @@ import java.sql.Date;
 import java.util.Optional;
 
 
+import static java.lang.Byte.parseByte;
 import static java.lang.Integer.parseInt;
 import static java.lang.Long.parseLong;
 
@@ -32,6 +33,7 @@ public class CreateCartCommand implements Command {
     public CommandResult execute(HttpServletRequest req, HttpServletResponse resp) throws ServiceException {
         String medicineId = req.getParameter("medicine-id");
         String medicineNumber = req.getParameter("medicine-number");
+        String medicineWithRecipe =  req.getParameter("medicine-with-recipe");
 
         User user = (User)req.getSession().getAttribute("user");
 
@@ -45,11 +47,11 @@ public class CreateCartCommand implements Command {
                     orderMedicineService.addMedicineOrderAmount(orderMedicine.get().getId(),orderMedicine.get().getRequired_amount(),parseInt(medicineNumber));
                 } else {
                     OrderMedicine newOrderMedicine = new OrderMedicine(parseLong(medicineId), parseInt(medicineNumber), order.get().getId());
-                    orderMedicineService.save(newOrderMedicine);
+                    orderMedicineService.save(newOrderMedicine, parseByte(medicineWithRecipe), user.getId());
                 }
         } else {
             Order newOrder = new Order(user.getId(),new Date(System.currentTimeMillis()), "not_paid");
-            orderService.save(newOrder,parseLong(medicineId),parseInt(medicineNumber));
+            orderService.save(newOrder,parseLong(medicineId),parseInt(medicineNumber), user.getId(),parseByte(medicineWithRecipe));
         }
         CommandResult result = CommandResult.forward("/WEB-INF/view/catalog.jsp");
         return result;

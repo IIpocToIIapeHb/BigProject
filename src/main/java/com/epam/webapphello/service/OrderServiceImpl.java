@@ -3,6 +3,7 @@ package com.epam.webapphello.service;
 import com.epam.webapphello.dao.*;
 import com.epam.webapphello.entity.Order;
 import com.epam.webapphello.entity.OrderMedicine;
+import com.epam.webapphello.entity.Recipe;
 import com.epam.webapphello.entity.User;
 import com.epam.webapphello.exception.DAOException;
 import com.epam.webapphello.exception.ServiceException;
@@ -33,7 +34,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void save(Order order, Long medicine_id, Integer required_amount) throws ServiceException {
+    public void save(Order order, Long medicine_id, Integer required_amount, Long userId, Byte medicineWithRecipe) throws ServiceException {
 
         try (DaoHelper helper = daoHelperFactory.create()) {
             helper.startTransaction();
@@ -49,10 +50,24 @@ public class OrderServiceImpl implements OrderService {
             OrderMedicine orderMedicine = new OrderMedicine(medicine_id, required_amount,orderWithId.get().getId());
             Dao orderMedicineDao = helper.createOrderMedicineSimpleDao();
             orderMedicineDao.save(orderMedicine);
+
+            createRecipeIfAbsent(helper,userId,medicineWithRecipe,orderMedicine.getMedicine_id());
             helper.endTransaction();
         } catch (DAOException e) {
 
             throw new ServiceException(e);
+        }
+    }
+
+    public void createRecipeIfAbsent(DaoHelper helper,Long userId, Byte medicineWithRecipe, Long medicineId) throws DAOException {
+
+        RecipeDao recipeDao = helper.createRecipeDao();
+        if (medicineWithRecipe==1) {
+            Optional<Recipe> recipe= recipeDao.findRecipeByUserAndMedicineAndUnwantedStatus(userId, medicineId,"used");
+            if (recipe.isPresent()){
+            } else {
+                recipeDao.saveEmptyRecipe(userId,medicineId);
+            }
         }
     }
 }

@@ -82,7 +82,7 @@
                                                    </div>
                                            </c:if>
 
-                                                    <c:if  test="${position.getStringMedicineWithRecipe().equals('yes') && (!position.getRecipeStatus().equals('pending approval'))  && (position.getRecipeStatus().equals('declined') || position.getRequiredAmount()>position.getRecipeAmount())}">
+                                                    <c:if  test="${position.getStringMedicineWithRecipe().equals('yes') && (!position.getRecipeStatus().equals('pending approval')) && (position.getRecipeStatus()!=null)  && (position.getRecipeStatus().equals('declined') || position.getRequiredAmount()>position.getRecipeAmount())}">
                                                        <div class= "cross-icon-wrapper">
                                                           <img src="./static/img/icons-cross.png" alt="" class="cross-icon">
                                                        </div>
@@ -131,11 +131,6 @@
 
                             </div>
 
-
-
-
-
-
                      </c:forEach>
                      </div>
 
@@ -143,6 +138,16 @@
                      Total price:
                      ${totalPrice}
                       rub
+                    </div>
+
+                    <div class="pay-button-wrapper">
+                     <form method = "post" action = "controller?command=payOrder">
+                     <input class = "" type="hidden" name="order-positions" value="${positions}">
+                     <button class="pay-button" type="submit" >
+                         Pay
+                     </button>
+                     ${errorMessage}
+                     </form>
                     </div>
 
         </section>
