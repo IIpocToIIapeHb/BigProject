@@ -141,12 +141,13 @@
                     </div>
 
                     <div class="pay-button-wrapper">
+                       ${errorPayMessage}
                      <form method = "post" action = "controller?command=payOrder">
                      <input class = "" type="hidden" name="order-positions" value="${positions}">
                      <button class="pay-button" type="submit" >
                          Pay
                      </button>
-                     ${errorMessage}
+
                      </form>
                     </div>
 

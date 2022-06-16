@@ -24,7 +24,7 @@ public class MedicineServiceImpl implements MedicineService {
     public List<Medicine> getAll() throws ServiceException {
         List<Medicine> medicines = null;
         try (DaoHelper helper = daoHelperFactory.create()) {
-            Dao medicineDao = helper.createMedicineDao();
+            Dao medicineDao = helper.createMedicineSimpleDao();
             medicines = medicineDao.getAll();
 
         } catch (DAOException e) {

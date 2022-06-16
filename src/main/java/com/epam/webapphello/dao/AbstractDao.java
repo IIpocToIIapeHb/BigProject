@@ -17,6 +17,8 @@ public abstract class AbstractDao<T extends Identifable> implements Dao<T> {
 
     public static final String DELETE_BY_ID_1 = "DELETE FROM ";
     public static final String DELETE_BY_ID_2 = " WHERE (id = ?);";
+    public static final String FIND_BY_ID_1 = "SELECT * FROM ";
+    public static final String FIND_BY_ID_2 = " WHERE (id = ?);";
 
     private final Connection connection;
     private final RowMapper<T> mapper;
@@ -39,6 +41,8 @@ public abstract class AbstractDao<T extends Identifable> implements Dao<T> {
             throw new DAOException(e);
         }
     }
+
+
 
     protected boolean executeUpdate(String query, Object... params) throws DAOException {
         try (PreparedStatement statement = createStatement(query, params)) {
@@ -157,5 +161,11 @@ public abstract class AbstractDao<T extends Identifable> implements Dao<T> {
        String request = DELETE_BY_ID_1 + getTableName() + DELETE_BY_ID_2;
        return executeUpdate(request,id);
     }
+//
+//    public Optional<T> getById(Long id) throws DAOException{
+//        String request = FIND_BY_ID_1 + getTableName() + FIND_BY_ID_2;
+//        Optional<T> entity =  executeForSingleResult(request,id);
+//        return  entity;
+//    }
 
 }

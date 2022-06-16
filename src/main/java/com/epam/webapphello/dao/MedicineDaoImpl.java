@@ -29,11 +29,17 @@ public class MedicineDaoImpl extends AbstractDao<Medicine> implements MedicineDa
         return null;
     }
 
+
+
+
+  public Medicine getByMId(Long id) throws DAOException{
+        String request ="select * from medicine where id = 1";
+        Medicine entity =  executeForSingleResult(request).get();
+        return  entity;
+    }
+
     @Override
     public Optional<Medicine> getById(Long id) throws DAOException {
         return Optional.empty();
     }
-
-
-
 }
