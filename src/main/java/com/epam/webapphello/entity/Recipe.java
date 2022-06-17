@@ -32,13 +32,13 @@ public class Recipe implements Identifable, Serializable {
         this.amount = amount;
     }
 
-    public Recipe(Long userId, Long medicineId, Date validUntil, String status, Integer amount) {
-        this.userId = userId;
-        this.medicineId = medicineId;
-        this.validUntil = validUntil;
-        this.status = status;
-        this.amount = amount;
-    }
+//    public Recipe(Long userId, Long medicineId, Date validUntil, String status, Integer amount) {
+//        this.userId = userId;
+//        this.medicineId = medicineId;
+//        this.validUntil = validUntil;
+//        this.status = status;
+//        this.amount = amount;
+//    }
 
     public Recipe(Long userId, Long medicineId, String status) {
         this.userId = userId;
@@ -48,7 +48,7 @@ public class Recipe implements Identifable, Serializable {
 
     @Override
     public Long getId() {
-        return null;
+        return id;
     }
 
     public Long getUserId() {

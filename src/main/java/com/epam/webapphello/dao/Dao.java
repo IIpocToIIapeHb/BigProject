@@ -9,12 +9,13 @@ import java.util.Optional;
 
 public interface Dao<T extends Identifable> {
 
-    Optional<T> getById(Long id) throws DAOException;
+    T getById(Long id) throws DAOException;
 
     List<T> getAll() throws DAOException;
 
     boolean save(T item) throws DAOException;
 
     boolean removeById(Long id) throws DAOException;
+
 
 }

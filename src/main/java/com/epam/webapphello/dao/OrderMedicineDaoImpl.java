@@ -38,10 +38,6 @@ public class OrderMedicineDaoImpl extends AbstractDao<OrderMedicine> implements 
         return fields;
     }
 
-    @Override
-    public Optional<OrderMedicine> getById(Long id) throws DAOException {
-        return Optional.empty();
-    }
 
 
     @Override

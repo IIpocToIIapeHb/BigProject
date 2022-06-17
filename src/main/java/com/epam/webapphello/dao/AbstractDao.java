@@ -1,6 +1,7 @@
 package com.epam.webapphello.dao;
 
 import com.epam.webapphello.entity.Identifable;
+import com.epam.webapphello.entity.Medicine;
 import com.epam.webapphello.exception.DAOException;
 import com.epam.webapphello.mapper.RowMapper;
 
@@ -144,7 +145,7 @@ public abstract class AbstractDao<T extends Identifable> implements Dao<T> {
         StringBuffer values = new StringBuffer();
 
         for (Map.Entry<String, Object> item : fields.entrySet()) {
-            values.append(item.getKey() + "='" + item.getValue() + "',");
+            values.append(item.getKey() + " = ?,");
         }
 
         values.deleteCharAt(values.length() - 1);
@@ -161,11 +162,13 @@ public abstract class AbstractDao<T extends Identifable> implements Dao<T> {
        String request = DELETE_BY_ID_1 + getTableName() + DELETE_BY_ID_2;
        return executeUpdate(request,id);
     }
-//
-//    public Optional<T> getById(Long id) throws DAOException{
-//        String request = FIND_BY_ID_1 + getTableName() + FIND_BY_ID_2;
-//        Optional<T> entity =  executeForSingleResult(request,id);
-//        return  entity;
-//    }
+
+    public T getById(Long id) throws DAOException{
+        String request = FIND_BY_ID_1 + getTableName() + FIND_BY_ID_2;
+        T entity =  executeForSingleResult(request,id).get();
+        return  entity;
+    }
+
+
 
 }

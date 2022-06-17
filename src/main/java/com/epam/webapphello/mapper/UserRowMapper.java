@@ -10,6 +10,7 @@ public class UserRowMapper implements RowMapper{
     @Override
     public User map(ResultSet resultSet) throws SQLException {
         return new User(resultSet.getLong("id"),
-                        resultSet.getString("role"));
+                        resultSet.getString("role"),
+                        resultSet.getBigDecimal("amount"));
     }
 }

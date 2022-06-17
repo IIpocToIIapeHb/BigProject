@@ -66,10 +66,7 @@ public class PositionInfoDaoImpl extends AbstractDao<PositionInfo> implements Po
         return null;
     }
 
-    @Override
-    public Optional<PositionInfo> getById(Long id) throws DAOException {
-        return Optional.empty();
-    }
+
 
 
 }

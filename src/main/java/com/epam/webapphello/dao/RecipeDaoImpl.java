@@ -1,5 +1,6 @@
 package com.epam.webapphello.dao;
 
+import com.epam.webapphello.entity.Medicine;
 import com.epam.webapphello.entity.Order;
 import com.epam.webapphello.entity.Recipe;
 import com.epam.webapphello.exception.DAOException;
@@ -76,13 +77,19 @@ public class RecipeDaoImpl extends AbstractDao<Recipe> implements RecipeDao {
 
     @Override
     protected Map<String, Object> getFields(Recipe item) {
-        return null;
+        Map<String, Object> fields = new LinkedHashMap<>();
+        fields.put(item.AMOUNT, item.getAmount());
+        fields.put(item.STATUS, item.getStatus());
+        return fields;
     }
 
-    @Override
-    public Optional<Recipe> getById(Long id) throws DAOException {
-        return Optional.empty();
-    }
+    public Recipe getRecipeById(Long id) throws DAOException{
+            String request ="select * from recipe where id = ?;";
+            Recipe entity =  executeForSingleResult(request, id).get();
+            return  entity;
+        }
+
+
 
 
 }

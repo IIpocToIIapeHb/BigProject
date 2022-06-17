@@ -9,6 +9,7 @@ import com.epam.webapphello.mapper.RowMapper;
 import com.epam.webapphello.mapper.UserRowMapper;
 
 import java.sql.Connection;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -26,20 +27,18 @@ public class MedicineDaoImpl extends AbstractDao<Medicine> implements MedicineDa
 
     @Override
     protected Map<String, Object> getFields(Medicine item) {
-        return null;
+        Map<String, Object> fields = new LinkedHashMap<>();
+        fields.put(item.AMOUNT, item.getAmount());
+        return fields;
     }
 
 
 
 
-  public Medicine getByMId(Long id) throws DAOException{
-        String request ="select * from medicine where id = 1";
-        Medicine entity =  executeForSingleResult(request).get();
+  public Medicine getByMedicineId(Long id) throws DAOException{
+        String request ="select * from medicine where id = ?;";
+        Medicine entity =  executeForSingleResult(request, id).get();
         return  entity;
     }
 
-    @Override
-    public Optional<Medicine> getById(Long id) throws DAOException {
-        return Optional.empty();
-    }
 }

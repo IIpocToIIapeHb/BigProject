@@ -5,5 +5,5 @@ import com.epam.webapphello.exception.DAOException;
 
 public interface  MedicineDao {
 
-    Medicine getByMId(Long id) throws DAOException;
+    Medicine getByMedicineId(Long id) throws DAOException;
 }

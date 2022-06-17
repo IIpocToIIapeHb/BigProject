@@ -14,4 +14,6 @@ public interface RecipeDao {
     Optional<Recipe> findRecipeByUserAndMedicineAndUnwantedStatus(Long userId, Long medicine_id, String recipeStatus) throws DAOException;
 
     boolean saveEmptyRecipe(Long userId, Long medicineId) throws DAOException;
+
+    Recipe getRecipeById(Long recipeId) throws DAOException;
 }

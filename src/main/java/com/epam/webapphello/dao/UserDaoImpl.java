@@ -31,11 +31,11 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
                 login,
                 password);
     }
-
-    @Override
-    public Optional<User> getById(Long id) throws DAOException {
-        return executeForSingleResult(FIND_BY_ID, new UserRowMapper(), id);
-    }
+//
+//    @Override
+//    public Optional<User> getById(Long id) throws DAOException {
+//        return executeForSingleResult(FIND_BY_ID, new UserRowMapper(), id);
+//    }
 
     @Override
     public List<User> getAll() throws DAOException {
@@ -60,6 +60,7 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
     protected Map<String, Object> getFields(User item) {
         Map<String, Object> fields = new LinkedHashMap<>();
         fields.put(User.ROLE, item.getRole());
+        fields.put(User.AMOUNT, item.getAmount());
         return fields;
     }
 

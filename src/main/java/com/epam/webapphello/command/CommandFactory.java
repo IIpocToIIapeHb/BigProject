@@ -23,6 +23,8 @@ public class CommandFactory {
                 return new DeleteFromCart(new OrderMedicineServiceImpl(new DaoHelperFactory()));
             case "payOrder":
                 return new OrderPayCommand(new PositionInfoServiceImpl(new DaoHelperFactory()));
+            case "payedPage":
+                return new ShowPageCommand("/WEB-INF/view/payedPage.jsp");
             default:
                 throw new IllegalArgumentException("Unknown command" + command);
         }

@@ -33,7 +33,7 @@ public class ShowCartCommand implements Command {
         req.getSession().setAttribute("positions", positions);
 
         BigDecimal totalPrice =positionInfoService.calcTotalPrice();
-        req.setAttribute("totalPrice", totalPrice);
+        req.getSession().setAttribute("totalPrice", totalPrice);
 
         CommandResult result = CommandResult.forward("/WEB-INF/view/cart.jsp");
         return result;

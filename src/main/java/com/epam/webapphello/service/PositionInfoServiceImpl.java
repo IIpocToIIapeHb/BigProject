@@ -1,6 +1,5 @@
 package com.epam.webapphello.service;
 
-import com.epam.webapphello.command.CommandResult;
 import com.epam.webapphello.dao.*;
 import com.epam.webapphello.entity.*;
 import com.epam.webapphello.exception.DAOException;
@@ -8,7 +7,6 @@ import com.epam.webapphello.exception.ServiceErrorException;
 import com.epam.webapphello.exception.ServiceException;
 
 import java.math.BigDecimal;
-import java.math.MathContext;
 import java.math.RoundingMode;
 import java.sql.Date;
 import java.util.List;
@@ -50,23 +48,45 @@ public class PositionInfoServiceImpl implements PositionInfoService {
     }
 
     @Override
-    public boolean pay(List<PositionInfo> positions) throws ServiceException,ServiceErrorException  {
+    public boolean pay(List<PositionInfo> positions, User user, BigDecimal totalPrice) throws ServiceException,ServiceErrorException  {
         try (DaoHelper helper = daoHelperFactory.create()) {
+            validation (helper,user,totalPrice,positions);
 
+            MedicineDao medicineDao = helper.createMedicineDao();
+            Dao medicineSimpleDao = helper.createMedicineSimpleDao();
             for (PositionInfo position : positions) {
-                if (position.getMedicineWithRecipe() == 1 && !position.getRecipeStatus().equals("approved") && position.getRequiredAmount()> position.getRecipeAmount()) {
-                 throw new ServiceErrorException("There are not approved positions. Please check your order");
-                }
-                MedicineDao medicineDao = helper.createMedicineDao();
-                Medicine optionalMedicine=  medicineDao.getByMId(position.getMedicineId());
 
-                Integer medicineStockQuantity = optionalMedicine.getAmount();
-                if (position.getRequiredAmount()>medicineStockQuantity){
-                    throw new ServiceErrorException("There is no medicine " +
-                            position.getMedicineName() + "in the stock in the amount of " +
-                            position.getRequiredAmount() + "Available Quantity " + medicineStockQuantity );
-                }
+                Medicine medicine=  medicineDao.getByMedicineId(position.getMedicineId());
+                Integer medicineStockQuantity = medicine.getAmount();
+                int newMedicineQuantity = medicineStockQuantity-position.getRequiredAmount();
+                medicine.setAmount(newMedicineQuantity);
+               medicineSimpleDao.save(medicine);
+
+
+               if(position.getMedicineWithRecipe()==1){
+                   Dao recipeSimpleDao = helper.createRecipeSimpleDao();
+                   Recipe recipe =(Recipe) recipeSimpleDao.getById(position.getRecipeId());
+                   int newRecipeAmount = recipe.getAmount()-position.getRequiredAmount();
+                   recipe.setAmount(newRecipeAmount);
+                   if (recipe.getAmount()==0){
+                       recipe.setStatus("used");
+                   }
+
+                 recipeSimpleDao.save(recipe);
+               }
+
             }
+
+            BigDecimal newUserCount = user.getAmount().subtract(totalPrice);
+            user.setAmount(newUserCount);
+            Dao userDao = helper.createUserSimpleDao();
+            userDao.save(user);
+
+            Dao orderSimpleDao = helper.createOrderSimpleDao();
+            OrderDao orderDao = helper.createOrderDao();
+            Order order = orderDao.findOrderByStatusAndUser("not_paid",user.getId()).get();
+            order.setStatus("paid");
+            orderSimpleDao.save(order);
 
 
 
@@ -74,6 +94,29 @@ public class PositionInfoServiceImpl implements PositionInfoService {
             throw new ServiceException(e);
         }
         return true;
+    }
+
+    private void validation(DaoHelper helper,User user, BigDecimal totalPrice,List<PositionInfo> positions) throws ServiceErrorException, DAOException {
+        MedicineDao medicineDao = helper.createMedicineDao();
+        for (PositionInfo position : positions) {
+            if (position.getMedicineWithRecipe() == 1 && position.getRequiredAmount()> position.getRecipeAmount() && position.getRecipeAmount()!=0) {
+                throw new ServiceErrorException("You exceed limits. Please check your order");
+            }
+            if (position.getMedicineWithRecipe() == 1 && !position.getRecipeStatus().equals("approved")) {
+                throw new ServiceErrorException("There are not approved medicines. Please check your order");
+            }
+            Medicine medicine=  medicineDao.getByMedicineId(position.getMedicineId());
+            Integer medicineStockQuantity = medicine.getAmount();
+            if (position.getRequiredAmount()>medicineStockQuantity){
+                throw new ServiceErrorException("There is no medicine " +
+                        position.getMedicineName() + "in the stock in the amount of " +
+                        position.getRequiredAmount() + ". Available Quantity " + medicineStockQuantity );
+            }
+            if (user.getAmount().doubleValue()<totalPrice.doubleValue()){
+                throw new ServiceErrorException("You don't have enough money(((((");
+            }
+
+        }
     }
 
 

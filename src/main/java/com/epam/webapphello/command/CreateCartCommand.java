@@ -40,6 +40,7 @@ public class CreateCartCommand implements Command {
         Optional<Order> order = null;
         order = orderService.findOrderByStatusAndUser("not_paid",user.getId());
 
+
         if (order.isPresent()) {
             Optional<OrderMedicine> orderMedicine = null;
             orderMedicine = orderMedicineService.findOrderMedicine(order.get().getId(),parseLong(medicineId));
@@ -52,6 +53,7 @@ public class CreateCartCommand implements Command {
         } else {
             Order newOrder = new Order(user.getId(),new Date(System.currentTimeMillis()), "not_paid");
             orderService.save(newOrder,parseLong(medicineId),parseInt(medicineNumber), user.getId(),parseByte(medicineWithRecipe));
+
         }
         CommandResult result = CommandResult.forward("/WEB-INF/view/catalog.jsp");
         return result;

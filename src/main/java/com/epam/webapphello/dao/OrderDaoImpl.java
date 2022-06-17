@@ -40,10 +40,7 @@ public class OrderDaoImpl extends AbstractDao<Order> implements OrderDao{
         return fields;
     }
 
-    @Override
-    public Optional<Order> getById(Long id) throws DAOException {
-        return Optional.empty();
-    }
+
 
 
 

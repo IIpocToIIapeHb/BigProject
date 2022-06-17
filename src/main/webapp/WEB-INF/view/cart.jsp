@@ -141,7 +141,9 @@
                     </div>
 
                     <div class="pay-button-wrapper">
+                       <div class = "error-message" style = "color:red"; >
                        ${errorPayMessage}
+                       </div>
                      <form method = "post" action = "controller?command=payOrder">
                      <input class = "" type="hidden" name="order-positions" value="${positions}">
                      <button class="pay-button" type="submit" >

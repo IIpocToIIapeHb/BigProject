@@ -1,6 +1,7 @@
 package com.epam.webapphello.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 public class User implements Identifable, Serializable {
 
@@ -8,13 +9,16 @@ public class User implements Identifable, Serializable {
 
     public final static String TABLE = "user";
     public final static String ROLE = "role";
+    public final static String AMOUNT = "amount";
 
     private Long id;
     private String role;
+    private BigDecimal amount;
 
-    public User(Long id, String role) {
+    public User(Long id, String role, BigDecimal amount) {
         this.id = id;
         this.role = role;
+        this.amount = amount;
 
     }
 
@@ -26,6 +30,14 @@ public class User implements Identifable, Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
     }
 
     public String getRole() {
