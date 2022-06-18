@@ -1050,6 +1050,13 @@ align-items:center;
 
   /*Catalog end*/
 
+    /*Pay page start*/
+    .pay-text{
+    margin-top:200px;
+    }
+     /*Pay page end*/
+
+
    /*Cart start*/
     .cart-items{
          padding-top: 250px;

@@ -1,4 +1,12 @@
 <%@ page contentType="text.html; charset=UTF-8" isELIgnored="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib  uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %>
+<!DOCTYPE html>
+
+ <fmt:setLocale value="en_US" scope="session"/>
+<fmt:setBundle basename="resource.pagecontent" var="rb"/>
+
+
     <header id="header" class="header">
         <div class="header-top-wrapper">
             <div id="top-bar" class="header-top">
@@ -32,7 +40,9 @@
                     <div class="dropdown">
                         <button  class="dropbtn">
                             <img src="static/img/icon-language.png" alt="">
-                            <div class="dropbtn-text">EN</div>
+                            <div class="dropbtn-text">EN
+                            <fmt:setLocale value="en_US" scope="session"/>
+                            </div>
                         </button>
                         <div class="dropdown-content">
                             <a class = "dropdown-content-link" href="#">RU</a>
@@ -63,7 +73,7 @@
                     <ul class="header-bottom-list">
                         <li class="header-bottom-item">
                              <form  method="POST"  action="controller?command=catalog">
-                                  <button class="header-bottom-link" type="submit" > Catalog
+                                  <button class="header-bottom-link" type="submit" > <fmt:message key="header.catalog" bundle="${ rb }"/>
                             </button>
                              </form>
                         </li>

@@ -17,7 +17,7 @@
 
          <section class="pay-pay">
 
-         <div class = "text">
+         <div class = "pay-text">
          The order is payed
          </div>
 
