@@ -15,8 +15,9 @@
 
 
     <jsp:include page="fragments/header.jsp"/>
-    <fmt:setLocale value="en_US" scope="session"/>
-    <fmt:setBundle basename="resource.pagecontent" var="rb"/>
+
+    <fmt:setLocale value="en" scope="session"/>
+    <fmt:setBundle basename="pagecontent"/>
 
      <main class="catalog-items">
      <section class="intro-catalog">
@@ -46,7 +47,7 @@
                                       <input class = "medicine-number" type="number" name="medicine-number" value="1">
                                       </div>
                                       <div class= "cart_button-wrapper">
-                                      <button class="cart_button" type="submit" > <fmt:message key="catalog.addToCart" bundle="${rb}"/> </button>
+                                      <button class="cart_button" type="submit" > <fmt:message key="catalog.addToCart" /> </button>
                                       </div>
                                   </form>
                              </div>
