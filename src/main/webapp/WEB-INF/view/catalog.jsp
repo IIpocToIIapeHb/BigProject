@@ -1,5 +1,6 @@
-<%@ page contentType="text.html; charset=UTF-8" isELIgnored="false" %>
+<%@ page contentType="text.html; charset=UTF-8" pageEncoding="utf-8" isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib  uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +15,8 @@
 
 
     <jsp:include page="fragments/header.jsp"/>
+    <fmt:setLocale value="en_US" scope="session"/>
+    <fmt:setBundle basename="resource.pagecontent" var="rb"/>
 
      <main class="catalog-items">
      <section class="intro-catalog">
@@ -43,7 +46,7 @@
                                       <input class = "medicine-number" type="number" name="medicine-number" value="1">
                                       </div>
                                       <div class= "cart_button-wrapper">
-                                      <button class="cart_button" type="submit" >add to cart</button>
+                                      <button class="cart_button" type="submit" > <fmt:message key="catalog.addToCart" bundle="${rb}"/> </button>
                                       </div>
                                   </form>
                              </div>

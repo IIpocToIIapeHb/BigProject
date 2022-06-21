@@ -1,4 +1,6 @@
 <%@ page contentType="text.html; charset=UTF-8" isELIgnored="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib  uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +12,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 <body>
+
+ <fmt:setLocale value="en_US" scope="session"/>
+<fmt:setBundle basename="pagecontent" var="rb"/>
+
+
     <header id="header" class="header">
         <div class="header-top-wrapper">
             <div id="top-bar" class="header-top">
@@ -170,7 +177,7 @@
             </h1>
             <form class="intro-button" method = "post" action = "controller?command=catalog">
                 <button class="intro-button" type="submit" >
-                         Go
+                         <fmt:message key="go" bundle="${rb}"/>
                 </button>
             </form>
           </div>

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 
  <fmt:setLocale value="en_US" scope="session"/>
-<fmt:setBundle basename="resource.pagecontent" var="rb"/>
+<fmt:setBundle basename="pagecontent" var="rb"/>
 
 
     <header id="header" class="header">
@@ -73,7 +73,7 @@
                     <ul class="header-bottom-list">
                         <li class="header-bottom-item">
                              <form  method="POST"  action="controller?command=catalog">
-                                  <button class="header-bottom-link" type="submit" > <fmt:message key="header.catalog" bundle="${ rb }"/>
+                                  <button class="header-bottom-link" type="submit" > <fmt:message key="header.catalog" bundle="${rb}"/>
                             </button>
                              </form>
                         </li>
