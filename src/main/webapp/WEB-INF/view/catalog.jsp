@@ -16,7 +16,7 @@
 
     <jsp:include page="fragments/header.jsp"/>
 
-    <fmt:setLocale value="en" scope="session"/>
+
     <fmt:setBundle basename="pagecontent"/>
 
      <main class="catalog-items">

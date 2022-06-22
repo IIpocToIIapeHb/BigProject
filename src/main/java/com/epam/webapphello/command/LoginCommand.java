@@ -22,6 +22,8 @@ public class LoginCommand implements Command {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
 
+        req.getSession().setAttribute("lang", "en");
+
         Optional<User> user = null;
         user = userService.login(login, password);
 

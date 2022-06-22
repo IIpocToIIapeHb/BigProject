@@ -25,6 +25,8 @@ public class CommandFactory {
                 return new OrderPayCommand(new PositionInfoServiceImpl(new DaoHelperFactory()));
             case "payedPage":
                 return new ShowPageCommand("/WEB-INF/view/payedPage.jsp");
+            case "changeLang":
+                return new ChangeLang();
             default:
                 throw new IllegalArgumentException("Unknown command" + command);
         }

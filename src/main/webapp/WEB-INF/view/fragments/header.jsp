@@ -3,8 +3,8 @@
 <%@taglib  uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %>
 <!DOCTYPE html>
 
- <fmt:setLocale value="en_US" scope="session"/>
-<fmt:setBundle basename="pagecontent" var="rb"/>
+<fmt:setLocale value="${lang}" scope="session"/>
+<fmt:setBundle basename="pagecontent" />
 
 
     <header id="header" class="header">
@@ -40,12 +40,12 @@
                     <div class="dropdown">
                         <button  class="dropbtn">
                             <img src="static/img/icon-language.png" alt="">
-                            <div class="dropbtn-text">EN
-                            <fmt:setLocale value="en_US" scope="session"/>
+                            <div class="dropbtn-text"><fmt:message key="header.language.one"/>
+
                             </div>
                         </button>
                         <div class="dropdown-content">
-                            <a class = "dropdown-content-link" href="#">RU</a>
+                            <a class = "dropdown-content-link" href="controller?command=changeLang&lang=ru">RU</a>
                             <a  class = "dropdown-content-link" href="#">FR</a>
                         </div>
                     </div>
@@ -73,18 +73,18 @@
                     <ul class="header-bottom-list">
                         <li class="header-bottom-item">
                              <form  method="POST"  action="controller?command=catalog">
-                                  <button class="header-bottom-link" type="submit" > <fmt:message key="header.catalog" bundle="${rb}"/>
+                                  <button class="header-bottom-link" type="submit" > <fmt:message key="header.catalog"/>
                             </button>
                              </form>
                         </li>
                         <li class="header-bottom-item">
                             <a href="#!" class="header-bottom-link">
-                                Delivery
+                                <fmt:message key="header.delivery"/>
                             </a>
                         </li>
                         <li class="header-bottom-item">
                             <a href="#!" class="header-bottom-link">
-                                Contacts
+                               <fmt:message key="header.contacts"/>
                             </a>
                         </li>
                     </ul>
@@ -109,17 +109,17 @@
 
                         <li class="header-bottom-item">
                             <a href="#!" class="header-bottom-link">
-                                Catalog
+                                <fmt:message key="header.catalog"/>
                             </a>
                         </li>
                         <li class="header-bottom-item">
                             <a href="#!" class="header-bottom-link">
-                                Delivery
+                                <fmt:message key="header.delivery"/>
                             </a>
                         </li>
                         <li class="header-bottom-item">
                             <a href="#!" class="header-bottom-link">
-                                Contacts
+                                <fmt:message key="header.contacts"/>
                             </a>
                         </li>
 
@@ -138,7 +138,7 @@
                 <div class="header-bottom-search">
                     <form  method="get" class="searchform" action="https://fito.by/">
 
-                        <input class="search"  type="search" placeholder="Search here..."  name="search-product"/>
+                        <input class="search"  type="search" placeholder= "<fmt:message key="header.search"/>" name="search-product"/>
 
                         <button class="button" type="submit" >
 
