@@ -1,5 +1,6 @@
 <%@ page contentType="text.html; charset=UTF-8" isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib  uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,13 +13,14 @@
 </head>
 <body>
     <jsp:include page="fragments/header.jsp"/>
+    <fmt:setBundle basename="pagecontent"/>
 
     <main class="cart-items">
 
          <section class="intro-cart">
 
               <div class="position-captain">
-                <div class="position-captain-name">Medicine name</div>
+                <div class="position-captain-name"><fmt:message key="cart.medicine_name"/></div>
                 <div class="position-captain-item">Price</div>
                 <div class="position-captain-item">Number</div>
                 <div class="position-captain-item">Recipe</div>
@@ -92,7 +94,14 @@
                                 </div>
 
                                 <div class= "position-recipe-status-wrapper">
-                                   <span class= "position-recipe-status"><c:out value="${position.getRecipeStatus()}"/></span>
+
+                                   <span class= "position-recipe-status">
+                                    <c:if  test="${position.getRecipeStatus()!=null}">
+
+
+                                   <fmt:message key="${position.getRecipeStatus()}"/>
+                                     </c:if>
+                                   </span>
                                 </div>
 
                                  <div class= "position-recipe-status-wrapper">

@@ -40,12 +40,13 @@
                     <div class="dropdown">
                         <button  class="dropbtn">
                             <img src="static/img/icon-language.png" alt="">
-                            <div class="dropbtn-text"><fmt:message key="header.language.one"/>
+                            <div class="dropbtn-text"><fmt:message key="header.language"/>
 
                             </div>
                         </button>
                         <div class="dropdown-content">
                             <a class = "dropdown-content-link" href="controller?command=changeLang&lang=ru">RU</a>
+                            <a class = "dropdown-content-link" href="controller?command=changeLang&lang=en">EN</a>
                             <a  class = "dropdown-content-link" href="#">FR</a>
                         </div>
                     </div>
@@ -64,7 +65,7 @@
                         <img src="static/img/icons-health.png" alt="pharmacy">
                     </a>
 
-                     <a href="/" class="header-bottom-logos-text">
+                     <a href="controller?command=mainPage" class="header-bottom-logos-text">
                             Dr.Health
                      </a>
                 </div>

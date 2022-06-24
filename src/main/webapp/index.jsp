@@ -1,6 +1,7 @@
 <%@ page pageEncoding="UTF-8" contentType="text.html; charset=UTF-8" isELIgnored="false" %>
-
-<html>
+<%@taglib  uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %>
+<%@taglib  uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %>
+<html lang="en">
   <head>
       <meta charset="UTF-8">
       <meta name = "viewport" content="width-device-width, initial-scale-1.0">
@@ -10,6 +11,8 @@
   </head>
 
   <body>
+      <fmt:setLocale value="en" scope="session"/>
+      <fmt:setBundle basename="pagecontent" />
 
       <header  class="hello-page-header">
           <div class="header-bottom-logos">
@@ -31,13 +34,13 @@
                       <img src="./static/img/icon-user.png" alt="" class="hello-page-main-icon">
                       <form method = "post" action = "controller?command=login">
 
-                          <label class = "form-labels" for="login">Login</label>
-                          <input class = "text" type="text" name="login" placeholder="Your login...">
+                          <label class = "form-labels" for="login"><fmt:message key="index.login"/></label>
+                          <input class = "text" type="text" name="login" placeholder= "<fmt:message key="index.login.placeholder"/>">
 
-                          <label class = "form-labels" for="password">Password</label>
-                          <input class = "text" type="password" name="password" placeholder="Your password...">
+                          <label class = "form-labels" for="password"><fmt:message key="index.password"/></label>
+                          <input class = "text" type="password" name="password" placeholder="<fmt:message key="index.password.placeholder"/>">
 
-                          <input class = "text" type="submit" value="Log in">
+                          <input class = "text" type="submit" value="<fmt:message key="index.button.login"/>">
                       </form>
                         <div class = "error-message" style = "color:red"; >
                           ${errorMessage}

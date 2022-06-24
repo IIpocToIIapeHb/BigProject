@@ -22,8 +22,14 @@ public class ChangeLang implements Command {
             Locale.forLanguageTag("ru");
             request.getSession().setAttribute("lang", "ru");
             break;
+        case "en":
+             request.getSession().setAttribute("lang", "en");
+             break;
+        case "fr":
+             request.getSession().setAttribute("lang", "fr");
+             break;
             default:
-                throw new IllegalArgumentException("Unknown command" + language);
+                throw new IllegalArgumentException("Unknown language" + language);
         }
          result = CommandResult.redirect(page);
         return result;
