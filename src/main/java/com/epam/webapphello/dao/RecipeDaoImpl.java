@@ -35,8 +35,7 @@ public class RecipeDaoImpl extends AbstractDao<Recipe> implements RecipeDao {
     public Optional<Recipe> findRecipeByUserAndMedicine(Long userId, Long medicineId) throws DAOException {
         return executeForSingleResult(FIND_BY_USER_AND_MEDICINE,
                 userId,
-
-                medicineId);
+               medicineId);
     }
 
     @Override

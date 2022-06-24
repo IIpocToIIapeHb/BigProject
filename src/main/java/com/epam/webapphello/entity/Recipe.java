@@ -32,6 +32,7 @@ public class Recipe implements Identifable, Serializable {
         this.amount = amount;
     }
 
+
 //    public Recipe(Long userId, Long medicineId, Date validUntil, String status, Integer amount) {
 //        this.userId = userId;
 //        this.medicineId = medicineId;
