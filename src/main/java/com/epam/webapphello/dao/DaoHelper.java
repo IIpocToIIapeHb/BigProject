@@ -3,10 +3,13 @@ package com.epam.webapphello.dao;
 import com.epam.webapphello.connection.ConnectionPool;
 import com.epam.webapphello.connection.ProxyConnection;
 import com.epam.webapphello.exception.DAOException;
+import org.apache.log4j.Logger;
 
 import java.sql.SQLException;
 
 public class DaoHelper implements AutoCloseable {
+
+    private static final Logger LOGGER = Logger.getLogger(DaoHelper.class);
 
     public ProxyConnection connection;
 
@@ -18,11 +21,11 @@ public class DaoHelper implements AutoCloseable {
     }
 
     @Override
-    public void close() throws DAOException {
+    public void close()  {
         try {
             connection.close();
         } catch (SQLException e) {
-            throw new DAOException(e);
+            LOGGER.error(e.getMessage(),e);
         }
     }
 
@@ -44,9 +47,7 @@ public class DaoHelper implements AutoCloseable {
     public OrderDao createOrderDao() {
         return new OrderDaoImpl(connection);
     }
-    public Dao createOrderSimpleDao() {
-        return new OrderDaoImpl(connection);
-    }
+
 
     public Dao createOrderMedicineSimpleDao() {
         return new OrderMedicineDaoImpl(connection);
@@ -81,6 +82,15 @@ public class DaoHelper implements AutoCloseable {
             connection.setAutoCommit(true);
         } catch (SQLException e) {
             throw new DAOException(e);
+        }
+    }
+
+    public void rollback(){
+        try {
+            connection.rollback();
+            connection.setAutoCommit(true);
+        } catch (SQLException e) {
+            LOGGER.error(e.getMessage(),e);
         }
     }
 

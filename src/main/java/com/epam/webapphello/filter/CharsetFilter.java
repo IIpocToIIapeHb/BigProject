@@ -1,6 +1,7 @@
 package com.epam.webapphello.filter;
 
 import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 public class CharsetFilter implements Filter {
@@ -16,14 +17,16 @@ public class CharsetFilter implements Filter {
             throws IOException, ServletException {
         // Respect the client-specified character encoding
         // (see HTTP specification section 3.4.1)
-        if (null == request.getCharacterEncoding()) {
-            request.setCharacterEncoding(encoding);
+        if (!((HttpServletRequest)request).getServletPath().startsWith("/static")) {
+
+            if (null == request.getCharacterEncoding()) {
+                request.setCharacterEncoding(encoding);
+            }
+
+            // Set the default response content type and encoding
+            response.setContentType("text/html; charset=UTF-8");
+            response.setCharacterEncoding("UTF-8");
         }
-
-        // Set the default response content type and encoding
-        response.setContentType("text/html; charset=UTF-8");
-        response.setCharacterEncoding("UTF-8");
-
         next.doFilter(request, response);
     }
 

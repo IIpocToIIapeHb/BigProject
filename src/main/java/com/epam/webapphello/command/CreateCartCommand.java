@@ -14,6 +14,7 @@ import java.sql.Date;
 import java.util.Optional;
 
 
+import static java.lang.Boolean.parseBoolean;
 import static java.lang.Byte.parseByte;
 import static java.lang.Integer.parseInt;
 import static java.lang.Long.parseLong;
@@ -52,7 +53,7 @@ public class CreateCartCommand implements Command {
                 }
         } else {
             Order newOrder = new Order(user.getId(),new Date(System.currentTimeMillis()), "not_paid");
-            orderService.save(newOrder,parseLong(medicineId),parseInt(medicineNumber), user.getId(),parseByte(medicineWithRecipe));
+            orderService.save(newOrder,parseLong(medicineId),parseInt(medicineNumber), user.getId(),Boolean.parseBoolean(medicineWithRecipe));
 
         }
         CommandResult result = CommandResult.forward("/WEB-INF/view/catalog.jsp");

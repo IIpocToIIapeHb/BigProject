@@ -34,38 +34,44 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void save(Order order, Long medicine_id, Integer required_amount, Long userId, Byte medicineWithRecipe) throws ServiceException {
+    public void save(Order order, Long medicine_id, Integer required_amount, Long userId, boolean isPrescriptionRequired) throws ServiceException {
 
-        try (DaoHelper helper = daoHelperFactory.create()) {
+        DaoHelper helper = null;
+        try {
+            helper = daoHelperFactory.create();
             helper.startTransaction();
 
-            Dao orderDaoSave = helper.createOrderSimpleDao();
+            OrderDao orderDaoSave = helper.createOrderDao();
             orderDaoSave.save(order);
 
-            Optional<Order> orderWithId = null;
             OrderDao orderDaoFind = helper.createOrderDao();
-            orderWithId = orderDaoFind.findOrderByStatusAndUser("not_paid",order.getUser_id());
+            Optional<Order> orderWithId = orderDaoFind.findOrderByStatusAndUser("not_paid",order.getUser_id());
 
 
             OrderMedicine orderMedicine = new OrderMedicine(medicine_id, required_amount,orderWithId.get().getId());
             Dao orderMedicineDao = helper.createOrderMedicineSimpleDao();
             orderMedicineDao.save(orderMedicine);
 
-            createRecipeIfAbsent(helper,userId,medicineWithRecipe,orderMedicine.getMedicine_id());
+            createRecipeIfAbsent(helper,userId,isPrescriptionRequired,orderMedicine.getMedicine_id());
             helper.endTransaction();
         } catch (DAOException e) {
-
+            if (helper!=null){
+                helper.rollback();
+            }
             throw new ServiceException(e);
+        } finally {
+            if (helper!=null){
+                helper.close();
+            }
         }
     }
 
-    public void createRecipeIfAbsent(DaoHelper helper,Long userId, Byte medicineWithRecipe, Long medicineId) throws DAOException {
+    private void createRecipeIfAbsent(DaoHelper helper,Long userId, boolean isPrescriptionRequired, Long medicineId) throws DAOException {
 
         RecipeDao recipeDao = helper.createRecipeDao();
-        if (medicineWithRecipe==1) {
+        if (isPrescriptionRequired) {
             Optional<Recipe> recipe= recipeDao.findRecipeByUserAndMedicineAndUnwantedStatus(userId, medicineId,"used");
-            if (recipe.isPresent()){
-            } else {
+            if (!recipe.isPresent()) {
                 recipeDao.saveEmptyRecipe(userId,medicineId);
             }
         }

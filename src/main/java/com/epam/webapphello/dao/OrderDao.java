@@ -6,6 +6,6 @@ import com.epam.webapphello.exception.DAOException;
 
 import java.util.Optional;
 
-public interface OrderDao {
+public interface OrderDao extends Dao<Order>{
     public Optional<Order> findOrderByStatusAndUser(final String status, final Long user_id) throws DAOException;
 }

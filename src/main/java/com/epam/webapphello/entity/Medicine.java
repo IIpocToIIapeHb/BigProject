@@ -19,14 +19,14 @@ public class Medicine implements Identifable, Serializable {
     private Long id;
     private String name;
     private Integer dosage;
-    private Byte withRecipe;
+    private boolean withRecipe;
     private String form;
     private Integer amount;
     private Integer package_amount;
     private Double price;
     private String path;
 
-    public Medicine(Long id, String name, Integer dosage, Byte withRecipe, String form, Integer amount, Integer package_amount, Double price, String path) {
+    public Medicine(Long id, String name, Integer dosage, boolean withRecipe, String form, Integer amount, Integer package_amount, Double price, String path) {
         this.id = id;
         this.name = name;
         this.dosage = dosage;
@@ -38,7 +38,7 @@ public class Medicine implements Identifable, Serializable {
         this.path = path;
     }
 
-    public Medicine(String name, Integer dosage, Byte withRecipe, String form, Integer amount, Integer package_amount, Double price) {
+    public Medicine(String name, Integer dosage, boolean withRecipe, String form, Integer amount, Integer package_amount, Double price) {
         this.name = name;
         this.dosage = dosage;
         this.withRecipe = withRecipe;
@@ -73,11 +73,11 @@ public class Medicine implements Identifable, Serializable {
         this.dosage = dosage;
     }
 
-    public Byte getWithRecipe() {
+    public boolean getWithRecipe() {
         return withRecipe;
     }
 
-    public void setWithRecipe(Byte with_recipe) {
+    public void setWithRecipe(boolean with_recipe) {
         this.withRecipe = with_recipe;
     }
 

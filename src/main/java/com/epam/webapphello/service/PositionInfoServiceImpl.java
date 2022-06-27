@@ -82,7 +82,7 @@ public class PositionInfoServiceImpl implements PositionInfoService {
             Dao userDao = helper.createUserSimpleDao();
             userDao.save(user);
 
-            Dao orderSimpleDao = helper.createOrderSimpleDao();
+            Dao orderSimpleDao = helper.createOrderDao();
             OrderDao orderDao = helper.createOrderDao();
             Order order = orderDao.findOrderByStatusAndUser("not_paid",user.getId()).get();
             order.setStatus("paid");

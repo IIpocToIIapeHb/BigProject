@@ -12,7 +12,7 @@ public class MedicineRowMapper implements RowMapper{
         return new  Medicine(resultSet.getLong("id"),
                         resultSet.getString("name"),
                         resultSet.getInt("dosage"),
-                        resultSet.getByte("with_recipe"),
+                        resultSet.getBoolean("with_recipe"),
                         resultSet.getString("form"),
                         resultSet.getInt("amount"),
                         resultSet.getInt("package_amount"),
