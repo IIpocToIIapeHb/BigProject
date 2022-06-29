@@ -32,25 +32,13 @@ public class DaoHelper implements AutoCloseable {
     public UserDao createUserDao() {
         return new UserDaoImpl(connection);
     }
-    public Dao createUserSimpleDao() {
-        return new UserDaoImpl(connection);
-    }
-
-    public Dao createMedicineSimpleDao() {
-        return new MedicineDaoImpl(connection);
-    }
-
-    public MedicineDao createMedicineDao() {
-        return new MedicineDaoImpl(connection);
-    }
 
     public OrderDao createOrderDao() {
         return new OrderDaoImpl(connection);
     }
 
-
-    public Dao createOrderMedicineSimpleDao() {
-        return new OrderMedicineDaoImpl(connection);
+    public MedicineDao createMedicineDao() {
+        return new MedicineDaoImpl(connection);
     }
 
     public OrderMedicineDao createOrderMedicineDao() {
@@ -58,9 +46,6 @@ public class DaoHelper implements AutoCloseable {
     }
 
     public RecipeDao createRecipeDao() {
-        return new RecipeDaoImpl(connection);
-    }
-    public Dao createRecipeSimpleDao() {
         return new RecipeDaoImpl(connection);
     }
 

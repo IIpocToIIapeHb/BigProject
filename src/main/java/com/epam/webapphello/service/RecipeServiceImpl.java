@@ -55,15 +55,12 @@ public class RecipeServiceImpl implements RecipeService {
                 case("extension requested"):
                     break;
                 case ("declined"):
+                case (""):
                     newRecipeStatus = "pending approval";
                     recipeDao.changeStatus(recipeId, newRecipeStatus);
                     break;
                 case ("overdue"):
                     newRecipeStatus = "extension requested";
-                    recipeDao.changeStatus(recipeId, newRecipeStatus);
-                    break;
-                case (""):
-                    newRecipeStatus = "pending approval";
                     recipeDao.changeStatus(recipeId, newRecipeStatus);
                     break;
                 default:

@@ -5,7 +5,7 @@ import com.epam.webapphello.exception.DAOException;
 
 import java.util.Optional;
 
-public interface RecipeDao {
+public interface RecipeDao extends Dao<Recipe> {
     Optional<Recipe> findRecipeByUserAndMedicine(final Long userId, final Long medicineId) throws DAOException;
     boolean requestRecipeByUserAndMedicine(final Long userId, final Long medicineId) throws DAOException;
 

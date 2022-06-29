@@ -13,6 +13,8 @@ public class CommandFactory {
                 return new ShowPageCommand("/WEB-INF/view/main.jsp");
             case "catalog":
                 return new CatalogCommand(new MedicineServiceImpl(new DaoHelperFactory()));
+            case "searchProduct":
+                return new SearchProductCommand(new MedicineServiceImpl(new DaoHelperFactory()));
             case "cart":
                 return new CreateCartCommand(new OrderServiceImpl(new DaoHelperFactory()),new OrderMedicineServiceImpl(new DaoHelperFactory()));
             case "showCart":

@@ -5,6 +5,6 @@ import com.epam.webapphello.exception.DAOException;
 
 import java.util.Optional;
 
-public interface UserDao {
+public interface UserDao extends Dao<User>{
     public Optional<User> findUserByLoginAndPassword(final String login, final String password) throws DAOException;
 }

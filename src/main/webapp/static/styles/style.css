@@ -679,6 +679,8 @@ textarea {
 
 .header-bottom-item{
     margin-right: 40px;
+    max-width:150px;
+     text-align:center;
 }
 
 .header-bottom-item:last-child{
@@ -686,9 +688,14 @@ textarea {
 }
 
 .header-bottom-link{
+ max-width:150px;
     font-size: 20px;
     color:white;
     text-decoration: none;
+    background-color:transparent;
+    border:0;
+    text-align:center;
+     margin: 0 auto;
 }
 
 .header-bottom-link:hover, .header-bottom-link:focus,.header-bottom-link:active{
@@ -924,7 +931,7 @@ opacity: .55;
 }
 
   .catalog-items{
-      padding-top: 250px;
+      padding-top: 200px;
       padding-left:20px;
       padding-right:20px;
       max-width: 1400px;
@@ -966,12 +973,26 @@ transform: translate(-50%, -50%);
 
 .medicine-name-wrapper{
  text-align:center;
- margin-bottom:20px;
+ margin-bottom:10px;
 }
 .medicine-name{
     font-family: 'Rubik';
     font-style: normal;
     font-size: 40px;
+    line-height: 1.2;
+    font-weight: 300;
+    color: black;
+    text-align:center;
+}
+
+.medicine-dosage-and-number-wrapper{
+ text-align:center;
+ margin-bottom:10px;
+}
+.medicine-dosage{
+  font-family: 'Rubik';
+    font-style: normal;
+    font-size: 15px;
     line-height: 1.2;
     font-weight: 300;
     color: black;
@@ -1024,18 +1045,20 @@ align-items:center;
 
 
  .cart_button-wrapper{
-    width: 60%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+
     margin: 8px auto;
      text-align:center;
   }
 
    .cart_button{
+     width: 60%;
+       background-color: #4CAF50;
+       color: white;
+       padding: 14px 20px;
+       border: none;
+       border-radius: 8px;
+       cursor: pointer;
+
       background-color: #4CAF50;
       color: white;
       border:none;
@@ -1044,7 +1067,8 @@ align-items:center;
 
     }
 
-   .cart_button-wrapper:hover {
+   .cart_button:hover {
+
     background-color: #45a049;
   }
 

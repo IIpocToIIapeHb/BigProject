@@ -23,7 +23,7 @@
      <section class="intro-catalog">
      <div class= "cards">
 
-                        <c:forEach var="medicine" items="${medicines}">
+                        <c:forEach var="medicine" items="${foundProduct}">
 
                         <div class= "card">
 
@@ -69,7 +69,9 @@
                     </c:forEach>
      </div>
     </section>
-
+     <div class = "error-message" style = "color:red"; >
+      ${errorSearchProductMessage}
+     </div>
      </main>
 
      <script src="static/js/main.js"></script>

@@ -20,7 +20,7 @@ public class OrderMedicineServiceImpl implements OrderMedicineService {
     @Override
     public void save(OrderMedicine orderMedicine, Byte medicineWithRecipe, Long userId) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
-            Dao orderMedicineDao = helper.createOrderMedicineSimpleDao();
+            OrderMedicineDao orderMedicineDao = helper.createOrderMedicineDao();
             orderMedicineDao.save(orderMedicine);
             createRecipeIfAbsent(helper,userId,medicineWithRecipe,orderMedicine.getMedicine_id());
         } catch (DAOException e) {
@@ -56,11 +56,11 @@ public class OrderMedicineServiceImpl implements OrderMedicineService {
     @Override
     public void removeMedicine(Long orderMedicineId, Long recipeId, String recipeStatus) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
-            Dao orderMedicineDao = helper.createOrderMedicineSimpleDao();
+            OrderMedicineDao orderMedicineDao = helper.createOrderMedicineDao();
             orderMedicineDao.removeById(orderMedicineId);
 
             if (recipeStatus.equals("pending approval") || recipeStatus.isEmpty()){
-                Dao recipeDao = helper.createRecipeSimpleDao();
+                RecipeDao recipeDao = helper.createRecipeDao();
                 recipeDao.removeById(recipeId);
             }
         } catch (DAOException e) {

@@ -24,12 +24,25 @@ public class MedicineServiceImpl implements MedicineService {
     public List<Medicine> getAll() throws ServiceException {
         List<Medicine> medicines = null;
         try (DaoHelper helper = daoHelperFactory.create()) {
-            Dao medicineDao = helper.createMedicineSimpleDao();
+            MedicineDao medicineDao = helper.createMedicineDao();
             medicines = medicineDao.getAll();
 
         } catch (DAOException e) {
             throw new ServiceException(e);
         }
         return medicines;
+    }
+
+    @Override
+    public List<Medicine> findProductByName(String searchingProduct) throws ServiceException {
+        List<Medicine> foundProducts = null;
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            MedicineDao medicineDao = helper.createMedicineDao();
+            foundProducts = medicineDao.findProductByName(searchingProduct);
+
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        }
+        return foundProducts;
     }
 }

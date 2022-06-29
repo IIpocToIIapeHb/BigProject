@@ -12,7 +12,7 @@ public class Medicine implements Identifable, Serializable {
     public final static String WITH_RECIPE = "with_recipe";
     public final static String FORM = "form";
     public final static String AMOUNT = "amount";
-    public final static String PACKAGE_AMOUNT = "package_amount";
+    public final static String PACKAGE_AMOUNT = "packageAmount";
     public final static String PRICE = "price";
 
 
@@ -22,29 +22,29 @@ public class Medicine implements Identifable, Serializable {
     private boolean withRecipe;
     private String form;
     private Integer amount;
-    private Integer package_amount;
+    private Integer packageAmount;
     private Double price;
     private String path;
 
-    public Medicine(Long id, String name, Integer dosage, boolean withRecipe, String form, Integer amount, Integer package_amount, Double price, String path) {
+    public Medicine(Long id, String name, Integer dosage, boolean withRecipe, String form, Integer amount, Integer packageAmount, Double price, String path) {
         this.id = id;
         this.name = name;
         this.dosage = dosage;
         this.withRecipe = withRecipe;
         this.form = form;
         this.amount = amount;
-        this.package_amount = package_amount;
+        this.packageAmount = packageAmount;
         this.price = price;
         this.path = path;
     }
 
-    public Medicine(String name, Integer dosage, boolean withRecipe, String form, Integer amount, Integer package_amount, Double price) {
+    public Medicine(String name, Integer dosage, boolean withRecipe, String form, Integer amount, Integer packageAmount, Double price) {
         this.name = name;
         this.dosage = dosage;
         this.withRecipe = withRecipe;
         this.form = form;
         this.amount = amount;
-        this.package_amount = package_amount;
+        this.packageAmount = packageAmount;
         this.price = price;
     }
 
@@ -97,12 +97,12 @@ public class Medicine implements Identifable, Serializable {
         this.amount = amount;
     }
 
-    public Integer getPackage_amount() {
-        return package_amount;
+    public Integer getPackageAmount() {
+        return packageAmount;
     }
 
-    public void setPackage_amount(Integer package_amount) {
-        this.package_amount = package_amount;
+    public void setPackageAmount(Integer package_amount) {
+        this.packageAmount = package_amount;
     }
 
     public Double getPrice() {
@@ -126,7 +126,7 @@ public class Medicine implements Identifable, Serializable {
                 ", with_recipe=" + withRecipe +
                 ", form='" + form + '\'' +
                 ", amount=" + amount +
-                ", package_amount=" + package_amount +
+                ", package_amount=" + packageAmount +
                 ", price=" + price +
                 '}';
     }

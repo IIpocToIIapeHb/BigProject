@@ -49,7 +49,7 @@ public class OrderServiceImpl implements OrderService {
 
 
             OrderMedicine orderMedicine = new OrderMedicine(medicine_id, required_amount,orderWithId.get().getId());
-            Dao orderMedicineDao = helper.createOrderMedicineSimpleDao();
+            OrderMedicineDao orderMedicineDao = helper.createOrderMedicineDao();
             orderMedicineDao.save(orderMedicine);
 
             createRecipeIfAbsent(helper,userId,isPrescriptionRequired,orderMedicine.getMedicine_id());

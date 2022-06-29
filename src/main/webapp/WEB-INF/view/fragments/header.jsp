@@ -72,6 +72,7 @@
 
                 <nav class="header-bottom-nav">
                     <ul class="header-bottom-list">
+                       <c:if  test="${user.getRole().equals('user')}">
                         <li class="header-bottom-item">
                              <form  method="POST"  action="controller?command=catalog">
                                   <button class="header-bottom-link" type="submit" > <fmt:message key="header.catalog"/>
@@ -88,6 +89,15 @@
                                <fmt:message key="header.contacts"/>
                             </a>
                         </li>
+                        </c:if>
+                         <c:if  test="${user.getRole().equals('doctor')}">
+                            <li class="header-bottom-item">
+                               <form  method="POST"  action="controller?command=catalog">
+                                     <button class="header-bottom-link" type="submit" > <fmt:message key="header.confirmation.requests"/>
+                                     </button>
+                               </form>
+                             </li>
+                         </c:if>
                     </ul>
                 </nav>
 
@@ -95,7 +105,7 @@
 
                 <div class="header-bottom-mobile">
                     <div class="header-bottom-search-mobile">
-                        <form  method="get" class="searchform" action="https://fito.by/">
+                        <form  method="get" class="searchform" action="controller?command=searchProduct">
 
                             <input class="search"  type="search" placeholder="Search here..."  name="search-product"/>
 
@@ -137,7 +147,7 @@
 
 
                 <div class="header-bottom-search">
-                    <form  method="get" class="searchform" action="https://fito.by/">
+                    <form  method="POST" class="searchform" action="controller?command=searchProduct">
 
                         <input class="search"  type="search" placeholder= "<fmt:message key="header.search"/>" name="search-product"/>
 

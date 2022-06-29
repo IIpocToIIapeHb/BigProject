@@ -53,40 +53,39 @@ public class PositionInfoServiceImpl implements PositionInfoService {
             validation (helper,user,totalPrice,positions);
 
             MedicineDao medicineDao = helper.createMedicineDao();
-            Dao medicineSimpleDao = helper.createMedicineSimpleDao();
             for (PositionInfo position : positions) {
 
                 Medicine medicine=  medicineDao.getByMedicineId(position.getMedicineId());
                 Integer medicineStockQuantity = medicine.getAmount();
                 int newMedicineQuantity = medicineStockQuantity-position.getRequiredAmount();
                 medicine.setAmount(newMedicineQuantity);
-               medicineSimpleDao.save(medicine);
+                medicineDao.save(medicine);
 
 
                if(position.getMedicineWithRecipe()==1){
-                   Dao recipeSimpleDao = helper.createRecipeSimpleDao();
-                   Recipe recipe =(Recipe) recipeSimpleDao.getById(position.getRecipeId());
+                   RecipeDao recipeDao = helper.createRecipeDao();
+                   Recipe recipe =(Recipe) recipeDao.getById(position.getRecipeId());
                    int newRecipeAmount = recipe.getAmount()-position.getRequiredAmount();
                    recipe.setAmount(newRecipeAmount);
                    if (recipe.getAmount()==0){
                        recipe.setStatus("used");
                    }
 
-                 recipeSimpleDao.save(recipe);
+                 recipeDao.save(recipe);
                }
 
             }
 
             BigDecimal newUserCount = user.getAmount().subtract(totalPrice);
             user.setAmount(newUserCount);
-            Dao userDao = helper.createUserSimpleDao();
+            UserDao userDao = helper.createUserDao();
             userDao.save(user);
 
-            Dao orderSimpleDao = helper.createOrderDao();
+
             OrderDao orderDao = helper.createOrderDao();
             Order order = orderDao.findOrderByStatusAndUser("not_paid",user.getId()).get();
             order.setStatus("paid");
-            orderSimpleDao.save(order);
+            orderDao.save(order);
 
 
 
