@@ -92,7 +92,7 @@
                         </c:if>
                          <c:if  test="${user.getRole().equals('doctor')}">
                             <li class="header-bottom-item">
-                               <form  method="POST"  action="controller?command=catalog">
+                               <form  method="POST"  action="controller?command=ConfirmationRequestsPage">
                                      <button class="header-bottom-link" type="submit" > <fmt:message key="header.confirmation.requests"/>
                                      </button>
                                </form>

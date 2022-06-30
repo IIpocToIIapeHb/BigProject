@@ -18,7 +18,7 @@ public class OrderMedicineServiceImpl implements OrderMedicineService {
 
 
     @Override
-    public void save(OrderMedicine orderMedicine, Byte medicineWithRecipe, Long userId) throws ServiceException {
+    public void save(OrderMedicine orderMedicine, boolean medicineWithRecipe, Long userId) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             OrderMedicineDao orderMedicineDao = helper.createOrderMedicineDao();
             orderMedicineDao.save(orderMedicine);
@@ -68,10 +68,10 @@ public class OrderMedicineServiceImpl implements OrderMedicineService {
         }
     }
 
-    public void createRecipeIfAbsent(DaoHelper helper,Long userId, Byte medicineWithRecipe, Long medicineId) throws DAOException {
+    public void createRecipeIfAbsent(DaoHelper helper,Long userId, boolean medicineWithRecipe, Long medicineId) throws DAOException {
 
         RecipeDao recipeDao = helper.createRecipeDao();
-        if (medicineWithRecipe==1) {
+        if (medicineWithRecipe) {
             Optional<Recipe> recipe= recipeDao.findRecipeByUserAndMedicineAndUnwantedStatus(userId, medicineId,"used");
             if (recipe.isPresent()){
             } else {

@@ -53,6 +53,11 @@ public class DaoHelper implements AutoCloseable {
         return new PositionInfoDaoImpl(connection);
     }
 
+    public PrescriptionInfoDao createPrescriptionInfoDao() {
+        return new PrescriptionInfoDaoImpl(connection);
+    }
+
+
     public void startTransaction() throws DAOException {
         try {
             connection.setAutoCommit(false);

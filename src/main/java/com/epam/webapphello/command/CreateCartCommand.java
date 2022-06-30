@@ -46,10 +46,10 @@ public class CreateCartCommand implements Command {
             Optional<OrderMedicine> orderMedicine = null;
             orderMedicine = orderMedicineService.findOrderMedicine(order.get().getId(),parseLong(medicineId));
                 if (orderMedicine.isPresent()) {
-                    orderMedicineService.addMedicineOrderAmount(orderMedicine.get().getId(),orderMedicine.get().getRequired_amount(),parseInt(medicineNumber));
+                    orderMedicineService.addMedicineOrderAmount(orderMedicine.get().getId(),orderMedicine.get().getRequired_amount(),Integer.parseInt(medicineNumber));
                 } else {
-                    OrderMedicine newOrderMedicine = new OrderMedicine(parseLong(medicineId), parseInt(medicineNumber), order.get().getId());
-                    orderMedicineService.save(newOrderMedicine, parseByte(medicineWithRecipe), user.getId());
+                    OrderMedicine newOrderMedicine = new OrderMedicine(Long.parseLong(medicineId), Integer.parseInt(medicineNumber), order.get().getId());
+                    orderMedicineService.save(newOrderMedicine, Boolean.parseBoolean(medicineWithRecipe), user.getId());
                 }
         } else {
             Order newOrder = new Order(user.getId(),new Date(System.currentTimeMillis()), "not_paid");

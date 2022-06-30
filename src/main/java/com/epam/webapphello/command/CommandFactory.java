@@ -27,6 +27,8 @@ public class CommandFactory {
                 return new OrderPayCommand(new PositionInfoServiceImpl(new DaoHelperFactory()));
             case "payedPage":
                 return new ShowPageCommand("/WEB-INF/view/payedPage.jsp");
+            case "ConfirmationRequestsPage":
+                return new ConfirmationRequestsPageCommand(new PrescriptionInfoServiceImpl(new DaoHelperFactory()));
             case "changeLang":
                 return new ChangeLang();
             default:
