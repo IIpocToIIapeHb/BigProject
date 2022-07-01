@@ -22,6 +22,8 @@ public class ConfirmationRequestsPageCommand implements Command {
 
     @Override
     public CommandResult execute(HttpServletRequest req, HttpServletResponse resp) throws ServiceException {
+        req.setAttribute("count", 0);
+
 
         List<PrescriptionInfo> prescriptionsInfo = null;
         prescriptionsInfo = prescriptionInfoService.getAllByStatus(PRESCRIPTION_STATUS);

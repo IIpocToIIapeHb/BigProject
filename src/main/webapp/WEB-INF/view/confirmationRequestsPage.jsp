@@ -36,7 +36,11 @@
 
                             <div class= "position-card">
 
-                                <div class= "position-medicine-name-wrapper">
+                                <div class="position-medicine-name-wrapper">
+                                    <span class= "position-medicine-name"><c:out value="${prescription.getCounterPlusOne()}" /></span>
+                                </div>
+
+                                <div class="position-medicine-name-wrapper">
                                                                  <span class= "position-medicine-name"><c:out value="${prescription.getUserName()}" /></span>
                                                                </div>
 
