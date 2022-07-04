@@ -60,7 +60,7 @@ public class OrderMedicineServiceImpl implements OrderMedicineService {
             orderMedicineDao.removeById(orderMedicineId);
 
             if (recipeStatus.equals("pending approval") || recipeStatus.isEmpty()){
-                RecipeDao recipeDao = helper.createRecipeDao();
+                PrescriptionDao recipeDao = helper.createPrescriptionDao();
                 recipeDao.removeById(recipeId);
             }
         } catch (DAOException e) {
@@ -70,7 +70,7 @@ public class OrderMedicineServiceImpl implements OrderMedicineService {
 
     public void createRecipeIfAbsent(DaoHelper helper,Long userId, boolean medicineWithRecipe, Long medicineId) throws DAOException {
 
-        RecipeDao recipeDao = helper.createRecipeDao();
+        PrescriptionDao recipeDao = helper.createPrescriptionDao();
         if (medicineWithRecipe) {
             Optional<Recipe> recipe= recipeDao.findRecipeByUserAndMedicineAndUnwantedStatus(userId, medicineId,"used");
             if (recipe.isPresent()){

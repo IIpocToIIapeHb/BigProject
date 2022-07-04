@@ -6,6 +6,7 @@ import java.sql.Date;
 public class PrescriptionInfo implements Identifable, Serializable {
 
     public static final long serialVersionUID = 6081419106604946710L;
+    public static int COUNTER;
 
 
     public final static String PRESCRIPTION_ID = "id";
@@ -37,7 +38,9 @@ public class PrescriptionInfo implements Identifable, Serializable {
         this.prescriptionStatus = prescriptionStatus;
         this.prescriptionMedicineAmount = prescriptionMedicineAmount;
     }
-
+    public int getCounterPlusOne() {
+        return ++COUNTER;
+    }
     public Long getId() {
         return PrescriptionId;
     }

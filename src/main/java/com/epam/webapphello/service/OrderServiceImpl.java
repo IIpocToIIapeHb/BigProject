@@ -4,7 +4,6 @@ import com.epam.webapphello.dao.*;
 import com.epam.webapphello.entity.Order;
 import com.epam.webapphello.entity.OrderMedicine;
 import com.epam.webapphello.entity.Recipe;
-import com.epam.webapphello.entity.User;
 import com.epam.webapphello.exception.DAOException;
 import com.epam.webapphello.exception.ServiceException;
 
@@ -68,7 +67,7 @@ public class OrderServiceImpl implements OrderService {
 
     private void createRecipeIfAbsent(DaoHelper helper,Long userId, boolean isPrescriptionRequired, Long medicineId) throws DAOException {
 
-        RecipeDao recipeDao = helper.createRecipeDao();
+        PrescriptionDao recipeDao = helper.createPrescriptionDao();
         if (isPrescriptionRequired) {
             Optional<Recipe> recipe= recipeDao.findRecipeByUserAndMedicineAndUnwantedStatus(userId, medicineId,"used");
             if (!recipe.isPresent()) {

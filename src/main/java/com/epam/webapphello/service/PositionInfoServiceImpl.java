@@ -10,7 +10,6 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.sql.Date;
 import java.util.List;
-import java.util.Optional;
 
 public class PositionInfoServiceImpl implements PositionInfoService {
 
@@ -63,7 +62,7 @@ public class PositionInfoServiceImpl implements PositionInfoService {
 
 
                if(position.getMedicineWithRecipe()==1){
-                   RecipeDao recipeDao = helper.createRecipeDao();
+                   PrescriptionDao recipeDao = helper.createPrescriptionDao();
                    Recipe recipe =(Recipe) recipeDao.getById(position.getRecipeId());
                    int newRecipeAmount = recipe.getAmount()-position.getRequiredAmount();
                    recipe.setAmount(newRecipeAmount);
@@ -124,7 +123,7 @@ public class PositionInfoServiceImpl implements PositionInfoService {
         for (PositionInfo position:positions) {
             if (position.getRecipeValidUntil()!=null && position.getRecipeValidUntil().before(currentDate)
                     && position.getRecipeStatus().equals("approved")){
-                RecipeDao recipeDao = helper.createRecipeDao();
+                PrescriptionDao recipeDao = helper.createPrescriptionDao();
                 recipeDao.changeStatus(position.getRecipeId(), "overdue");
             }
         }

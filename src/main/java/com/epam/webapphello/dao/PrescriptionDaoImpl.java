@@ -1,22 +1,16 @@
 package com.epam.webapphello.dao;
 
-import com.epam.webapphello.entity.Medicine;
-import com.epam.webapphello.entity.Order;
 import com.epam.webapphello.entity.Recipe;
 import com.epam.webapphello.exception.DAOException;
 import com.epam.webapphello.mapper.RecipeRowMapper;
-import com.epam.webapphello.mapper.RowMapper;
-import com.epam.webapphello.mapper.UserRowMapper;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.Date;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public class RecipeDaoImpl extends AbstractDao<Recipe> implements RecipeDao {
+public class PrescriptionDaoImpl extends AbstractDao<Recipe> implements PrescriptionDao {
 
     private static final String FIND_BY_USER_AND_MEDICINE = "select * from recipe where user_id = ? and medicine_id = ?";
     private static final String FIND_BY_USER_AND_MEDICINE_AND_STATUS = "select * from recipe where user_id = ? and medicine_id = ? and status != ?";
@@ -24,10 +18,12 @@ public class RecipeDaoImpl extends AbstractDao<Recipe> implements RecipeDao {
     private static final String CHANGE_RECIPE_STATUS = "UPDATE recipe SET status = ? WHERE (id = ?);";
     private static final String SAVE_EMPTY_RECIPE = "INSERT INTO pharmacy.recipe (`user_id`, `medicine_id`) VALUES (?, ?);";
     private static final String STATUS_REQUEST_RECIPE = "pending approval";
+    private static final String STATUS_APPROVE_PRESCRIPTION = "approved";
+    private static final String APPROVE_PRESCRIPTION = "UPDATE pharmacy.recipe SET valid_until = ?, status = ?, amount = ? WHERE id = ?";
 
 
 
-    public RecipeDaoImpl(Connection connection) {
+    public PrescriptionDaoImpl(Connection connection) {
         super(connection, new RecipeRowMapper());
     }
 
@@ -88,7 +84,15 @@ public class RecipeDaoImpl extends AbstractDao<Recipe> implements RecipeDao {
             return  entity;
         }
 
+    @Override
+    public void confirmPrescription(long prescriptionId, int prescriptionMedicineAmount, Date prescriptionValidUntil) throws DAOException {
+         executeUpdate(APPROVE_PRESCRIPTION,
+                 prescriptionValidUntil,
+                 STATUS_APPROVE_PRESCRIPTION,
+                 prescriptionMedicineAmount,
+                 prescriptionId );
 
+    }
 
 
 }

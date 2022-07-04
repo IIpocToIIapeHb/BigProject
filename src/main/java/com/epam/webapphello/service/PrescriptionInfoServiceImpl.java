@@ -24,6 +24,7 @@ public class PrescriptionInfoServiceImpl implements PrescriptionInfoService {
 
     @Override
     public List<PrescriptionInfo> getAllByStatus(String prescriptionStatus) throws ServiceException {
+        PrescriptionInfo.COUNTER=0;
         List<PrescriptionInfo> prescriptions = null;
         try (DaoHelper helper = daoHelperFactory.create()) {
             PrescriptionInfoDao prescriptionInfoDao = helper.createPrescriptionInfoDao();

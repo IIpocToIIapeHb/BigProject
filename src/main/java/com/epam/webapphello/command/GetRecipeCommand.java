@@ -2,7 +2,7 @@ package com.epam.webapphello.command;
 
 import com.epam.webapphello.entity.User;
 import com.epam.webapphello.exception.ServiceException;
-import com.epam.webapphello.service.RecipeService;
+import com.epam.webapphello.service.PrescriptionService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,9 +12,9 @@ import static java.lang.Long.parseLong;
 
 public class GetRecipeCommand implements Command {
 
-    private final RecipeService recipeService;
+    private final PrescriptionService recipeService;
 
-    public GetRecipeCommand(RecipeService recipeService) {
+    public GetRecipeCommand(PrescriptionService recipeService) {
         this.recipeService = recipeService;
     }
 
