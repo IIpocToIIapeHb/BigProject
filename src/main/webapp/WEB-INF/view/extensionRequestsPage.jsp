@@ -23,11 +23,11 @@
                 <div class="extension-requests-number"><fmt:message key="confirmation.requests.number"/></div>
                 <div class="extension-requests-item"><fmt:message key="confirmation.requests.surname"/></div>
                 <div class="extension-requests-item"><fmt:message key="confirmation.requests.name"/></div>
-                <div class="extension-requests-item"><fmt:message key="confirmation.requests.birth"/></div>
+                <div class="extension-requests-birth"><fmt:message key="confirmation.requests.birth"/></div>
                 <div class="extension-requests-item"><fmt:message key="confirmation.requests.medicine"/></div>
-                <div class="extension-requests-item"><fmt:message key="confirmation.requests.amount"/></div>
-                <div class="extension-requests-item"><fmt:message key="extension.requests.valid.until"/></div>
-                <div class="extension-requests-item"><fmt:message key="confirmation.requests.prescription.period"/></div>
+                <div class="extension-requests-amount"><fmt:message key="confirmation.requests.amount"/></div>
+                <div class="extension-requests-birth"><fmt:message key="extension.requests.valid.until"/></div>
+                <div class="extension-requests-pescription-period"><fmt:message key="confirmation.requests.prescription.period"/></div>
               </div>
 
               <div class= "extension-requests-cards">
@@ -63,7 +63,7 @@
                                   </div>
 
 
-                                 <form method = "post" action = "controller?command=confirmPrescription">
+                                 <form method = "post" action = "controller?command=extendPrescription">
                                   <input  type="hidden" name="prescription-id" value="${prescription.getId()}">
                                   <div class= "extension-request-wrapper">
 
@@ -77,9 +77,9 @@
                               </div>
                               </form>
 
-                                <form method = "post" action = "controller?command=RefusePrescription">
+                                <form method = "post" action = "controller?command=refusePrescription">
 
-
+                                  <input  type="hidden" name="prescription-id" value="${prescription.getId()}">
                                   <div class="confirmation-request">
                                   <button class="refuse-doctor-button" type="submit" > <fmt:message key="confirmation.requests.button.refuse" /> </button>
                                 </div>

@@ -18,8 +18,10 @@ public class PrescriptionDaoImpl extends AbstractDao<Recipe> implements Prescrip
     private static final String CHANGE_RECIPE_STATUS = "UPDATE recipe SET status = ? WHERE (id = ?);";
     private static final String SAVE_EMPTY_RECIPE = "INSERT INTO pharmacy.recipe (`user_id`, `medicine_id`) VALUES (?, ?);";
     private static final String STATUS_REQUEST_RECIPE = "pending approval";
-    private static final String STATUS_APPROVE_PRESCRIPTION = "approved";
-    private static final String APPROVE_PRESCRIPTION = "UPDATE pharmacy.recipe SET valid_until = ?, status = ?, amount = ? WHERE id = ?";
+    private static final String STATUS_APPROVED_PRESCRIPTION = "approved";
+    private static final String STATUS_DECLINED_PRESCRIPTION = "declined";
+    private static final String CONFIRM_PRESCRIPTION = "UPDATE pharmacy.recipe SET valid_until = ?, status = ?, amount = ? WHERE id = ?";
+    private static final String EXTEND_PRESCRIPTION = "UPDATE pharmacy.recipe SET valid_until = ?, status = ? WHERE id = ?";
 
 
 
@@ -86,12 +88,20 @@ public class PrescriptionDaoImpl extends AbstractDao<Recipe> implements Prescrip
 
     @Override
     public void confirmPrescription(long prescriptionId, int prescriptionMedicineAmount, Date prescriptionValidUntil) throws DAOException {
-         executeUpdate(APPROVE_PRESCRIPTION,
+         executeUpdate(CONFIRM_PRESCRIPTION,
                  prescriptionValidUntil,
-                 STATUS_APPROVE_PRESCRIPTION,
+                 STATUS_APPROVED_PRESCRIPTION,
                  prescriptionMedicineAmount,
                  prescriptionId );
 
+    }
+
+    @Override
+    public void extendPrescription(long prescriptionId, Date prescriptionValidUntil) throws DAOException {
+        executeUpdate(EXTEND_PRESCRIPTION,
+                prescriptionValidUntil,
+                STATUS_APPROVED_PRESCRIPTION,
+                prescriptionId);
     }
 
 

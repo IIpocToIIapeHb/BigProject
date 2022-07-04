@@ -10,5 +10,9 @@ public interface PrescriptionService {
      void requestRecipe(Long userId, Long medicineId) throws ServiceException;
      void changeRecipeStatus( Long recipeId, String recipeStatus) throws ServiceException;
 
-     void confirmPrescription(long prescriptionId, int prescriptionMedicineAmount, int prescriptionTerm)throws ServiceException;
+     void confirmPrescription(long prescriptionId, int prescriptionMedicineAmount, int prescriptionTerm) throws ServiceException;
+
+    void extendPrescription(long prescriptionId, int prescriptionTerm) throws ServiceException;
+
+    void changePrescriptionStatusOn(long prescriptionId, String newPrescriptionStatus) throws ServiceException;
 }

@@ -35,6 +35,10 @@ public class CommandFactory {
                 return new ChangeLang();
             case "confirmPrescription":
                 return new ConfirmPrescriptionCommand(new PrescriptionServiceImpl(new DaoHelperFactory()));
+            case "extendPrescription":
+                return new ExtendPrescriptionCommand(new PrescriptionServiceImpl(new DaoHelperFactory()));
+            case "refusePrescription":
+                return new RefusePrescriptionCommand(new PrescriptionServiceImpl(new DaoHelperFactory()));
             default:
                 throw new IllegalArgumentException("Unknown command" + command);
         }

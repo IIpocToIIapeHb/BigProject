@@ -1537,6 +1537,9 @@ align-items: center;
            max-width: 1400px;
   }
 
+
+
+
        .extension-requests-captain{
           margin-bottom:10px;
           display: flex;
@@ -1550,17 +1553,49 @@ align-items: center;
                 font-weight: 500;
                 color: #7eb2e6;
                  text-align:center;
-                 width:30px;
+                 width:40px;
        }
 
-      .extension-requests-item{
-                 font-family: 'Rubik';
-                 font-style: normal;
-                 font-size: 20px;
-                 font-weight: 500;
-                 color: #7eb2e6;
-                 text-align:center;
-                 width:150px;
+             .extension-requests-item{
+                        font-family: 'Rubik';
+                        font-style: normal;
+                        font-size: 20px;
+                        font-weight: 500;
+                        color: #7eb2e6;
+                        text-align:center;
+                        width:150px;
+             }
+
+       .extension-requests-birth{
+         font-family: 'Rubik';
+                       font-style: normal;
+                       font-size: 20px;
+                       font-weight: 500;
+                       color: #7eb2e6;
+                        text-align:center;
+                        width:130px;
+       }
+
+
+         .extension-requests-amount{
+                font-family: 'Rubik';
+                              font-style: normal;
+                              font-size: 20px;
+                              font-weight: 500;
+                              color: #7eb2e6;
+                               text-align:center;
+                               width:120px;
+              }
+
+
+      .extension-requests-pescription-period{
+       font-family: 'Rubik';
+                       font-style: normal;
+                       font-size: 20px;
+                       font-weight: 500;
+                       color: #7eb2e6;
+                       text-align:center;
+                       width:120px;
       }
 
 
@@ -1580,7 +1615,7 @@ align-items: center;
 
   .extension-requests-number-wrapper{
       text-align:center;
-      width:30px;
+      width:40px;
      }
      .extension-requests-item{
          font-family: 'Rubik';
@@ -1604,7 +1639,7 @@ align-items: center;
 
       .extension-requests-birth-wrapper{
                 text-align:center;
-                width:150px;
+                width:130px;
                }
        .extension-requests-medicine-wrapper{
                  text-align:center;
@@ -1613,15 +1648,15 @@ align-items: center;
 
        .extension-requests-amount-wrapper{
                  text-align:center;
-                 width:70px;
+                 width:120px;
                 }
        .extension-requests-valid-date-wrapper{
        text-align:center;
-       width:100px;
+       width:130px;
        }
         .extension-requests-period-wrapper{
                   text-align:center;
-                  width:70px;
+                  width:120px;
                  }
 .extension-request-wrapper{
  display: flex;
@@ -1631,7 +1666,7 @@ align-items: center;
 
 }
 .extension-request{
-width: 70px;
+width: 130px;
 margin: auto auto;
 justify-content: center;
 align-items: center;

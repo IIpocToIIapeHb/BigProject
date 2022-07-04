@@ -19,4 +19,6 @@ public interface PrescriptionDao extends Dao<Recipe> {
     Recipe getRecipeById(Long recipeId) throws DAOException;
 
     void confirmPrescription(long prescriptionId, int prescriptionMedicineAmount, Date prescriptionValidUntil) throws DAOException;
+
+    void extendPrescription(long prescriptionId, Date prescriptionValidUntil) throws DAOException;
 }

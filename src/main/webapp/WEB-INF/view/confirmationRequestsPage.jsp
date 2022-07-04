@@ -74,7 +74,7 @@
                               </div>
                               </form>
 
-                                <form method = "post" action = "controller?command=RefusePrescription">
+                                <form method = "post" action = "controller?command=refusePrescription">
 
 
                                   <div class="confirmation-request">

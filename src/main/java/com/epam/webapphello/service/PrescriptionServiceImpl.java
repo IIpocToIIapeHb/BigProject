@@ -89,5 +89,29 @@ public class PrescriptionServiceImpl implements PrescriptionService {
         }
     }
 
+    @Override
+    public void extendPrescription(long prescriptionId, int prescriptionTerm) throws ServiceException {
+        java.util.Date now = new java.util.Date();
+        long time =  (long)prescriptionTerm*24*60*60*1000;
+        Date prescriptionValidUntil = new Date(now.getTime()+time);
+
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            PrescriptionDao prescriptionDao = helper.createPrescriptionDao();
+            prescriptionDao.extendPrescription(prescriptionId,prescriptionValidUntil);
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public void changePrescriptionStatusOn(long prescriptionId, String newPrescriptionStatus) throws ServiceException {
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            PrescriptionDao prescriptionDao = helper.createPrescriptionDao();
+            prescriptionDao.changeStatus(prescriptionId, newPrescriptionStatus);
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        }
+    }
+
 
 }
