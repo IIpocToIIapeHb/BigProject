@@ -71,8 +71,8 @@
                                   <button class="confirm-doctor-button" type="submit" > <fmt:message key="confirmation.requests.button.confirm" /> </button>
 
 
-                             </div>
-                                 </form>
+                              </div>
+                              </form>
 
                                 <form method = "post" action = "controller?command=RefusePrescription">
 
@@ -83,6 +83,10 @@
 
                                  </form>
 
+
+                      <div class = "doctor-error-message" >
+                       ${doctorErrorMessage}
+                       </div>
 
 
 

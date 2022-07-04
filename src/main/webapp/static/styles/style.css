@@ -1394,7 +1394,7 @@ align-items:center;
                 font-weight: 500;
                 color: #7eb2e6;
                  text-align:center;
-                 width:50px;
+                 width:30px;
        }
 
       .confirmation-requests-item{
@@ -1424,7 +1424,7 @@ align-items:center;
 
   .confirmation-requests-number-wrapper{
       text-align:center;
-      width:50px;
+      width:30px;
      }
      .confirmation-requests-item{
          font-family: 'Rubik';
@@ -1488,7 +1488,7 @@ align-items: center;
 
         .confirm-doctor-button {
            height: 28px;
-           width: 150px;
+           width: 140px;
            background-color: #4CAF50;
            color: white;
            border: none;
@@ -1504,7 +1504,7 @@ align-items: center;
              .refuse-doctor-button {
 
                    height: 28px;
-                             width: 150px;
+                             width: 140px;
                              background-color: #e60000;
                              color: white;
                              border: none;
@@ -1518,7 +1518,176 @@ align-items: center;
                     background-color: #ff9999;
                   }
 
+       .doctor-error-message{
+       float:right;
+       color:red;
+       margin-left:960px;
+       }
+       .doctorErrorMessage{
+       float:right;
+       }
+
    /*Confirmation requests page end*/
+
+/*Extension requests page start*/
+  .extension-requests-items{
+           padding-top: 250px;
+           padding-left:20px;
+           padding-right:20px;
+           max-width: 1400px;
+  }
+
+       .extension-requests-captain{
+          margin-bottom:10px;
+          display: flex;
+          flex-wrap: wrap;
+       }
+
+       .extension-requests-number{
+                font-family: 'Rubik';
+                font-style: normal;
+                font-size: 20px;
+                font-weight: 500;
+                color: #7eb2e6;
+                 text-align:center;
+                 width:30px;
+       }
+
+      .extension-requests-item{
+                 font-family: 'Rubik';
+                 font-style: normal;
+                 font-size: 20px;
+                 font-weight: 500;
+                 color: #7eb2e6;
+                 text-align:center;
+                 width:150px;
+      }
+
+
+     .extension-requests-cards{
+     max-width: 1400px;
+     width:100%;
+     margin-bottom:30px;
+     }
+
+     .extension-requests-card{
+     align-items:center;
+     border: 1px solid #ccc;
+      display: flex;
+      flex-wrap: wrap;
+
+     }
+
+  .extension-requests-number-wrapper{
+      text-align:center;
+      width:30px;
+     }
+     .extension-requests-item{
+         font-family: 'Rubik';
+         font-style: normal;
+         font-size: 20px;
+         line-height: 1.2;
+         font-weight: 300;
+         color: black;
+         text-align:center;
+     }
+
+     .extension-requests-surname-wrapper{
+           text-align:center;
+           width:150px;
+          }
+
+           .extension-requests-name-wrapper{
+                     text-align:center;
+                     width:150px;
+                    }
+
+      .extension-requests-birth-wrapper{
+                text-align:center;
+                width:150px;
+               }
+       .extension-requests-medicine-wrapper{
+                 text-align:center;
+                 width:150px;
+                }
+
+       .extension-requests-amount-wrapper{
+                 text-align:center;
+                 width:70px;
+                }
+       .extension-requests-valid-date-wrapper{
+       text-align:center;
+       width:100px;
+       }
+        .extension-requests-period-wrapper{
+                  text-align:center;
+                  width:70px;
+                 }
+.extension-request-wrapper{
+ display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+   justify-content: center;
+
+}
+.extension-request{
+width: 70px;
+margin: auto auto;
+justify-content: center;
+align-items: center;
+}
+
+   .input-text-doctor{
+   width: 90%;
+       padding: 4px 6px;
+       margin: auto auto;
+       border: 1px solid #ccc;
+       border-radius: 4px;
+       box-sizing: border-box;
+       }
+
+        .confirm-doctor-button {
+           height: 28px;
+           width: 140px;
+           background-color: #4CAF50;
+           color: white;
+           border: none;
+           border-radius: 8px;
+           cursor: pointer;
+           text-align:center;
+                 margin-right: 10px;
+         }
+
+         .confirm-doctor-button:hover {
+           background-color: #45a049;
+         }
+             .refuse-doctor-button {
+
+                   height: 28px;
+                             width: 140px;
+                             background-color: #e60000;
+                             color: white;
+                             border: none;
+                             border-radius: 8px;
+                             cursor: pointer;
+                             text-align:center;
+                                   margin-right: 10px;
+                  }
+
+                  .refuse-doctor-button:hover {
+                    background-color: #ff9999;
+                  }
+
+       .doctor-error-message{
+       float:right;
+       color:red;
+       margin-left:960px;
+       }
+       .doctorErrorMessage{
+       float:right;
+       }
+
+   /*Extension requests page end*/
 
 
 

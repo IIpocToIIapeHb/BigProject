@@ -97,6 +97,12 @@
                                      </button>
                                </form>
                              </li>
+                               <li class="header-bottom-item">
+                                   <form  method="POST"  action="controller?command=extensionRequestsPage">
+                                     <button class="header-bottom-link" type="submit" > <fmt:message key="header.extension.requests"/>
+                                     </button>
+                                   </form>
+                               </li>
                          </c:if>
                     </ul>
                 </nav>

@@ -2,6 +2,7 @@ package com.epam.webapphello.command;
 
 import com.epam.webapphello.entity.Order;
 import com.epam.webapphello.entity.PositionInfo;
+import com.epam.webapphello.entity.PrescriptionInfo;
 import com.epam.webapphello.entity.User;
 import com.epam.webapphello.exception.ServiceErrorException;
 import com.epam.webapphello.exception.ServiceException;
@@ -30,15 +31,18 @@ public class ConfirmPrescriptionCommand implements Command {
         String prescriptionMedicineAmount = req.getParameter("prescription-medicine-amount");
         String prescriptionTerm = req.getParameter("prescription-term");
 
+        CommandResult result=null;
 
-
-        prescriptionService.confirmPrescription(Long.parseLong(prescriptionId),Integer.parseInt(prescriptionMedicineAmount),
-                                 Integer.parseInt(prescriptionTerm));
-
-
-
-
-        CommandResult result =  CommandResult.redirect("controller?command=ConfirmationRequestsPage");
+        if (!prescriptionMedicineAmount.isEmpty() && prescriptionMedicineAmount.matches("[\\d^0)]+" )
+            && !prescriptionTerm.isEmpty() && prescriptionTerm.matches("[1-60]")) {
+            prescriptionService.confirmPrescription(Long.parseLong(prescriptionId), Integer.parseInt(prescriptionMedicineAmount),
+                    Integer.parseInt(prescriptionTerm));
+            result = CommandResult.redirect("controller?command=ConfirmationRequestsPage");
+        } else {
+            PrescriptionInfo.COUNTER=0;
+            req.setAttribute("doctorErrorMessage", "Invalid date");
+            result = CommandResult.forward("/WEB-INF/view/confirmationRequestsPage.jsp");
+        }
         return result;
     }
 }

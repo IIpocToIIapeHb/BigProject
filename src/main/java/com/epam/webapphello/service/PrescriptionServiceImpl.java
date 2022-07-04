@@ -74,11 +74,11 @@ public class PrescriptionServiceImpl implements PrescriptionService {
 
     @Override
     public void confirmPrescription(long prescriptionId, int prescriptionMedicineAmount, int prescriptionTerm) throws ServiceException {
-        java.util.Date now = new java.util.Date();
 
+        java.util.Date now = new java.util.Date();
         long millis=System.currentTimeMillis();
         long time =  (long)prescriptionTerm*24*60*60*1000;
-       long prescriptionTimeInMilliseconds = time + millis;
+        long prescriptionTimeInMilliseconds = time + millis;
         Date prescriptionValidUntil = new Date(now.getTime()+time);
 
         try (DaoHelper helper = daoHelperFactory.create()) {

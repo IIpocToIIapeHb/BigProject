@@ -29,6 +29,8 @@ public class CommandFactory {
                 return new ShowPageCommand("/WEB-INF/view/payedPage.jsp");
             case "ConfirmationRequestsPage":
                 return new ConfirmationRequestsPageCommand(new PrescriptionInfoServiceImpl(new DaoHelperFactory()));
+            case "extensionRequestsPage":
+                return new ExtensionRequestsPageCommand(new PrescriptionInfoServiceImpl(new DaoHelperFactory()));
             case "changeLang":
                 return new ChangeLang();
             case "confirmPrescription":
