@@ -15,46 +15,73 @@
     <jsp:include page="fragments/header.jsp"/>
     <fmt:setBundle basename="pagecontent"/>
 
-    <main class="cart-items">
+    <main class="confirmation-requests-items">
 
-         <section class="intro-cart">
+         <section class="intro-confirmation-requests">
 
-              <div class="position-captain">
-                <div class="position-captain-name"><fmt:message key="cart.medicine_name"/></div>
-                <div class="position-captain-item">Price</div>
-                <div class="position-captain-item">Number</div>
-                <div class="position-captain-item">Recipe</div>
-                <div class="position-captain-item"></div>
-                <div class="position-captain-item">Recipe status</div>
-                <div class="position-captain-item">Recipe activity</div>
-                <div class="position-captain-item">Recipe number</div>
-                <div class="position-captain-item">Total</div>
+              <div class="confirmation-requests-captain">
+                <div class="confirmation-requests-number"><fmt:message key="confirmation.requests.number"/></div>
+                <div class="confirmation-requests-item"><fmt:message key="confirmation.requests.surname"/></div>
+                <div class="confirmation-requests-item"><fmt:message key="confirmation.requests.name"/></div>
+                <div class="confirmation-requests-item"><fmt:message key="confirmation.requests.birth"/></div>
+                <div class="confirmation-requests-item"><fmt:message key="confirmation.requests.medicine"/></div>
+                <div class="confirmation-requests-item"><fmt:message key="confirmation.requests.amount"/></div>
+                <div class="confirmation-requests-item"><fmt:message key="confirmation.requests.prescription.period"/></div>
               </div>
 
-              <div class= "position-cards">
+              <div class= "confirmation-requests-cards">
                      <c:forEach var="prescription" items="${prescriptionsInfo}">
 
-                            <div class= "position-card">
-
-                                <div class="position-medicine-name-wrapper">
-                                    <span class= "position-medicine-name"><c:out value="${prescription.getCounterPlusOne()}" /></span>
+                            <div class= "confirmation-requests-card">
+                             <div class= "confirmation-requests-number-wrapper">
+                             <span class= "confirmation-requests-number"><c:out value="${prescription.getCounterPlusOne()}" /></span>
+                              </div>
+                                <div class= "confirmation-requests-surname-wrapper">
+                                 <span class= "confirmation-requests-item"><c:out value="${prescription.getUserSurname()}" /></span>
                                 </div>
 
-                                <div class="position-medicine-name-wrapper">
-                                                                 <span class= "position-medicine-name"><c:out value="${prescription.getUserName()}" /></span>
-                                                               </div>
-
-                                <div class= "position-medicine-name-wrapper">
-                                  <span class= "position-medicine-name"><c:out value="${prescription.getUserSurname()}" /></span>
+                                <div class= "confirmation-requests-name-wrapper">
+                                  <span class= "confirmation-requests-item"><c:out value="${prescription.getUserName()}" /></span>
                                 </div>
 
-                                <div class= "position-medicine-price-wrapper">
-                                  <span class= "position-medicine-price"><c:out value="${prescription.getUserBirth()}"/></span>
+                                <div class= "confirmation-requests-birth-wrapper">
+                                  <span class= "confirmation-requests-item"><c:out value="${prescription.getUserBirth()}"/></span>
                                 </div>
 
-                                <div class= "position-medicine-required-amount-wrapper">
-                                    <span class= "position-medicine-required-amount"><c:out value="${prescription.getMedicineName()}"/></span>
+                                <div class= "confirmation-requests-medicine-wrapper">
+                                    <span class="confirmation-requests-item"><c:out value="${prescription.getMedicineName()}"/></span>
                                 </div>
+
+
+
+
+                                 <form method = "post" action = "controller?command=confirmPrescription">
+                                  <input  type="hidden" name="prescription-id" value="${prescription.getId()}">
+                            <div class= "confirmation-request-wrapper">
+
+                                 <div class= "confirmation-request">
+                                 <input class = "input-text-doctor" type="text" name="prescription-medicine-amount" placeholder= "<fmt:message key="confirmation.requests.amount"/>">
+                                  </div>
+
+                                  <div  class= "confirmation-request">
+                                 <input class = "input-text-doctor" type="text" name="prescription-term" placeholder="<fmt:message key="confirmation.requests.prescription.period.days"/>">
+                                 </div>
+
+
+                                  <button class="confirm-doctor-button" type="submit" > <fmt:message key="confirmation.requests.button.confirm" /> </button>
+
+
+                             </div>
+                                 </form>
+
+                                <form method = "post" action = "controller?command=RefusePrescription">
+
+
+                                  <div class="confirmation-request">
+                                  <button class="refuse-doctor-button" type="submit" > <fmt:message key="confirmation.requests.button.refuse" /> </button>
+                                </div>
+
+                                 </form>
 
 
 

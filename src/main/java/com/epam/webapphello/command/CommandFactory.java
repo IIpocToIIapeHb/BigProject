@@ -20,7 +20,7 @@ public class CommandFactory {
             case "showCart":
                 return new ShowCartCommand(new PositionInfoServiceImpl(new DaoHelperFactory()));
             case "getRecipe":
-                return new GetRecipeCommand(new RecipeServiceImpl(new DaoHelperFactory()));
+                return new GetRecipeCommand(new PrescriptionServiceImpl(new DaoHelperFactory()));
             case "deleteFromCart":
                 return new DeleteFromCart(new OrderMedicineServiceImpl(new DaoHelperFactory()));
             case "payOrder":
@@ -31,6 +31,8 @@ public class CommandFactory {
                 return new ConfirmationRequestsPageCommand(new PrescriptionInfoServiceImpl(new DaoHelperFactory()));
             case "changeLang":
                 return new ChangeLang();
+            case "confirmPrescription":
+                return new ConfirmPrescriptionCommand(new PrescriptionServiceImpl(new DaoHelperFactory()));
             default:
                 throw new IllegalArgumentException("Unknown command" + command);
         }

@@ -1373,6 +1373,155 @@ align-items:center;
 
    /*Cart end*/
 
+  /*Confirmation requests page start*/
+  .confirmation-requests-items{
+           padding-top: 250px;
+           padding-left:20px;
+           padding-right:20px;
+           max-width: 1400px;
+  }
+
+       .confirmation-requests-captain{
+          margin-bottom:10px;
+          display: flex;
+          flex-wrap: wrap;
+       }
+
+       .confirmation-requests-number{
+                font-family: 'Rubik';
+                font-style: normal;
+                font-size: 20px;
+                font-weight: 500;
+                color: #7eb2e6;
+                 text-align:center;
+                 width:50px;
+       }
+
+      .confirmation-requests-item{
+                 font-family: 'Rubik';
+                 font-style: normal;
+                 font-size: 20px;
+                 font-weight: 500;
+                 color: #7eb2e6;
+                 text-align:center;
+                 width:150px;
+      }
+
+
+     .confirmation-requests-cards{
+     max-width: 1400px;
+     width:100%;
+     margin-bottom:30px;
+     }
+
+     .confirmation-requests-card{
+     align-items:center;
+     border: 1px solid #ccc;
+      display: flex;
+      flex-wrap: wrap;
+
+     }
+
+  .confirmation-requests-number-wrapper{
+      text-align:center;
+      width:50px;
+     }
+     .confirmation-requests-item{
+         font-family: 'Rubik';
+         font-style: normal;
+         font-size: 20px;
+         line-height: 1.2;
+         font-weight: 300;
+         color: black;
+         text-align:center;
+     }
+
+     .confirmation-requests-surname-wrapper{
+           text-align:center;
+           width:150px;
+          }
+
+           .confirmation-requests-name-wrapper{
+                     text-align:center;
+                     width:150px;
+                    }
+
+      .confirmation-requests-birth-wrapper{
+                text-align:center;
+                width:150px;
+               }
+       .confirmation-requests-medicine-wrapper{
+                 text-align:center;
+                 width:150px;
+                }
+
+       .confirmation-requests-amount-wrapper{
+                 text-align:center;
+                 width:150px;
+                }
+        .confirmation-requests-period-wrapper{
+                  text-align:center;
+                  width:150px;
+                 }
+.confirmation-request-wrapper{
+ display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+   justify-content: center;
+
+}
+.confirmation-request{
+width: 150px;
+margin: auto auto;
+justify-content: center;
+align-items: center;
+}
+
+   .input-text-doctor{
+   width: 90%;
+       padding: 4px 6px;
+       margin: auto auto;
+       border: 1px solid #ccc;
+       border-radius: 4px;
+       box-sizing: border-box;
+       }
+
+        .confirm-doctor-button {
+           height: 28px;
+           width: 150px;
+           background-color: #4CAF50;
+           color: white;
+           border: none;
+           border-radius: 8px;
+           cursor: pointer;
+           text-align:center;
+                 margin-right: 10px;
+         }
+
+         .confirm-doctor-button:hover {
+           background-color: #45a049;
+         }
+             .refuse-doctor-button {
+
+                   height: 28px;
+                             width: 150px;
+                             background-color: #e60000;
+                             color: white;
+                             border: none;
+                             border-radius: 8px;
+                             cursor: pointer;
+                             text-align:center;
+                                   margin-right: 10px;
+                  }
+
+                  .refuse-doctor-button:hover {
+                    background-color: #ff9999;
+                  }
+
+   /*Confirmation requests page end*/
+
+
+
   /*Media start*/
   @media screen and (max-width:960px) {
 

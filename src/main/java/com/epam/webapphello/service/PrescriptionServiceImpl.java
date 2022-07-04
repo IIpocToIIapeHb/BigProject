@@ -2,18 +2,18 @@ package com.epam.webapphello.service;
 
 import com.epam.webapphello.dao.DaoHelper;
 import com.epam.webapphello.dao.DaoHelperFactory;
-import com.epam.webapphello.dao.RecipeDao;
+import com.epam.webapphello.dao.PrescriptionDao;
 import com.epam.webapphello.entity.Recipe;
 import com.epam.webapphello.exception.DAOException;
 import com.epam.webapphello.exception.ServiceException;
 
-import java.util.Optional;
+import java.sql.Date;
 
-public class RecipeServiceImpl implements RecipeService {
+public class PrescriptionServiceImpl implements PrescriptionService {
 
     private DaoHelperFactory daoHelperFactory;
 
-    public RecipeServiceImpl(DaoHelperFactory daoHelperFactory) {
+    public PrescriptionServiceImpl(DaoHelperFactory daoHelperFactory) {
         this.daoHelperFactory = daoHelperFactory;
     }
 
@@ -35,7 +35,7 @@ public class RecipeServiceImpl implements RecipeService {
     public void requestRecipe(Long userId, Long medicineId) throws ServiceException {
         Recipe recipe;
         try (DaoHelper helper = daoHelperFactory.create()) {
-            RecipeDao recipeDao = helper.createRecipeDao();
+            PrescriptionDao recipeDao = helper.createPrescriptionDao();
             recipeDao.requestRecipeByUserAndMedicine(userId, medicineId);
         } catch (DAOException e) {
             throw new ServiceException(e);
@@ -47,7 +47,7 @@ public class RecipeServiceImpl implements RecipeService {
     public void changeRecipeStatus(Long recipeId, String recipeStatus) throws ServiceException {
         String newRecipeStatus= null;
         try (DaoHelper helper = daoHelperFactory.create()) {
-            RecipeDao recipeDao = helper.createRecipeDao();
+            PrescriptionDao recipeDao = helper.createPrescriptionDao();
 
 
             switch (recipeStatus){
@@ -67,6 +67,23 @@ public class RecipeServiceImpl implements RecipeService {
                     throw new IllegalArgumentException("Unknown recipe status" + recipeStatus);
             }
 
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public void confirmPrescription(long prescriptionId, int prescriptionMedicineAmount, int prescriptionTerm) throws ServiceException {
+        java.util.Date now = new java.util.Date();
+
+        long millis=System.currentTimeMillis();
+        long time =  (long)prescriptionTerm*24*60*60*1000;
+       long prescriptionTimeInMilliseconds = time + millis;
+        Date prescriptionValidUntil = new Date(now.getTime()+time);
+
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            PrescriptionDao prescriptionDao = helper.createPrescriptionDao();
+            prescriptionDao.confirmPrescription(prescriptionId, prescriptionMedicineAmount,prescriptionValidUntil);
         } catch (DAOException e) {
             throw new ServiceException(e);
         }
