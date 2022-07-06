@@ -13,4 +13,5 @@ public interface PrescriptionInfoService {
 
     List<PrescriptionInfo> getAllByStatus(String PrescriptionStatus) throws ServiceException;
 
+    List<PrescriptionInfo> getAllPrescriptions()throws ServiceException;
 }

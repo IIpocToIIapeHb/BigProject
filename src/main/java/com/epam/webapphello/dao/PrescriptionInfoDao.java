@@ -9,5 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PrescriptionInfoDao extends Dao<PrescriptionInfo> {
-    public List<PrescriptionInfo> getPrescriptionsByStatus(final String PrescriptionStatus) throws DAOException;
+     List<PrescriptionInfo> getPrescriptionsByStatus(final String PrescriptionStatus) throws DAOException;
+
+    List<PrescriptionInfo> getAllPrescriptions() throws DAOException;
 }

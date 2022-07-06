@@ -39,8 +39,10 @@ public class CommandFactory {
                 return new ExtendPrescriptionCommand(new PrescriptionServiceImpl(new DaoHelperFactory()));
             case "refusePrescription":
                 return new RefusePrescriptionCommand(new PrescriptionServiceImpl(new DaoHelperFactory()));
+            case "allPrescriptionsPage":
+                return new ShowAllPrescriptionsPageCommand(new PrescriptionInfoServiceImpl(new DaoHelperFactory()));
             default:
-                throw new IllegalArgumentException("Unknown command" + command);
+            throw new IllegalArgumentException("Unknown command" + command);
         }
 
     }

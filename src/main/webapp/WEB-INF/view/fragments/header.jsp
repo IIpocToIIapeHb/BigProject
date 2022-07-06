@@ -103,6 +103,12 @@
                                      </button>
                                    </form>
                                </li>
+                                   <li class="header-bottom-item">
+                                   <form  method="POST"  action="controller?command=allPrescriptionsPage">
+                                    <button class="header-bottom-link" type="submit" > <fmt:message key="header.all.prescriptions"/>
+                                    </button>
+                                    </form>
+                                   </li>
                          </c:if>
                     </ul>
                 </nav>

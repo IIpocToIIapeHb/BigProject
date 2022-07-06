@@ -1725,6 +1725,143 @@ align-items: center;
    /*Extension requests page end*/
 
 
+/*All prescriptions page start*/
+  .all-prescriptions-items{
+           padding-top: 250px;
+           padding-left:20px;
+           padding-right:20px;
+           max-width: 1400px;
+  }
+
+       .all-prescriptions-captain{
+          margin-bottom:10px;
+          display: flex;
+          flex-wrap: wrap;
+       }
+
+       .all-prescriptions-number{
+                font-family: 'Rubik';
+                font-style: normal;
+                font-size: 20px;
+                font-weight: 500;
+                color: #7eb2e6;
+                 text-align:center;
+                 width:40px;
+       }
+
+             .all-prescriptions-item{
+                        font-family: 'Rubik';
+                        font-style: normal;
+                        font-size: 20px;
+                        font-weight: 500;
+                        color: #7eb2e6;
+                        text-align:center;
+                        width:150px;
+             }
+
+       .all-prescriptions-birth{
+         font-family: 'Rubik';
+                       font-style: normal;
+                       font-size: 20px;
+                       font-weight: 500;
+                       color: #7eb2e6;
+                        text-align:center;
+                        width:130px;
+       }
+
+
+         .all-prescriptions-amount{
+                font-family: 'Rubik';
+                              font-style: normal;
+                              font-size: 20px;
+                              font-weight: 500;
+                              color: #7eb2e6;
+                               text-align:center;
+                               width:120px;
+              }
+
+
+      .all-prescriptions-period{
+       font-family: 'Rubik';
+                       font-style: normal;
+                       font-size: 20px;
+                       font-weight: 500;
+                       color: #7eb2e6;
+                       text-align:center;
+                       width:120px;
+      }
+.all.prescriptions.status{
+font-family: 'Rubik';
+                       font-style: normal;
+                       font-size: 20px;
+                       font-weight: 500;
+                       color: #7eb2e6;
+                       text-align:center;
+                       width:150px;
+}
+
+     .all-prescriptions-cards{
+     max-width: 1400px;
+     width:100%;
+     margin-bottom:30px;
+     }
+
+     .all-prescriptions-card{
+     align-items:center;
+     border: 1px solid #ccc;
+      display: flex;
+      flex-wrap: wrap;
+
+     }
+
+  .all-prescriptions-number-wrapper{
+      text-align:center;
+      width:40px;
+     }
+     .all-prescriptions-item{
+         font-family: 'Rubik';
+         font-style: normal;
+         font-size: 20px;
+         line-height: 1.2;
+         font-weight: 300;
+         color: black;
+         text-align:center;
+     }
+
+     .all-prescriptions-wrapper{
+           text-align:center;
+           width:150px;
+          }
+
+           .all-prescriptions-name-wrapper{
+                     text-align:center;
+                     width:150px;
+                    }
+
+      .all-prescriptions-birth-wrapper{
+                text-align:center;
+                width:130px;
+               }
+       .all-prescriptions-medicine-wrapper{
+                 text-align:center;
+                 width:150px;
+                }
+
+       .all-prescriptions-amount-wrapper{
+                 text-align:center;
+                 width:120px;
+                }
+       .all-prescriptions-valid-date-wrapper{
+       text-align:center;
+       width:130px;
+       }
+        .all-prescriptions-period-wrapper{
+                  text-align:center;
+                  width:120px;
+                 }
+
+   /*All prescriptions page end*/
+
 
   /*Media start*/
   @media screen and (max-width:960px) {

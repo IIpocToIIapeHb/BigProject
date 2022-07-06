@@ -34,4 +34,17 @@ public class PrescriptionInfoServiceImpl implements PrescriptionInfoService {
         }
         return prescriptions;
     }
+
+    @Override
+    public List<PrescriptionInfo> getAllPrescriptions() throws ServiceException {
+        PrescriptionInfo.COUNTER=0;
+        List<PrescriptionInfo> prescriptions = null;
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            PrescriptionInfoDao prescriptionInfoDao = helper.createPrescriptionInfoDao();
+            prescriptions = prescriptionInfoDao.getAllPrescriptions();
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        }
+        return prescriptions;
+    }
 }
