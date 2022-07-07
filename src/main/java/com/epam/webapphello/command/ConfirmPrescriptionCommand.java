@@ -31,10 +31,12 @@ public class ConfirmPrescriptionCommand implements Command {
         String prescriptionMedicineAmount = req.getParameter("prescription-medicine-amount");
         String prescriptionTerm = req.getParameter("prescription-term");
 
+
+
         CommandResult result=null;
 
         if (!prescriptionMedicineAmount.isEmpty() && prescriptionMedicineAmount.matches("[\\d^0)]+" )
-            && !prescriptionTerm.isEmpty() && prescriptionTerm.matches("[1-60]")) {
+            && !prescriptionTerm.isEmpty() && prescriptionTerm.matches("[1-6]{1}[0-9]{1}")) {
             prescriptionService.confirmPrescription(Long.parseLong(prescriptionId), Integer.parseInt(prescriptionMedicineAmount),
                     Integer.parseInt(prescriptionTerm));
             result = CommandResult.redirect("controller?command=ConfirmationRequestsPage");

@@ -76,17 +76,26 @@
 
                                 <form method = "post" action = "controller?command=refusePrescription">
 
-
+ <input  type="hidden" name="prescription-id" value="${prescription.getId()}">
                                   <div class="confirmation-request">
                                   <button class="refuse-doctor-button" type="submit" > <fmt:message key="confirmation.requests.button.refuse" /> </button>
                                 </div>
 
                                  </form>
 
-
-                      <div class = "doctor-error-message" >
+                                  <div class = "doctor-error-message">
+                                   ${doctorErrorMessage}
+                                  </div>
+                        <c:if  test="${doctorErrorMessage!=null}">
+                                                                       <div class = "error-message" style = "color:red"; >
+                                                                            ${doctorErrorMessage = null}
+                                                                       </div>
+                                                                    </c:if>
+                       <div class = "doctor-error-message">
                        ${doctorErrorMessage}
                        </div>
+
+
 
 
 

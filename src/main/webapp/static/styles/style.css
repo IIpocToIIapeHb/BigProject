@@ -1487,7 +1487,7 @@ align-items: center;
        }
 
         .confirm-doctor-button {
-           height: 28px;
+           height: 25px;
            width: 140px;
            background-color: #4CAF50;
            color: white;
@@ -1503,7 +1503,7 @@ align-items: center;
          }
              .refuse-doctor-button {
 
-                   height: 28px;
+                   height: 25px;
                              width: 140px;
                              background-color: #e60000;
                              color: white;
@@ -1739,7 +1739,7 @@ align-items: center;
           flex-wrap: wrap;
        }
 
-       .all-prescriptions-number{
+       .all-prescriptions-number-captain{
                 font-family: 'Rubik';
                 font-style: normal;
                 font-size: 20px;
@@ -1749,56 +1749,17 @@ align-items: center;
                  width:40px;
        }
 
-             .all-prescriptions-item{
-                        font-family: 'Rubik';
-                        font-style: normal;
-                        font-size: 20px;
-                        font-weight: 500;
-                        color: #7eb2e6;
-                        text-align:center;
+             .all-prescriptions-item-captain{
+                    font-family: 'Rubik';
+                                    font-style: normal;
+                                    font-size: 20px;
+                                    font-weight: 500;
+                                    color: #7eb2e6;
+                                     text-align:center;
                         width:150px;
              }
 
-       .all-prescriptions-birth{
-         font-family: 'Rubik';
-                       font-style: normal;
-                       font-size: 20px;
-                       font-weight: 500;
-                       color: #7eb2e6;
-                        text-align:center;
-                        width:130px;
-       }
 
-
-         .all-prescriptions-amount{
-                font-family: 'Rubik';
-                              font-style: normal;
-                              font-size: 20px;
-                              font-weight: 500;
-                              color: #7eb2e6;
-                               text-align:center;
-                               width:120px;
-              }
-
-
-      .all-prescriptions-period{
-       font-family: 'Rubik';
-                       font-style: normal;
-                       font-size: 20px;
-                       font-weight: 500;
-                       color: #7eb2e6;
-                       text-align:center;
-                       width:120px;
-      }
-.all.prescriptions.status{
-font-family: 'Rubik';
-                       font-style: normal;
-                       font-size: 20px;
-                       font-weight: 500;
-                       color: #7eb2e6;
-                       text-align:center;
-                       width:150px;
-}
 
      .all-prescriptions-cards{
      max-width: 1400px;
@@ -1814,6 +1775,8 @@ font-family: 'Rubik';
 
      }
 
+
+
   .all-prescriptions-number-wrapper{
       text-align:center;
       width:40px;
@@ -1828,19 +1791,19 @@ font-family: 'Rubik';
          text-align:center;
      }
 
-     .all-prescriptions-wrapper{
-           text-align:center;
-           width:150px;
-          }
 
-           .all-prescriptions-name-wrapper{
+     .all-prescriptions-name-wrapper{
                      text-align:center;
                      width:150px;
                     }
+       .all-prescriptions-surname-wrapper{
+                          text-align:center;
+                          width:150px;
+                         }
 
       .all-prescriptions-birth-wrapper{
                 text-align:center;
-                width:130px;
+                width:150px;
                }
        .all-prescriptions-medicine-wrapper{
                  text-align:center;
@@ -1849,15 +1812,15 @@ font-family: 'Rubik';
 
        .all-prescriptions-amount-wrapper{
                  text-align:center;
-                 width:120px;
+                 width:150px;
                 }
        .all-prescriptions-valid-date-wrapper{
        text-align:center;
-       width:130px;
+       width:150px;
        }
         .all-prescriptions-period-wrapper{
                   text-align:center;
-                  width:120px;
+                  width:150px;
                  }
 
    /*All prescriptions page end*/

@@ -20,14 +20,14 @@
          <section class="intro-all-prescriptions">
 
               <div class="all-prescriptions-captain">
-                <div class="all-prescriptions-number"><fmt:message key="all.prescriptions.number"/></div>
-                <div class="all-prescriptions-item"><fmt:message key="all.prescriptions.surname"/></div>
-                <div class="all-prescriptions-item"><fmt:message key="all.prescriptions.name"/></div>
-                <div class="all-prescriptions-item"><fmt:message key="all.prescriptions.birth"/></div>
-                <div class="all-prescriptions-item"><fmt:message key="all.prescriptions.medicine"/></div>
-                <div class="all-prescriptions-item"><fmt:message key="all.prescriptions.amount"/></div>
-                <div class="all-prescriptions-item"><fmt:message key="all.prescriptions.period"/></div>
-                <div class="all-prescriptions-item"><fmt:message key="all.prescriptions.status"/></div>
+                <div class="all-prescriptions-number-captain"><fmt:message key="all.prescriptions.number"/></div>
+                <div class="all-prescriptions-item-captain"><fmt:message key="all.prescriptions.surname"/></div>
+                <div class="all-prescriptions-item-captain"><fmt:message key="all.prescriptions.name"/></div>
+                <div class="all-prescriptions-item-captain"><fmt:message key="all.prescriptions.birth"/></div>
+                <div class="all-prescriptions-item-captain"><fmt:message key="all.prescriptions.medicine"/></div>
+                <div class="all-prescriptions-item-captain"><fmt:message key="all.prescriptions.amount"/></div>
+                <div class="all-prescriptions-item-captain"><fmt:message key="all.prescriptions.period"/></div>
+                <div class="all-prescriptions-item-captain"><fmt:message key="all.prescriptions.status"/></div>
               </div>
 
               <div class= "all-prescriptions-cards">
@@ -63,7 +63,7 @@
                                    <div class= "all-prescriptions-medicine-wrapper">
                                      <span class="all-prescriptions-item"><c:out value="${prescription.getPrescriptionStatus()}"/></span>
                                    </div>
-
+                                   </div>
                      </c:forEach>
                      </div>
 
