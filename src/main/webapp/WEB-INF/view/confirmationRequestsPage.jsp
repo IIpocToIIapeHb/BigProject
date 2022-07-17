@@ -60,8 +60,12 @@
                             <div class= "confirmation-request-wrapper">
 
                                  <div class= "confirmation-request">
-                                 <input class = "input-text-doctor" type="text" name="prescription-medicine-amount" placeholder= "<fmt:message key="confirmation.requests.amount"/>">
+                                 <input class = "input-text-doctor" type="text" name="prescription-medicine-amount" placeholder= "<fmt:message key="confirmation.requests.amount"/>" >
                                   </div>
+
+
+
+
 
                                   <div  class= "confirmation-request">
                                  <input class = "input-text-doctor" type="text" name="prescription-term" placeholder="<fmt:message key="confirmation.requests.prescription.period.days"/>">

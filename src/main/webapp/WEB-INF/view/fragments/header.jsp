@@ -110,6 +110,24 @@
                                     </form>
                                    </li>
                          </c:if>
+                          <c:if  test="${user.getRole().equals('chemist')}">
+                                                     <li class="header-bottom-item">
+                                                        <form  method="POST"  action="controller?command=">
+                                                              <button class="header-bottom-link" type="submit" > <fmt:message key="header.chemist.storage"/>
+                                                              </button>
+                                                        </form>
+                                                      </li>
+                                                        <li class="header-bottom-item">
+                                                             <a href="controller?command=addMedicinePage"><fmt:message key="header.chemist.addMedicine"/>
+                                                                                 </a>
+                                                        </li>
+                                                            <li class="header-bottom-item">
+                                                            <form  method="POST"  action="controller?command=allPrescriptionsPage">
+                                                             <button class="header-bottom-link" type="submit" > <fmt:message key="header.chemist.allPrescriptions"/>
+                                                             </button>
+                                                             </form>
+                                                            </li>
+                                                  </c:if>
                     </ul>
                 </nav>
 
