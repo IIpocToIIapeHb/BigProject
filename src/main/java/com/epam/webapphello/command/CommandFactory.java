@@ -41,6 +41,8 @@ public class CommandFactory {
                 return new RefusePrescriptionCommand(new PrescriptionServiceImpl(new DaoHelperFactory()));
             case "allPrescriptionsPage":
                 return new ShowAllPrescriptionsPageCommand(new PrescriptionInfoServiceImpl(new DaoHelperFactory()));
+            case "saveMedicine":
+                return new SaveMedicineCommand(new MedicineServiceImpl(new DaoHelperFactory()));
             case "addMedicinePage":
                 return new ShowPageCommand("/WEB-INF/view/addMedicine.jsp");
             default:

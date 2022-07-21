@@ -17,6 +17,7 @@ public class MedicineRowMapper implements RowMapper{
                         resultSet.getInt("amount"),
                         resultSet.getInt("package_amount"),
                         resultSet.getDouble("price"),
-                        resultSet.getString("path"));
+                        resultSet.getString("path"),
+                        resultSet.getLong("medicine-category-id"));
     }
 }

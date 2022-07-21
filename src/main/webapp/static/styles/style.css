@@ -1831,10 +1831,13 @@ align-items: center;
 /*Medicine card start*/
 .medicine-card-label{
 width:150px;
+ display: inline-block;
+vertical-align: middle;
 }
 
 .medicine-card-input{
-width:150px;
+width:170px;
+
 }
 
 
@@ -1859,6 +1862,13 @@ padding-top:200px;
 
   .character-medicine-block{
   margin-bottom:5px;
+display:flex;
+vertical-align: middle;
+
+  }
+
+  .medicine-card-measure{
+  margin-left:5px;
   }
 /*Medicine card end*/
 

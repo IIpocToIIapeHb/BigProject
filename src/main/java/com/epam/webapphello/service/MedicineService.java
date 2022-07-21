@@ -10,4 +10,7 @@ import java.util.Optional;
 public interface MedicineService {
     List<Medicine> getAll() throws ServiceException;
     List<Medicine> findProductByName(String searchingProduct) throws ServiceException;
+
+    void save(Medicine medicine, String medicineCategory)throws ServiceException;
+
 }
