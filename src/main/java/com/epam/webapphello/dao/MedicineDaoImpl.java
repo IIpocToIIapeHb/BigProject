@@ -23,6 +23,7 @@ public class MedicineDaoImpl extends AbstractDao<Medicine> implements MedicineDa
 
     private static final String FIND_BY_NAME = "select * from medicine where name = ?";
     private static final String FIND_CATEGORY_ID_BY_NAME = "select * from medicine_category where name = ?";
+    private static final String FIND_CATEGORY_NAME_BY_ID = "select * from medicine_category where id = ?";
 
     @Override
     protected String getTableName() {
@@ -40,6 +41,7 @@ public class MedicineDaoImpl extends AbstractDao<Medicine> implements MedicineDa
         fields.put(Medicine.PACKAGE_AMOUNT, item.getPackageAmount());
         fields.put(Medicine.PRICE, item.getPrice());
         fields.put(Medicine.CATEGORY_ID, item.getCategoryId());
+        fields.put(Medicine.IMAGE_PATH, item.getPath());
         return fields;
     }
 
@@ -71,6 +73,20 @@ public class MedicineDaoImpl extends AbstractDao<Medicine> implements MedicineDa
             throw new DAOException(e);
         }
         return categoryId;
+    }
+
+    @Override
+    public String findMedicineCategoryName(long medicineCategoryId) throws DAOException {
+        String categoryName=null;
+        try (PreparedStatement statement = createStatement(FIND_CATEGORY_NAME_BY_ID, medicineCategoryId);
+             ResultSet resultSet = statement.executeQuery()) {
+            if(resultSet.next()) {
+                categoryName = resultSet.getString(2);
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+        return categoryName;
     }
 
 }

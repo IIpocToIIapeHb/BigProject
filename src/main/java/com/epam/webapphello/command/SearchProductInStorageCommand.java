@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
-public class SearchProductCommand implements Command {
+public class SearchProductInStorageCommand implements Command {
 
     private final MedicineService medicineService;
 
-    public SearchProductCommand(MedicineServiceImpl medicineService) {
+    public SearchProductInStorageCommand(MedicineServiceImpl medicineService) {
         this.medicineService = medicineService;
     }
 
@@ -27,8 +27,8 @@ public class SearchProductCommand implements Command {
             req.setAttribute("errorSearchProductMessage", "Product is not found");
         }
 
-        req.getSession().setAttribute("foundProduct", foundProduct);
-        CommandResult result = CommandResult.forward("/WEB-INF/view/searchProduct.jsp");
+        req.setAttribute("medicinesStorage", foundProduct);
+        CommandResult result = CommandResult.forward("/WEB-INF/view/medicineStorage.jsp");
         return result;
     }
 }

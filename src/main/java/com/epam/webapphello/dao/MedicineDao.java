@@ -12,4 +12,6 @@ public interface  MedicineDao extends Dao<Medicine> {
     List<Medicine> findProductByName(String searchingProduct)throws DAOException;
 
     Long findMedicineCategoryId(String medicineCategory) throws DAOException;
+
+    String findMedicineCategoryName(long medicineCategoryId) throws DAOException;
 }

@@ -44,7 +44,7 @@ public class SaveMedicineCommand implements Command {
         if (!medicineName.isEmpty() && !medicineDosage.isEmpty() && !medicineNumber.isEmpty() && !medicinePackageAmount.isEmpty()
                 && !medicinePrice.isEmpty()) {
             String fileName =  saveImage(req,"medicine-image");
-            boolean medicinePrescriptionStatus=medicinePrescriptionAvailability.equals("yes") ? true:false;
+            boolean medicinePrescriptionStatus= medicinePrescriptionAvailability.equals("yes");
 
             Medicine medicine = new Medicine(medicineName,Integer.parseInt(medicineDosage),medicinePrescriptionStatus,
                     medicineForm, Integer.parseInt(medicineNumber),Integer.parseInt(medicinePackageAmount),
@@ -71,8 +71,8 @@ public class SaveMedicineCommand implements Command {
         String fileName=null;
         try {
             image = req.getPart(imageParameter);
-             //fileName = Paths.get(image.getSubmittedFileName()).getFileName().toString();
-             fileName = image.getName();
+             fileName = Paths.get(image.getSubmittedFileName()).getFileName().toString();
+           //  fileName = image.getName();
             fileContent = image.getInputStream();
 
             int length;

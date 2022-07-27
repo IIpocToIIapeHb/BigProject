@@ -1092,31 +1092,105 @@ align-items:center;
          max-width: 1400px;
      }
 
-     .position-captain{
+     .storage-captain{
         margin-bottom:10px;
         display: flex;
         flex-wrap: wrap;
+        text-align:center;
+         margin:auto 0;
      }
 
-     .position-captain-name{
+     .storage-captain-name{
               font-family: 'Rubik';
               font-style: normal;
               font-size: 20px;
               font-weight: 500;
               color: #7eb2e6;
-               text-align:center;
-               width:350px;
+              text-align:center;
+              width:350px;
+
+               margin:auto 0;
      }
 
-     .position-captain-item{
+     .storage-captain-category{
                    font-family: 'Rubik';
                    font-style: normal;
                    font-size: 20px;
                    font-weight: 500;
                    color: #7eb2e6;
-                    text-align:center;
-                    width:100px;
+                   text-align:center;
+                   width:120px;
+ margin:auto 0;
      }
+        .storage-captain-dosage{
+                        font-family: 'Rubik';
+                        font-style: normal;
+                        font-size: 20px;
+                        font-weight: 500;
+                        color: #7eb2e6;
+                        text-align:center;
+                        width:120px;
+                         margin:auto 0;
+          }
+
+              .storage-captain-prescription{
+                                  font-family: 'Rubik';
+                                  font-style: normal;
+                                  font-size: 20px;
+                                  font-weight: 500;
+                                  color: #7eb2e6;
+                                  text-align:center;
+                                  width:100px;
+                                   margin:auto 0;
+                    }
+
+        .storage-captain-form{
+                                       font-family: 'Rubik';
+                                       font-style: normal;
+                                       font-size: 20px;
+                                       font-weight: 500;
+                                       color: #7eb2e6;
+                                       text-align:center;
+                                       width:120px;
+                                        margin:auto 0;
+                         }
+
+                    .storage-captain-package-amount{
+                      font-family: 'Rubik';
+                      font-style: normal;
+                      font-size: 20px;
+                      font-weight: 500;
+                      color: #7eb2e6;
+                      text-align:center;
+                      width:120px;
+                       margin:auto 0;
+                    }
+
+                      .storage-captain-amount{
+                                          font-family: 'Rubik';
+                                          font-style: normal;
+                                          font-size: 20px;
+                                          font-weight: 500;
+                                          color: #7eb2e6;
+                                          text-align:center;
+                                          width:120px;
+                                           margin:auto 0;
+                                        }
+
+                          .storage-captain-price{
+                                                                font-family: 'Rubik';
+                                                                font-style: normal;
+                                                                font-size: 20px;
+                                                                font-weight: 500;
+                                                                color: #7eb2e6;
+                                                                text-align:center;
+                                                                width:120px;
+                                                                 margin:auto 0;
+                                                              }
+
+
+
+
 
 
      .position-cards{
@@ -1833,6 +1907,7 @@ align-items: center;
 width:150px;
  display: inline-block;
 vertical-align: middle;
+color: #113f67;
 }
 
 .medicine-card-input{
@@ -1843,10 +1918,10 @@ width:170px;
 
  .medicine-card-page-main {
  width:100%;
- height: 100vh;
-  background-color: #e7eaf6;
-padding-top:200px;
 
+  background-color: #e7eaf6;
+padding-top:170px;
+padding-bottom:20px;
      background-size:cover;
   }
 
@@ -1858,6 +1933,7 @@ padding-top:200px;
         background-color: #f2f2f2;
         padding: 20px;
         border: 1px solid #ccc;
+
   }
 
   .character-medicine-block{
@@ -1869,8 +1945,73 @@ vertical-align: middle;
 
   .medicine-card-measure{
   margin-left:5px;
+  color: #113f67;
   }
 /*Medicine card end*/
+
+/*Medicine storage start*/
+.medicine-storage{
+margin-top:150px;
+}
+.search-medicine{
+display:flex;
+}
+
+.medicine-storage-label{
+margin-right:10px;
+color:#113f67;
+ font-family: 'Rubik';
+         font-style: normal;
+         font-size: 20px;
+         line-height: 1.2;
+         font-weight: 300;
+}
+
+.storage-search-button {
+    display: inline-block;
+    width: 150px;
+    height: 25px;
+
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    background: #7eb2e6;
+    box-shadow: rgba(0,0,0,.8) 0 2px 5px -1px;
+    color: white;
+
+  }
+  .storage-search-button:hover {
+    background:#58a2eb;
+    cursor: pointer;
+
+  }
+  .storage-search-button:active {
+    padding-bottom: 1px;
+    box-shadow:
+     inset rgba(0,0,0,1) 0 1px 3px,
+     inset rgba(0,0,0,.6) 0 -2px 5px,
+     inset rgba(252,255,255,.7) 0 2px 5px,
+     0 1px rgba(255,255,255,.08);
+
+  }
+
+  .storage-medicines-cards{
+  max-width: 1400px;
+  width:100%;
+  }
+
+    .storage-medicine-card{
+       align-items:center;
+       border: 1px solid #ccc;
+        display: flex;
+        flex-wrap: wrap;
+
+       }
+/*Medicine storage end*/
+
 
   /*Media start*/
   @media screen and (max-width:960px) {

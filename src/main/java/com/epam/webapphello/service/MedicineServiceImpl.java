@@ -41,6 +41,11 @@ public class MedicineServiceImpl implements MedicineService {
         try (DaoHelper helper = daoHelperFactory.create()) {
             MedicineDao medicineDao = helper.createMedicineDao();
             foundProducts = medicineDao.findProductByName(searchingProduct);
+            for (Medicine medicine:foundProducts){
+                long medicineCategoryId = medicine.getCategoryId();
+                String medicineCategoryName = medicineDao.findMedicineCategoryName(medicineCategoryId);
+                medicine.setCategoryName(medicineCategoryName);
+            }
 
         } catch (DAOException e) {
             throw new ServiceException(e);

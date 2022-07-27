@@ -15,6 +15,7 @@ public class Medicine implements Identifable, Serializable {
     public final static String PACKAGE_AMOUNT = "package_amount";
     public final static String PRICE = "price";
     public final static String CATEGORY_ID = "medicine_category_id";
+    public final static String IMAGE_PATH = "path";
 
 
     private Long id;
@@ -27,6 +28,7 @@ public class Medicine implements Identifable, Serializable {
     private Double price;
     private String path;
     private Long categoryId;
+    private String categoryName;
 
     public Medicine(Long id, String name, Integer dosage, boolean withRecipe, String form, Integer amount, Integer packageAmount, Double price, String path, Long categoryId) {
         this.id = id;
@@ -138,7 +140,7 @@ public class Medicine implements Identifable, Serializable {
     }
 
     public String getPath() {
-        return path;
+        return "static/img/storage/"+path;
     }
 
     public Long getCategoryId() {
@@ -147,6 +149,14 @@ public class Medicine implements Identifable, Serializable {
 
     public void setCategoryId(Long categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     @Override

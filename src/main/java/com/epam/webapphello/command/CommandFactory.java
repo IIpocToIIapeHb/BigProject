@@ -45,6 +45,10 @@ public class CommandFactory {
                 return new SaveMedicineCommand(new MedicineServiceImpl(new DaoHelperFactory()));
             case "addMedicinePage":
                 return new ShowPageCommand("/WEB-INF/view/addMedicine.jsp");
+            case "showMedicineStoragePage":
+                return new ShowPageCommand("/WEB-INF/view/medicineStorage.jsp");
+            case "searchProductInStorage":
+                return new SearchProductInStorageCommand(new MedicineServiceImpl(new DaoHelperFactory()));
             default:
             throw new IllegalArgumentException("Unknown command" + command);
         }

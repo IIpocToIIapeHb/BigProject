@@ -112,10 +112,10 @@
                          </c:if>
                           <c:if  test="${user.getRole().equals('chemist')}">
                                                      <li class="header-bottom-item">
-                                                        <form  method="POST"  action="controller?command=">
-                                                              <button class="header-bottom-link" type="submit" > <fmt:message key="header.chemist.storage"/>
-                                                              </button>
-                                                        </form>
+                                                      <a href="controller?command=showMedicineStoragePage"><fmt:message key="header.chemist.storage"/>
+                                                                                                                                      </a>
+
+
                                                       </li>
                                                         <li class="header-bottom-item">
                                                              <a href="controller?command=addMedicinePage"><fmt:message key="header.chemist.addMedicine"/>

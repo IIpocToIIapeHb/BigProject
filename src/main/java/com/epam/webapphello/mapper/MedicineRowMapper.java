@@ -18,6 +18,6 @@ public class MedicineRowMapper implements RowMapper{
                         resultSet.getInt("package_amount"),
                         resultSet.getDouble("price"),
                         resultSet.getString("path"),
-                        resultSet.getLong("medicine-category-id"));
+                        resultSet.getLong("medicine_category_id"));
     }
 }
