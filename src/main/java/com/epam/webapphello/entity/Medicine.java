@@ -103,6 +103,10 @@ public class Medicine implements Identifable, Serializable {
         return withRecipe;
     }
 
+    public String getWithRecipeStatus() {
+        return withRecipe ? "yes":"no";
+    }
+
     public void setWithRecipe(boolean with_recipe) {
         this.withRecipe = with_recipe;
     }

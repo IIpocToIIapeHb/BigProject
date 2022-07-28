@@ -21,6 +21,7 @@ public class SearchProductCommand implements Command {
     public CommandResult execute(HttpServletRequest req, HttpServletResponse resp) throws ServiceException {
         String searchingProduct = req.getParameter("search-product");
         List<Medicine> foundProduct = null;
+
         foundProduct = medicineService.findProductByName(searchingProduct);
         if (foundProduct.isEmpty()){
            // req.getSession().setAttribute("errorSearchProductMessage", "Product is not found");

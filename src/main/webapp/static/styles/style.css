@@ -1092,101 +1092,6 @@ align-items:center;
          max-width: 1400px;
      }
 
-     .storage-captain{
-        margin-bottom:10px;
-        display: flex;
-        flex-wrap: wrap;
-        text-align:center;
-         margin:auto 0;
-     }
-
-     .storage-captain-name{
-              font-family: 'Rubik';
-              font-style: normal;
-              font-size: 20px;
-              font-weight: 500;
-              color: #7eb2e6;
-              text-align:center;
-              width:350px;
-
-               margin:auto 0;
-     }
-
-     .storage-captain-category{
-                   font-family: 'Rubik';
-                   font-style: normal;
-                   font-size: 20px;
-                   font-weight: 500;
-                   color: #7eb2e6;
-                   text-align:center;
-                   width:120px;
- margin:auto 0;
-     }
-        .storage-captain-dosage{
-                        font-family: 'Rubik';
-                        font-style: normal;
-                        font-size: 20px;
-                        font-weight: 500;
-                        color: #7eb2e6;
-                        text-align:center;
-                        width:120px;
-                         margin:auto 0;
-          }
-
-              .storage-captain-prescription{
-                                  font-family: 'Rubik';
-                                  font-style: normal;
-                                  font-size: 20px;
-                                  font-weight: 500;
-                                  color: #7eb2e6;
-                                  text-align:center;
-                                  width:100px;
-                                   margin:auto 0;
-                    }
-
-        .storage-captain-form{
-                                       font-family: 'Rubik';
-                                       font-style: normal;
-                                       font-size: 20px;
-                                       font-weight: 500;
-                                       color: #7eb2e6;
-                                       text-align:center;
-                                       width:120px;
-                                        margin:auto 0;
-                         }
-
-                    .storage-captain-package-amount{
-                      font-family: 'Rubik';
-                      font-style: normal;
-                      font-size: 20px;
-                      font-weight: 500;
-                      color: #7eb2e6;
-                      text-align:center;
-                      width:120px;
-                       margin:auto 0;
-                    }
-
-                      .storage-captain-amount{
-                                          font-family: 'Rubik';
-                                          font-style: normal;
-                                          font-size: 20px;
-                                          font-weight: 500;
-                                          color: #7eb2e6;
-                                          text-align:center;
-                                          width:120px;
-                                           margin:auto 0;
-                                        }
-
-                          .storage-captain-price{
-                                                                font-family: 'Rubik';
-                                                                font-style: normal;
-                                                                font-size: 20px;
-                                                                font-weight: 500;
-                                                                color: #7eb2e6;
-                                                                text-align:center;
-                                                                width:120px;
-                                                                 margin:auto 0;
-                                                              }
 
 
 
@@ -1952,6 +1857,9 @@ vertical-align: middle;
 /*Medicine storage start*/
 .medicine-storage{
 margin-top:150px;
+max-width: 1400px;
+     width:100%;
+     padding: 0 10px;
 }
 .search-medicine{
 display:flex;
@@ -1997,6 +1905,102 @@ color:#113f67;
      0 1px rgba(255,255,255,.08);
 
   }
+   .storage-captain{
+          margin-bottom:10px;
+          display: flex;
+          flex-wrap: wrap;
+          text-align:center;
+           margin:auto 0;
+       }
+
+       .storage-captain-name{
+                font-family: 'Rubik';
+                font-style: normal;
+                font-size: 20px;
+                font-weight: 500;
+                color: #7eb2e6;
+                text-align:center;
+                width:350px;
+
+                 margin:auto 0;
+       }
+
+       .storage-captain-category{
+                     font-family: 'Rubik';
+                     font-style: normal;
+                     font-size: 20px;
+                     font-weight: 500;
+                     color: #7eb2e6;
+                     text-align:center;
+                     width:120px;
+   margin:auto 0;
+       }
+          .storage-captain-dosage{
+                          font-family: 'Rubik';
+                          font-style: normal;
+                          font-size: 20px;
+                          font-weight: 500;
+                          color: #7eb2e6;
+                          text-align:center;
+                          width:120px;
+                           margin:auto 0;
+            }
+
+                .storage-captain-prescription{
+                                    font-family: 'Rubik';
+                                    font-style: normal;
+                                    font-size: 20px;
+                                    font-weight: 500;
+                                    color: #7eb2e6;
+                                    text-align:center;
+                                    width:100px;
+                                     margin:auto 0;
+                      }
+
+          .storage-captain-form{
+                                         font-family: 'Rubik';
+                                         font-style: normal;
+                                         font-size: 20px;
+                                         font-weight: 500;
+                                         color: #7eb2e6;
+                                         text-align:center;
+                                         width:120px;
+                                          margin:auto 0;
+                           }
+
+                      .storage-captain-package-amount{
+                        font-family: 'Rubik';
+                        font-style: normal;
+                        font-size: 20px;
+                        font-weight: 500;
+                        color: #7eb2e6;
+                        text-align:center;
+                        width:120px;
+                         margin:auto 0;
+                      }
+
+                        .storage-captain-amount{
+                                            font-family: 'Rubik';
+                                            font-style: normal;
+                                            font-size: 20px;
+                                            font-weight: 500;
+                                            color: #7eb2e6;
+                                            text-align:center;
+                                            width:120px;
+                                             margin:auto 0;
+                                          }
+
+                            .storage-captain-price{
+                                                                  font-family: 'Rubik';
+                                                                  font-style: normal;
+                                                                  font-size: 20px;
+                                                                  font-weight: 500;
+                                                                  color: #7eb2e6;
+                                                                  text-align:center;
+                                                                  width:120px;
+                                                                   margin:auto 0;
+                                                                }
+
 
   .storage-medicines-cards{
   max-width: 1400px;
@@ -2010,6 +2014,157 @@ color:#113f67;
         flex-wrap: wrap;
 
        }
+
+         .storage-medicine-card-wrapper{
+            align-items:center;
+            height:100px;
+            width:100px;
+            background-color: white;
+            }
+
+             .storage-medicine-name-wrapper{
+                  text-align:center;
+                  width:250px;
+                 }
+                 .storage-medicine-name{
+                     font-family: 'Rubik';
+                     font-style: normal;
+                     font-size: 20px;
+                     line-height: 1.2;
+                     font-weight: 300;
+                     color: black;
+                     text-align:center;
+                 }
+
+                 .storage-medicine-category-wrapper{
+                                   text-align:center;
+                                   width:120px;
+                                  }
+                                  .storage-medicine-category{
+                                      font-family: 'Rubik';
+                                      font-style: normal;
+                                      font-size: 20px;
+                                      line-height: 1.2;
+                                      font-weight: 300;
+                                      color: black;
+                                      text-align:center;
+                                  }
+
+                  .storage-medicine-dosage-wrapper{
+                                   text-align:center;
+                                   width:120px;
+                                  }
+                                  .storage-medicine-dosage{
+                                      font-family: 'Rubik';
+                                      font-style: normal;
+                                      font-size: 20px;
+                                      line-height: 1.2;
+                                      font-weight: 300;
+                                      color: black;
+                                      text-align:center;
+                                  }
+
+       .storage-medicine-prescription-wrapper{
+                                         text-align:center;
+                                         width:100px;
+                                        }
+                                        .storage-medicine-prescription{
+                                            font-family: 'Rubik';
+                                            font-style: normal;
+                                            font-size: 20px;
+                                            line-height: 1.2;
+                                            font-weight: 300;
+                                            color: black;
+                                            text-align:center;
+                                        }
+
+                    .storage-medicine-form-wrapper{
+                                             text-align:center;
+                                             width:120px;
+                                            }
+                                            .storage-medicine-form{
+                                                font-family: 'Rubik';
+                                                font-style: normal;
+                                                font-size: 20px;
+                                                line-height: 1.2;
+                                                font-weight: 300;
+                                                color: black;
+                                                text-align:center;
+                                            }
+
+                   .storage-medicine-package-amount-wrapper{
+                                             text-align:center;
+                                             width:120px;
+                                            }
+                                            .storage-medicine-package-amount{
+                                                font-family: 'Rubik';
+                                                font-style: normal;
+                                                font-size: 20px;
+                                                line-height: 1.2;
+                                                font-weight: 300;
+                                                color: black;
+                                                text-align:center;
+                                            }
+
+                 .storage-medicine-amount-wrapper{
+                                                 text-align:center;
+                                                 width:120px;
+                                                }
+                                                .storage-medicine-amount{
+                                                    font-family: 'Rubik';
+                                                    font-style: normal;
+                                                    font-size: 20px;
+                                                    line-height: 1.2;
+                                                    font-weight: 300;
+                                                    color: black;
+                                                    text-align:center;
+                                                }
+
+                  .storage-medicine-amount-wrapper{
+                                                 text-align:center;
+                                                 width:120px;
+                                                }
+                                                .storage-medicine-amount{
+                                                    font-family: 'Rubik';
+                                                    font-style: normal;
+                                                    font-size: 20px;
+                                                    line-height: 1.2;
+                                                    font-weight: 300;
+                                                    color: black;
+                                                    text-align:center;
+                                                }
+
+                               .storage-medicine-price-wrapper{
+                                                 text-align:center;
+                                                 width:120px;
+                                                }
+                                                .storage-medicine-price{
+                                                    font-family: 'Rubik';
+                                                    font-style: normal;
+                                                    font-size: 20px;
+                                                    line-height: 1.2;
+                                                    font-weight: 300;
+                                                    color: black;
+                                                    text-align:center;
+                                                }
+
+                 .change-medicine-button{
+                 height: 28px;
+                 width: 140px;
+                 background-color: #4CAF50;
+                 color: white;
+                 border: none;
+                 border-radius: 8px;
+                 cursor: pointer;
+                 text-align:center;
+
+                 }
+
+
+
+              .change-medicine-button:hover {
+                background-color: #45a049;
+              }
 /*Medicine storage end*/
 
 

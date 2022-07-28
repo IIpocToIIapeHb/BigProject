@@ -17,6 +17,7 @@
 
    <main class="medicine-storage">
 
+    <div class="medicine-storage">
      <div class="search-medicine">
 
        <div class="medicine-storage-label">
@@ -54,11 +55,16 @@
                  <c:forEach var="medicine" items="${medicinesStorage}">
 
                     <div class="storage-medicine-card">
-                        <div class= "storage-medicine-name-wrapper">
+                        <div class= "storage-medicine-card-wrapper">
                              <img src="${medicine.path}" alt="" class = "position-card-thumb">
                          </div>
+
                          <div class= "storage-medicine-name-wrapper">
-                           <span class="medicine-name">${medicine.name}</span>
+                           <span class="storage-medicine-name">${medicine.name}</span>
+                         </div>
+
+                         <div class="storage-medicine-category-wrapper">
+                              <span class= "storage-medicine-category">${medicine.categoryName}</span>
                          </div>
 
                          <div class="storage-medicine-dosage-wrapper">
@@ -66,28 +72,34 @@
                          </div>
 
                          <div class="storage-medicine-prescription-wrapper">
-                             <span class= "storage-medicine-prescription">${medicine.withRecipe}</span>
+                             <span class= "storage-medicine-prescription">${medicine.getWithRecipeStatus()}</span>
                          </div>
 
                          <div class="storage-medicine-form-wrapper">
                              <span class= "storage-medicine-form">${medicine.form}</span>
                          </div>
 
+                           <div class="storage-medicine-package-amount-wrapper">
+                             <span class="storage-medicine-package-amount">${medicine.packageAmount}</span>
+                           </div>
+
                           <div class="storage-medicine-amount-wrapper">
                                <span class= "storage-medicine-amount">${medicine.amount}</span>
                           </div>
 
-                           <div class="storage-medicine-category-wrapper">
-                              <span class= "storage-medicine-category">${medicine.categoryName}</span>
-                           </div>
+
 
                            <div class="storage-medicine-price-wrapper">
                              <span class= "storage-medicine-price">${medicine.price}</span>
                            </div>
 
-                           <div class="storage-medicine-package-amount-wrapper">
-                             <span class="storage-medicine-package-amount">${medicine.packageAmount}</span>
-                           </div>
+                            <div class="storage-medicine-button-wrapper">
+                              <form method = "post" action = "controller?command=changeMedicine">
+                                 <input  type="hidden" name="medicine-id" value="${medicine.id}">
+                                 <button class="change-medicine-button" type="submit" > <fmt:message key="medicine.storage.change.button" /> </button>
+                             </form>
+                            </div>
+
 
                     </div>
 
@@ -100,7 +112,7 @@
             ${errorSearchProductMessage}
          </div>
 
-
+</div>
    </main>
 
    <script src="static/js/main.js"></script>

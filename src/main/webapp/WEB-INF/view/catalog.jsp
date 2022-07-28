@@ -21,6 +21,7 @@
 
      <main class="catalog-items">
      <section class="intro-catalog">
+
      <div class= "cards">
 
                         <c:forEach var="medicine" items="${medicines}">

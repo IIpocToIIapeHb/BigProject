@@ -13,4 +13,5 @@ public interface MedicineService {
 
     void save(Medicine medicine, String medicineCategory)throws ServiceException;
 
+     Medicine findMedicineById(long parseLong) throws ServiceException;
 }

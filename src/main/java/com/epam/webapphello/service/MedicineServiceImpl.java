@@ -76,4 +76,19 @@ public class MedicineServiceImpl implements MedicineService {
             }
         }
     }
+
+    @Override
+    public Medicine findMedicineById(long medicineId) throws ServiceException {
+        Medicine medicine = null;
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            MedicineDao medicineDao = helper.createMedicineDao();
+            medicine = medicineDao.getById(medicineId);
+            long medicineCategoryId = medicine.getCategoryId();
+            String medicineCategoryName = medicineDao.findMedicineCategoryName(medicineCategoryId);
+            medicine.setCategoryName(medicineCategoryName);
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        }
+        return medicine;
+    }
 }
