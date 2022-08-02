@@ -56,7 +56,7 @@
 
                     <div class="storage-medicine-card">
                         <div class= "storage-medicine-card-wrapper">
-                             <img src="${medicine.path}" alt="" class = "position-card-thumb">
+                             <img src="${medicine.getFullPath()}" alt="" class = "position-card-thumb">
                          </div>
 
                          <div class= "storage-medicine-name-wrapper">

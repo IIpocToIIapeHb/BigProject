@@ -33,6 +33,7 @@ public class MedicineDaoImpl extends AbstractDao<Medicine> implements MedicineDa
     @Override
     protected Map<String, Object> getFields(Medicine item) {
         Map<String, Object> fields = new LinkedHashMap<>();
+       // fields.put(Medicine.MEDICINE_ID, item.getId());
         fields.put(Medicine.NAME, item.getName());
         fields.put(Medicine.DOSAGE, item.getDosage());
         fields.put(Medicine.WITH_RECIPE, item.getWithRecipe());

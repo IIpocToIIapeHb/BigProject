@@ -28,7 +28,7 @@
                         <div class= "card">
 
                             <div class= "card-pic">
-                                <img src="${medicine.getPath()}" alt="" class = "card-thumb">
+                                <img src="${medicine.getFullPath()}" alt="" class = "card-thumb">
                             </div>
 
                             <div class= "medicine-name-wrapper">

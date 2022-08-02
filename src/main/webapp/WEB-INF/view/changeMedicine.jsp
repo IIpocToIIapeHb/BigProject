@@ -20,7 +20,9 @@
        <div class="medicine-card-page-main">
                        <div class="medicine-card-page-main-wrapper">
 
-                           <form method = "post" action = "controller?command=saveMedicine" enctype="multipart/form-data">
+                           <form method = "post" action = "controller?command=saveMedicineChanges" enctype="multipart/form-data">
+
+                                <input  type="hidden" name="medicine-id" value="${changingMedicine.id}">
 
                                 <div class="character-medicine-block">
                                 <div class="medicine-card-label">
@@ -37,7 +39,7 @@
 
                                  <div class="medicine-card-input">
                                  <select name="medicine-category" >
-                                 <option hidden value="default">${changingMedicine.getCategoryName()}</option>
+                                 <option hidden value="${changingMedicine.getCategoryName()}"><fmt:message key="${changingMedicine.getCategoryName()}"/></option>
                                    <option value="medicament"><fmt:message key="medicine.category.medicament"/></option>
                                    <option value="beauty_and_care"><fmt:message key="medicine.category.beauty_and_care"/></option>
                                    <option value="hygiene"><fmt:message key="medicine.category.hygiene"/></option>
@@ -55,7 +57,7 @@
                                   <label class = "medicine-card-label"><fmt:message key="card.medicine.add.file"/></label>
                                  </div>
                                  <div class="medicine-card-input">
-                                   <input class = "medicine-card-input" type="file" name="medicine-image" value="${changingMedicine.path}>
+                                   <input class = "medicine-card-input" type="file" name="medicine-image" value="${changingMedicine.path}">
                                  </div>
                                  </div>
 
@@ -64,7 +66,7 @@
                                 <label class = "medicine-card-label"><fmt:message key="cart.medicine.dosage"/></label>
                                 </div>
                                 <div class="medicine-card-input">
-                                <input class = "medicine-card-input" type="text" name="medicine-dosage" value="${changingMedicine.dosage}>
+                                <input class = "medicine-card-input" type="text" name="medicine-dosage" value="${changingMedicine.dosage}">
                                 </div>
                                 <div class="medicine-card-measure">
                                 <p><fmt:message key="catalog.dosage.mg"/></p>
@@ -78,21 +80,22 @@
                                  </div>
 
                                  <div class="medicine-card-input">
-                                 <select name="medicine-prescription-availability" value="${changingMedicine.withRecipe}>
+                                 <select name="medicine-prescription-availability">
+                                 <option hidden value="default">${changingMedicine.getWithRecipeStatus()}</option>
                                  <option value="yes"><fmt:message key="medicine.prescription.availability.yes"/></option>
                                  <option value="no"><fmt:message key="medicine.prescription.availability.no"/></option>
                                  </select>
                                  </div>
                                  </div>
 
-                                  <div class="character-medicine-block">
 
+                                  <div class="character-medicine-block">
                                   <div class="medicine-card-label">
                                    <label class = "medicine-card-label"><fmt:message key="card.medicine.form"/></label>
                                    </div>
-
                                    <div class="medicine-card-input">
-                                   <select name="medicine-form" value="${changingMedicine.form}>
+                                   <select name="medicine-form">
+                                      <option hidden value="${changingMedicine.form}">${changingMedicine.form}</option>
                                    <option value="tablet"><fmt:message key="medicine.form.tablet"/></option>
                                     <option value="liquid"><fmt:message key="medicine.form.liquid"/></option>
                                     <option value="salve"><fmt:message key="medicine.form.salve"/></option>
@@ -105,7 +108,7 @@
                                    <label class = "medicine-card-label"><fmt:message key="card.medicine.number"/></label>
                                    </div>
                                    <div class="medicine-card-input">
-                                   <input class = "medicine-card-input" type="text" name="medicine-number" value="${changingMedicine.amount}>
+                                   <input class = "medicine-card-input" type="text" name="medicine-number" value="${changingMedicine.amount}">
                                    </div>
                                    </div>
 
@@ -114,7 +117,7 @@
                                     <label class = "medicine-card-label"><fmt:message key="card.medicine.packageAmount"/></label>
                                      </div>
                                      <div class="medicine-card-input">
-                                      <input class = "medicine-card-input" type="text" name="medicine-package-amount" value="${changingMedicine.packageAmount}>
+                                      <input class = "medicine-card-input" type="text" name="medicine-package-amount" value="${changingMedicine.packageAmount}">
                                       </div>
                                       </div>
 
@@ -123,7 +126,7 @@
                                     <label class = "medicine-card-label"><fmt:message key="card.medicine.price"/></label>
                                     </div>
                                     <div class="medicine-card-input">
-                                    <input class = "medicine-card-input" type="text" name="medicine-price" value="${changingMedicine.price}>
+                                    <input class = "medicine-card-input" type="text" name="medicine-price" value="${changingMedicine.price}">
                                     </div>
                                     <div class="medicine-card-measure">
                                     <p><fmt:message key="catalog.price.rub"/></p>
@@ -131,7 +134,7 @@
                                   </div>
 
 
-                               <input class = "text" type="submit" value="<fmt:message key="card.medicine.save"/>">
+                               <input class = "text" type="submit" value="<fmt:message key="card.medicine.save.changes"/>">
                            </form>
                              <div class = "error-message" style = "color:red"; >
                                ${errorMessage}

@@ -2165,6 +2165,52 @@ color:#113f67;
               .change-medicine-button:hover {
                 background-color: #45a049;
               }
+
+
+ .medicine-changing {
+ width:100%;
+height:100vh;
+  background-color: #e7eaf6;
+padding-top:170px;
+padding-bottom:20px;
+     background-size:cover;
+
+  }
+
+  .medicine-changing-wrapper{
+      width: 500px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+        border: 1px solid #ccc;
+        text-align:center;
+
+
+  }
+              .medicine-changing-congratulations{
+
+                  font-family: 'Rubik';
+                  font-style: normal;
+                  font-size: 70px;
+                  line-height: 1.2;
+                  font-weight: 300;
+                  color: green;
+                  text-align:center;
+                   margin:auto 0;
+              }
+
+              .medicine-adding-congratulations{
+                 font-family: 'Rubik';
+                                font-style: normal;
+                                font-size: 70px;
+                                line-height: 1.2;
+                                font-weight: 300;
+                                color: green;
+                                text-align:center;
+                                 margin:auto 0;
+              }
 /*Medicine storage end*/
 
 

@@ -7,6 +7,7 @@ public class Medicine implements Identifable, Serializable {
     public static final long serialVersionUID = 8949699114079568267L;
 
     public final static String TABLE = "medicine";
+    public final static String MEDICINE_ID = "id";
     public final static String NAME = "name";
     public final static String DOSAGE = "dosage";
     public final static String WITH_RECIPE = "with_recipe";
@@ -42,6 +43,19 @@ public class Medicine implements Identifable, Serializable {
         this.path = path;
         this.categoryId = categoryId;
     }
+
+    public Medicine(Long id, String name, Integer dosage, boolean withRecipe, String form, Integer amount, Integer packageAmount, Double price, String path) {
+        this.id = id;
+        this.name = name;
+        this.dosage = dosage;
+        this.withRecipe = withRecipe;
+        this.form = form;
+        this.amount = amount;
+        this.packageAmount = packageAmount;
+        this.price = price;
+        this.path = path;
+    }
+
     public Medicine(String name, Integer dosage, boolean withRecipe, String form, Integer amount, Integer packageAmount, Double price, String path,Long categoryId) {
         this.name = name;
         this.dosage = dosage;
@@ -144,6 +158,10 @@ public class Medicine implements Identifable, Serializable {
     }
 
     public String getPath() {
+        return path;
+    }
+
+    public String getFullPath() {
         return "static/img/storage/"+path;
     }
 
