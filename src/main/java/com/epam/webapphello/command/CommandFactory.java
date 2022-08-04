@@ -57,6 +57,10 @@ public class CommandFactory {
                 return new ChangeMedicineCommand(new MedicineServiceImpl(new DaoHelperFactory()));
             case "saveMedicineChanges":
                 return new SaveMedicineChangesCommand(new MedicineServiceImpl(new DaoHelperFactory()));
+            case "allOrders":
+                return new ShowAllOrdersPageCommand(new OrderInfoServiceImpl(new DaoHelperFactory()));
+            case "performOrderDetails":
+                return new OrderDetailsCommand(new OrderInfoServiceImpl(new DaoHelperFactory()),new PositionInfoServiceImpl(new DaoHelperFactory()));
             default:
             throw new IllegalArgumentException("Unknown command" + command);
         }

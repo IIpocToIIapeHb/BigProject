@@ -165,6 +165,10 @@ public class PositionInfo implements Identifable, Serializable {
         return medicinePath;
     }
 
+    public String getFullMedicinePath() {
+        return "static/img/storage/"+medicinePath;
+    }
+
     public void setMedicinePath(String medicinePath) {
         this.medicinePath = medicinePath;
     }

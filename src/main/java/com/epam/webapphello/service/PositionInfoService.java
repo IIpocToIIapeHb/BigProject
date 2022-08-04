@@ -15,4 +15,6 @@ public interface PositionInfoService {
     public BigDecimal calcTotalPrice();
 
     boolean pay(List<PositionInfo> positions, User user,  BigDecimal totalPrice) throws ServiceException,ServiceErrorException;
+
+    List<PositionInfo> getPositions(Long id) throws ServiceException;
 }

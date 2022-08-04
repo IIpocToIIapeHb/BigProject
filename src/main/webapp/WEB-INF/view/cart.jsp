@@ -20,7 +20,7 @@
          <section class="intro-cart">
 
               <div class="position-captain">
-                <div class="position-captain-name"><fmt:message key="cart.medicine_name"/></div>
+                <div class="position-captain-name">Name</div>
                 <div class="position-captain-item">Price</div>
                 <div class="position-captain-item">Number</div>
                 <div class="position-captain-item">Recipe</div>
@@ -37,7 +37,7 @@
                             <div class= "position-card">
 
                                 <div class= "position-card-pic">
-                                      <img src="${position.getMedicinePath()}" alt="" class = "position-card-thumb">
+                                      <img src="${position.getFullMedicinePath()}" alt="" class = "position-card-thumb">
                                 </div>
 
                                 <div class= "position-medicine-name-wrapper">

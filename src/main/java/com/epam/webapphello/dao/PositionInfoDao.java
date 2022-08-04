@@ -8,5 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PositionInfoDao extends Dao<PositionInfo>{
-    public List<PositionInfo> getPositionsByUserIdAndOrderStatus(final Long userId,final String orderStatus) throws DAOException;
+     List<PositionInfo> getPositionsByUserIdAndOrderStatus(final Long userId,final String orderStatus) throws DAOException;
+
+    List<PositionInfo> getPositionsByOrderId(final Long orderId) throws DAOException;
 }

@@ -94,6 +94,20 @@ public class PositionInfoServiceImpl implements PositionInfoService {
         return true;
     }
 
+    @Override
+    public List<PositionInfo> getPositions(Long orderId) throws ServiceException {
+        positions = null;
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            PositionInfoDao PositionDao = helper.createPositionInfoDao();
+            positions = PositionDao.getPositionsByOrderId(orderId);
+
+
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        }
+        return positions;
+    }
+
     private void validation(DaoHelper helper,User user, BigDecimal totalPrice,List<PositionInfo> positions) throws ServiceErrorException, DAOException {
         MedicineDao medicineDao = helper.createMedicineDao();
         for (PositionInfo position : positions) {

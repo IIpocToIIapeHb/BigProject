@@ -1092,8 +1092,41 @@ align-items:center;
          max-width: 1400px;
      }
 
+     .position-captain{
+       margin-bottom:10px;
+               display: flex;
+               flex-wrap: wrap;
+               text-align:center;
+                margin:auto 0;
+                vertical-align: middle;
+     }
 
 
+
+
+
+.position-captain-name{
+font-family: 'Rubik';
+                 font-style: normal;
+                 font-size: 20px;
+                 font-weight: 500;
+                 color: #7eb2e6;
+                 text-align:center;
+                 width:350px;
+                 margin:auto 0;
+}
+
+
+.position-captain-item{
+font-family: 'Rubik';
+                 font-style: normal;
+                 font-size: 20px;
+                 font-weight: 500;
+                 color: #7eb2e6;
+                 text-align:center;
+                 width:100px;
+                  margin:auto 0;
+}
 
 
 
@@ -2212,6 +2245,406 @@ padding-bottom:20px;
                                  margin:auto 0;
               }
 /*Medicine storage end*/
+
+/*All orders start*/
+ .all-orders-items{
+           padding-top: 180px;
+           padding-left:20px;
+           padding-right:20px;
+           max-width: 1400px;
+           background-color: #e7eaf6;
+            background-size:cover;
+
+            padding-bottom:40px;
+  }
+
+       .all-orders-captain{
+          margin-bottom:10px;
+          display: flex;
+          flex-wrap: wrap;
+       }
+
+       .all-orders-id-captain{
+                font-family: 'Rubik';
+                font-style: normal;
+                font-size: 20px;
+                font-weight: 500;
+                color: #034f84;
+                 text-align:center;
+                 width:100px;
+                 margin:auto 0;
+       }
+
+             .all-orders-surname-captain{
+                    font-family: 'Rubik';
+                                    font-style: normal;
+                                    font-size: 20px;
+                                    font-weight: 500;
+                                    color: #034f84;
+                                     text-align:center;
+                        width:150px;
+                        margin:auto 0;
+             }
+
+             .all-orders-name-captain{
+                 font-family: 'Rubik';
+                 font-style: normal;
+                 font-size: 20px;
+                 font-weight: 500;
+                 color: #034f84;
+                 text-align:center;
+                 width:150px;
+                 margin:auto 0;
+       }
+       .all-orders-birth-captain{
+        font-family: 'Rubik';
+        font-style: normal;
+        font-size: 20px;
+        font-weight: 500;
+        color: #034f84;
+        text-align:center;
+        width:150px;
+        margin:auto 0;
+             }
+
+             .all-orders-date-captain{
+                     font-family: 'Rubik';
+                     font-style: normal;
+                     font-size: 20px;
+                     font-weight: 500;
+                     color: #034f84;
+                     text-align:center;
+                     width:150px;
+                     margin:auto 0;
+                          }
+
+
+
+     .all-orders-cards{
+     max-width: 900px;
+     width:100%;
+     margin-bottom:30px;
+     }
+
+     .all-orders-card{
+     height:40px;
+     align-items:center;
+     border: 1px solid #ccc;
+      display: flex;
+      flex-wrap: wrap;
+
+     }
+
+
+
+  .all-orders-number-wrapper{
+      text-align:center;
+      width:100px;
+     }
+
+     .all-orders-item{
+         font-family: 'Rubik';
+         font-style: normal;
+         font-size: 20px;
+         line-height: 1.2;
+         font-weight: 300;
+         color: black;
+         text-align:center;
+     }
+
+.all-orders-number-wrapper{
+font-family: 'Rubik';
+              font-style: normal;
+              font-size: 20px;
+              line-height: 1.2;
+              font-weight: 500;
+              color: black;
+              text-align:center;
+}
+        .all-orders-item-number{
+              font-family: 'Rubik';
+              font-style: normal;
+              font-size: 20px;
+              line-height: 1.2;
+              font-weight: 800;
+              color: black;
+              text-align:center;
+          }
+
+
+     .all-orders-surname-wrapper{
+                     text-align:center;
+                     width:150px;
+                    }
+       .all-orders-name-wrapper{
+                          text-align:center;
+                          width:150px;
+                         }
+
+      .all-orders-birth-wrapper{
+                text-align:center;
+                width:150px;
+               }
+       .all-orders-date-wrapper{
+                 text-align:center;
+                 width:150px;
+                }
+
+                .all-orders-performed-wrapper{
+                  text-align:center;
+                   width:150px;
+                }
+
+                .all-orders-performed-item{
+                  font-family: 'Rubik';
+                              font-style: normal;
+                              font-size: 20px;
+                              line-height: 1.2;
+                              font-weight: 500;
+                              color: green;
+                              text-align:center;
+                }
+
+                     .details-order-button{
+                                 height: 28px;
+                                 width: 140px;
+                                 background-color: #7eb2e6;
+                                 color: white;
+                                 border: none;
+                                 border-radius: 10px;
+                                 cursor: pointer;
+                                 text-align:center;
+
+                                 }
+
+
+
+                              .details-order-button:hover {
+                                background-color: #45a049;
+                              }
+
+
+/*All orders end*/
+
+/*Order details start*/
+.order-details-main{
+padding-top: 160px;
+           padding-left:20px;
+           padding-right:20px;
+           max-width: 1400px;
+}
+.order-details-info{
+margin-bottom:30px;
+}
+
+
+.order-details-info-number-block{
+margin-bottom:5px;
+display:flex;
+vertical-align: middle;
+}
+.order-details-info-number-label{
+margin-right:10px;
+}
+.order-details-info-number-text{
+ font-family: 'Rubik';
+                              font-style: normal;
+                              font-size: 20px;
+                              line-height: 1.2;
+                              font-weight: 500;
+                              color: #7eb2e6;
+                              text-align:center;
+}
+.order-details-info-number{
+font-style: normal;
+                              font-size: 25px;
+                              line-height: 1.2;
+                              font-weight: 800;
+                              color: black;
+                              text-align:center;
+}
+
+.order-details-info-surname-block{
+margin-bottom:5px;
+display:flex;
+
+}
+.order-details-info-surname-label{
+margin-right:10px;
+}
+.order-details-info-surname-text{
+ font-family: 'Rubik';
+                              font-style: normal;
+                              font-size: 20px;
+                              line-height: 1.2;
+                              font-weight: 500;
+                              color: #7eb2e6;
+                              text-align:center;
+}
+.order-details-info-surname{
+font-style: normal;
+                              font-size: 25px;
+                              line-height: 1.2;
+                              font-weight: 800;
+                              color: black;
+                              text-align:center;
+}
+
+.order-details-info-name-block{
+margin-bottom:5px;
+display:flex;
+
+}
+.order-details-info-name-label{
+margin-right:10px;
+}
+.order-details-info-name-text{
+ font-family: 'Rubik';
+                              font-style: normal;
+                              font-size: 20px;
+                              line-height: 1.2;
+                              font-weight: 500;
+                              color: #7eb2e6;
+                              text-align:center;
+}
+.order-details-info-name{
+font-style: normal;
+                              font-size: 25px;
+                              line-height: 1.2;
+                              font-weight: 800;
+                              color: black;
+                              text-align:center;
+}
+
+.order-details-info-birth-block{
+margin-bottom:5px;
+display:flex;
+
+}
+.order-details-info-birth-label{
+margin-right:10px;
+}
+.order-details-info-birth-text{
+ font-family: 'Rubik';
+                              font-style: normal;
+                              font-size: 20px;
+                              line-height: 1.2;
+                              font-weight: 500;
+                              color: #7eb2e6;
+                              text-align:center;
+}
+.order-details-info-birth{
+font-style: normal;
+                              font-size: 20px;
+                              line-height: 1.2;
+                              font-weight: 500;
+                              color: black;
+                              text-align:center;
+}
+
+.order-details-info-address-block{
+margin-bottom:5px;
+display:flex;
+
+}
+.order-details-info-address-label{
+margin-right:10px;
+}
+.order-details-info-address-text{
+ font-family: 'Rubik';
+                              font-style: normal;
+                              font-size: 20px;
+                              line-height: 1.2;
+                              font-weight: 500;
+                              color: #7eb2e6;
+                              text-align:center;
+}
+.order-details-info-address{
+font-style: normal;
+                              font-size: 20px;
+                              line-height: 1.2;
+                              font-weight: 500;
+                              color: black;
+                              text-align:center;
+}
+
+.order-details-info-creation-date-block{
+margin-bottom:5px;
+display:flex;
+
+}
+.order-details-info-creation-date-label{
+margin-right:10px;
+}
+.order-details-info-creation-date-text{
+ font-family: 'Rubik';
+                              font-style: normal;
+                              font-size: 20px;
+                              line-height: 1.2;
+                              font-weight: 500;
+                              color: #7eb2e6;
+                              text-align:center;
+}
+.order-details-info-creation-date{
+font-style: normal;
+                              font-size: 20px;
+                              line-height: 1.2;
+                              font-weight: 500;
+                              color: black;
+                              text-align:center;
+}
+
+.intro-order-details{
+max-width:1000px;
+}
+ .perform-order-button-wrapper{
+           text-align: center;
+           margin-top: 50px;
+           margin-bottom: 50px;
+      }
+
+       .perform-order-button{
+           display: inline-block;
+           width: 500px;
+           height: 80px;
+           line-height: 50px;
+           font-size: 50px;
+           text-align: center;
+           text-decoration: none;
+           outline: none;
+           border: none;
+           border-radius: 100px;
+           background:#4CAF50;
+           box-shadow: rgba(0,0,0,.8) 0 2px 5px -1px;
+           color: white;
+           user-select: none;
+         }
+
+        .perform-order-button:hover {
+          opacity: 0.7;
+           cursor: pointer;
+
+         }
+
+        .perform-order-button:active {
+           padding-bottom: 1px;
+           box-shadow:
+            inset rgba(0,0,0,1) 0 1px 3px,
+            inset rgba(0,0,0,.6) 0 -2px 5px,
+            inset rgba(252,255,255,.7) 0 2px 5px,
+            0 1px rgba(255,255,255,.08);
+
+         }
+
+          hr {
+             border: none; /* Убираем границу */
+             background-color: #034f84; /* Цвет линии */
+             color: #034f84; /* Цвет линии для IE6-7 */
+             height: 2px; /* Толщина линии */
+             margin-bottom:5px;
+             margin-top:20px;
+            }
+/*Order details end*/
 
 
   /*Media start*/
