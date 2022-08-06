@@ -61,7 +61,11 @@ public class CommandFactory {
                 return new ShowAllOrdersPageCommand(new OrderInfoServiceImpl(new DaoHelperFactory()));
             case "performOrderDetails":
                 return new OrderDetailsCommand(new OrderInfoServiceImpl(new DaoHelperFactory()),new PositionInfoServiceImpl(new DaoHelperFactory()));
-            default:
+            case "performOrder":
+                return new PerformOrderCommand(new OrderServiceImpl(new DaoHelperFactory()));
+            case "orderIsPerformedPage":
+                return new ShowPageCommand("/WEB-INF/view/orderIsPerformed.jsp");
+                default:
             throw new IllegalArgumentException("Unknown command" + command);
         }
 

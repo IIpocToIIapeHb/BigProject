@@ -8,4 +8,6 @@ import java.util.Optional;
 
 public interface OrderDao extends Dao<Order>{
     public Optional<Order> findOrderByStatusAndUser(final String status, final Long user_id) throws DAOException;
+
+    boolean changeOrderDeliveryStatus(String newDeliveryStatus, long OrderId) throws DAOException;
 }

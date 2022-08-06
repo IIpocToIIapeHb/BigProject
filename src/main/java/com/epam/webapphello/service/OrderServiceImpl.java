@@ -65,6 +65,16 @@ public class OrderServiceImpl implements OrderService {
         }
     }
 
+    @Override
+    public void performOrder(long orderId) throws ServiceException {
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            OrderDao orderDao = helper.createOrderDao();
+            orderDao.changeOrderDeliveryStatus("performed", orderId);
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        }
+    }
+
     private void createRecipeIfAbsent(DaoHelper helper,Long userId, boolean isPrescriptionRequired, Long medicineId) throws DAOException {
 
         PrescriptionDao recipeDao = helper.createPrescriptionDao();
