@@ -1,5 +1,6 @@
 package com.epam.webapphello.dao;
 
+import com.epam.webapphello.entity.Medicine;
 import com.epam.webapphello.entity.User;
 import com.epam.webapphello.exception.DAOException;
 import com.epam.webapphello.mapper.RowMapper;
@@ -20,6 +21,7 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
     private static final String SAVE_USER =
             "INSERT into user (id, name, surname, login, password, role, amount, is_blocked) \n" +
                     "VALUES (?,?,?,?,?,?,?,?);";
+    private static final String FIND_BY_SURNAME = "select * from user where surname = ? and role <> 'admin'; ";
 
     public UserDaoImpl(Connection connection) {
         super(connection, new UserRowMapper());
@@ -30,6 +32,12 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
         return executeForSingleResult(FIND_BY_LOGIN_AND_PASSWORD,
                 login,
                 password);
+    }
+
+    @Override
+    public List<User> findUserBySurname(String searchingUser) throws DAOException {
+        List<User> foundUsers = executeQuery(FIND_BY_SURNAME,searchingUser);
+        return foundUsers;
     }
 //
 //    @Override

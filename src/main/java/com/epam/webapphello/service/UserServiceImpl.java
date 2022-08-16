@@ -2,12 +2,15 @@ package com.epam.webapphello.service;
 
 import com.epam.webapphello.dao.DaoHelper;
 import com.epam.webapphello.dao.DaoHelperFactory;
+import com.epam.webapphello.dao.MedicineDao;
 import com.epam.webapphello.dao.UserDao;
+import com.epam.webapphello.entity.Medicine;
 import com.epam.webapphello.entity.User;
 import com.epam.webapphello.exception.DAOException;
 import com.epam.webapphello.exception.ServiceException;
 
 
+import java.util.List;
 import java.util.Optional;
 
 public class UserServiceImpl implements UserService {
@@ -28,6 +31,19 @@ public class UserServiceImpl implements UserService {
             throw new ServiceException(e);
         }
         return user;
+    }
+
+    @Override
+    public List<User> findUserBySurname(String searchingUser) throws ServiceException {
+        List<User> foundUsers = null;
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            UserDao userDao = helper.createUserDao();
+            foundUsers = userDao.findUserBySurname(searchingUser);
+
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        }
+        return foundUsers;
     }
 
 

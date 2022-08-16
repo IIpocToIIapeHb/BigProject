@@ -127,7 +127,12 @@
                                                          </form>
                                                         </li>
 
-                                                  </c:if>
+                          </c:if>
+                          <c:if  test="${user.getRole().equals('admin')}">
+                           <li class="header-bottom-item">
+                            <a href="controller?command=showAdminUsersPage"><fmt:message key="header.admin.users.control"/>
+                            </li>
+                          </c:if>
                     </ul>
                 </nav>
 
