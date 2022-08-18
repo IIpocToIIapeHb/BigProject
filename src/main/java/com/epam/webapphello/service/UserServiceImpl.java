@@ -46,5 +46,24 @@ public class UserServiceImpl implements UserService {
         return foundUsers;
     }
 
+    @Override
+    public List<User> changeLockStatus(long userId) throws ServiceException {
+        List<User> foundUsers = null;
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            UserDao userDao = helper.createUserDao();
+            User user = userDao.getById(userId);
+            if (user.isBlocked()){
+                user.setBlocked(false);
+            } else {
+                user.setBlocked(true);
+            }
+            userDao.save(user);
+            foundUsers = userDao.findUserBySurname(user.getSurname());
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        }
+        return foundUsers;
+    }
+
 
 }

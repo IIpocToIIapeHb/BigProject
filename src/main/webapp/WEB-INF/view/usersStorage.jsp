@@ -51,7 +51,7 @@
 
                  <c:forEach var="user" items="${usersStorage}">
 
-                    <div class="storage-medicine-card">
+                    <div class="storage-user-card">
 
                         <div class= "storage-user-surname-wrapper">
                           <span class="storage-user-surname">${user.surname}</span>
@@ -83,9 +83,14 @@
 
 
                             <div class="storage-medicine-button-wrapper">
-                              <form method = "post" action = "controller?command=changeMedicine">
-                                 <input  type="hidden" name="medicine-id" value="${user.id}">
-                                 <button class="change-medicine-button" type="submit" > <fmt:message key="medicine.storage.change.button" /> </button>
+                              <form method = "post" action = "controller?command=changeLockStatus">
+                                 <input  type="hidden" name="user-id" value="${user.id}">
+                                 <c:if  test="${!user.isBlocked()}">
+                                 <button class="change-user-block-button" type="submit" > <fmt:message key="user.storage.to.block" /> </button>
+                                 </c:if>
+                                 <c:if  test="${user.isBlocked()}">
+                                  <button class="change-user-block-button" type="submit" > <fmt:message key="user.storage.to.unblock" /> </button>
+                                  </c:if>
                              </form>
                             </div>
 

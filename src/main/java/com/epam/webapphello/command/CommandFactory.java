@@ -69,6 +69,8 @@ public class CommandFactory {
                 return new ShowPageCommand("/WEB-INF/view/usersStorage.jsp");
             case "searchUser":
                 return new SearchUserCommand(new UserServiceImpl(new DaoHelperFactory()));
+            case "changeLockStatus":
+                return new ChangeLockUserStatus(new UserServiceImpl(new DaoHelperFactory()));
                 default:
             throw new IllegalArgumentException("Unknown command" + command);
         }

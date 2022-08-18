@@ -69,6 +69,11 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
         Map<String, Object> fields = new LinkedHashMap<>();
         fields.put(User.ROLE, item.getRole());
         fields.put(User.AMOUNT, item.getAmount());
+        fields.put(User.SURNAME, item.getSurname());
+        fields.put(User.NAME, item.getName());
+        fields.put(User.NAME, item.getName());
+        fields.put(User.BIRTH, item.getBirth());
+        fields.put(User.IS_BLOCKED, item.isBlocked());
         return fields;
     }
 
