@@ -26,11 +26,18 @@ public class OrderPayCommand implements Command {
     @Override
     public CommandResult execute(HttpServletRequest req, HttpServletResponse resp) throws ServiceException {
         List<PositionInfo> positions = (List<PositionInfo>) req.getSession().getAttribute("positions");
+
         User user = (User)req.getSession().getAttribute("user");
         Order order = (Order)req.getSession().getAttribute("order");
         BigDecimal totalPrice = (BigDecimal) req.getSession().getAttribute("totalPrice");
 
         CommandResult result;
+
+        if (positions.isEmpty()){
+            req.setAttribute("errorPayMessage","The cart is empty!");
+            result = CommandResult.forward("/WEB-INF/view/cart.jsp");
+            return result;
+        }
         try {
             positionInfoService.pay(positions, user,  totalPrice);
         } catch (ServiceErrorException e) {

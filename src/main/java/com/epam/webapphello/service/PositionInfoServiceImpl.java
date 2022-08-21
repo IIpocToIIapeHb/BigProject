@@ -114,7 +114,7 @@ public class PositionInfoServiceImpl implements PositionInfoService {
             if (position.getMedicineWithRecipe() == 1 && position.getRequiredAmount()> position.getRecipeAmount() && position.getRecipeAmount()!=0) {
                 throw new ServiceErrorException("You exceed limits. Please check your order");
             }
-            if (position.getMedicineWithRecipe() == 1 && !position.getRecipeStatus().equals("approved")) {
+            if (position.getMedicineWithRecipe() == 1 && (position.getRecipeStatus()==null || !position.getRecipeStatus().equals("approved"))) {
                 throw new ServiceErrorException("There are not approved medicines. Please check your order");
             }
             Medicine medicine=  medicineDao.getByMedicineId(position.getMedicineId());

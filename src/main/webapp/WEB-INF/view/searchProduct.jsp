@@ -3,6 +3,7 @@
 <%@ taglib  uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
@@ -11,19 +12,15 @@
     <link rel="stylesheet" href="static/styles/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
+
 <body>
-
-
     <jsp:include page="fragments/header.jsp"/>
-
-
     <fmt:setBundle basename="pagecontent"/>
 
      <main class="catalog-items">
-     <section class="intro-catalog">
-     <div class= "cards">
-
-                        <c:forEach var="medicine" items="${foundProduct}">
+        <section class="intro-catalog">
+            <div class= "cards">
+                 <c:forEach var="medicine" items="${foundProduct}">
 
                         <div class= "card">
 
@@ -41,14 +38,14 @@
                               <span class= "medicine-dosage"><fmt:message key="catalog.dosage.mg"/></span>
                               <span class= "medicine-dosage">,</span>
                               <c:if  test="${medicine.getPackageAmount()>1}">
-                              <span class= "medicine-dosage"><c:out value="${medicine.getPackageAmount()}"/></span>
-                              <span class= "medicine-dosage"><fmt:message key="catalog.number.n"/></span>
+                                  <span class= "medicine-dosage"><c:out value="${medicine.getPackageAmount()}"/></span>
+                                  <span class= "medicine-dosage"><fmt:message key="catalog.number.n"/></span>
                               </c:if>
                               <span class= "medicine-dosage">)</span>
                             </div>
 
                             <div class= "medicine-price-wrapper">
-                              <span class= "medicine-price"><c:out value="${medicine.getPrice()}"/>  rub</span>
+                              <span class= "medicine-price"><c:out value="${medicine.getPrice()}"/><fmt:message key="catalog.price.rub"/></span>
                             </div>
 
                              <div class= "form-wrapper">
@@ -66,14 +63,16 @@
 
                         </div>
 
-                    </c:forEach>
-     </div>
-    </section>
-     <div class = "error-message" style = "color:red"; >
-      ${errorSearchProductMessage}
-     </div>
-     </main>
+                 </c:forEach>
+            </div>
+        </section>
 
+        <div class = "error-message-search-product">
+        ${errorSearchProductMessage}
+        </div>
+
+     </main>
+     <jsp:include page="fragments/footer.jsp"/>
      <script src="static/js/main.js"></script>
 </body>
 </html>

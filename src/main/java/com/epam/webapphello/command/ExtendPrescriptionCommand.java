@@ -23,9 +23,9 @@ public class ExtendPrescriptionCommand implements Command {
         String prescriptionTerm = req.getParameter("prescription-term");
 
         CommandResult result=null;
-
-        if (!prescriptionTerm.isEmpty() && prescriptionTerm.matches("[1-60]")) {
-            prescriptionService.extendPrescription(Long.parseLong(prescriptionId), Integer.parseInt(prescriptionTerm));
+        int periodInDays = Integer.parseInt(prescriptionTerm);
+        if (!prescriptionTerm.isEmpty() && periodInDays<=90) {
+            prescriptionService.extendPrescription(Long.parseLong(prescriptionId),periodInDays);
             result = CommandResult.redirect("controller?command=extensionRequestsPage");
         } else {
             PrescriptionInfo.COUNTER=0;

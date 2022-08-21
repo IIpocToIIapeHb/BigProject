@@ -25,7 +25,7 @@
                     <nav class="header-top-nav">
                         <ul class="header-top-list">
                             <li class="header-top-item">
-                                <a href="#!" class="header-top-link">
+                                <a href="index.jsp" class="header-top-link">
                                     <img src="static/img/svg/user_icon.svg" alt="">
                                 </a>
                             </li>

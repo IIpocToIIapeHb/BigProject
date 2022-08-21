@@ -684,6 +684,7 @@ textarea {
       display: flex;
         flex-direction: row;
         align-items: center;
+
 }
 
 .header-bottom-item:last-child{
@@ -699,6 +700,9 @@ textarea {
     border:0;
     text-align:center;
      margin: 0 auto;
+      font-family: 'Lato';
+      font-style:normal;
+      font-weight: normal;
 }
 
 .header-bottom-link:hover, .header-bottom-link:focus,.header-bottom-link:active{
@@ -930,6 +934,7 @@ opacity: .55;
     background:white;
     background-size: cover;
     width: 100%;
+    padding-bottom:20px;
 
 }
 
@@ -1074,19 +1079,57 @@ align-items:center;
 
     background-color: #45a049;
   }
+  .error-message-search-product{
+
+      font-style: normal;
+      font-size: 50px;
+      line-height: 1.2;
+      font-weight: 500;
+      color: red;
+      height:70vh;
+  }
 
   /*Catalog end*/
 
     /*Pay page start*/
-    .pay-text{
-    margin-top:200px;
+
+
+   .pay-text{
+   width:100%;
+    height:100vh;
+    background-color: #e7eaf6;
+    padding-top:170px;
+    padding-bottom:20px;
+    background-size:cover;
+
+    font-family: 'Rubik';
+                          font-style: normal;
+                          font-size: 70px;
+                          line-height: 1.2;
+                          font-weight: 300;
+                          color: green;
+                          text-align:center;
+                           margin:auto 0;
     }
+
+
+                  .payed-order-congratulations{
+
+                      font-family: 'Rubik';
+                      font-style: normal;
+                      font-size: 70px;
+                      line-height: 1.2;
+                      font-weight: 300;
+                      color: green;
+                      text-align:center;
+                       margin:auto 0;
+                  }
      /*Pay page end*/
 
 
    /*Cart start*/
     .cart-items{
-         padding-top: 250px;
+         padding-top: 200px;
          padding-left:20px;
          padding-right:20px;
          max-width: 1400px;
@@ -1125,6 +1168,16 @@ font-family: 'Rubik';
                  color: #7eb2e6;
                  text-align:center;
                  width:100px;
+                  margin:auto 0;
+}
+.position-captain-item-2{
+font-family: 'Rubik';
+                 font-style: normal;
+                 font-size: 20px;
+                 font-weight: 500;
+                 color: #7eb2e6;
+                 text-align:center;
+                 width:130px;
                   margin:auto 0;
 }
 
@@ -1256,7 +1309,7 @@ font-family: 'Rubik';
 
       .position-recipe-status-wrapper{
        text-align:center;
-       width:100px;
+       width:130px;
       }
 
 
@@ -1272,7 +1325,7 @@ font-family: 'Rubik';
 
       .position-recipe-activity-wrapper{
        text-align:center;
-                width:100px;
+                width:130px;
       }
 
 
@@ -1386,7 +1439,20 @@ font-family: 'Rubik';
 
          }
 
+          .error-message-cart{
+
+               font-style: normal;
+               font-size: 30px;
+               line-height: 1.2;
+               font-weight: 500;
+               color: red;
+
+           }
+
    /*Cart end*/
+
+   /*Payed page start*/
+   /*Payed page end*/
 
   /*Confirmation requests page start*/
   .confirmation-requests-items{
