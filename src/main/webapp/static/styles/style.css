@@ -1488,6 +1488,26 @@ font-family: 'Rubik';
                  width:150px;
       }
 
+      .confirmation-requests-numbers{
+                      font-family: 'Rubik';
+                      font-style: normal;
+                      font-size: 20px;
+                      font-weight: 500;
+                      color: black;
+                       text-align:center;
+                       width:30px;
+             }
+
+            .confirmation-requests-items{
+                       font-family: 'Rubik';
+                       font-style: normal;
+                       font-size: 20px;
+                       font-weight: 500;
+                       color: black;
+                       text-align:center;
+                       width:150px;
+            }
+
 
      .confirmation-requests-cards{
      max-width: 1400px;
@@ -1507,15 +1527,7 @@ font-family: 'Rubik';
       text-align:center;
       width:30px;
      }
-     .confirmation-requests-item{
-         font-family: 'Rubik';
-         font-style: normal;
-         font-size: 20px;
-         line-height: 1.2;
-         font-weight: 300;
-         color: black;
-         text-align:center;
-     }
+
 
      .confirmation-requests-surname-wrapper{
            text-align:center;

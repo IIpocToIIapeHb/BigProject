@@ -3,6 +3,7 @@
 <%@taglib  uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
@@ -11,6 +12,7 @@
     <link rel="stylesheet" href="static/styles/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
+
 <body>
     <jsp:include page="fragments/header.jsp"/>
     <fmt:setBundle basename="pagecontent"/>
@@ -33,85 +35,70 @@
                      <c:forEach var="prescription" items="${prescriptionsInfo}">
 
                             <div class= "confirmation-requests-card">
-                             <div class= "confirmation-requests-number-wrapper">
-                             <span class= "confirmation-requests-number"><c:out value="${prescription.getCounterPlusOne()}" /></span>
-                              </div>
-                                <div class= "confirmation-requests-surname-wrapper">
-                                 <span class= "confirmation-requests-item"><c:out value="${prescription.getUserSurname()}" /></span>
-                                </div>
 
-                                <div class= "confirmation-requests-name-wrapper">
-                                  <span class= "confirmation-requests-item"><c:out value="${prescription.getUserName()}" /></span>
-                                </div>
-
-                                <div class= "confirmation-requests-birth-wrapper">
-                                  <span class= "confirmation-requests-item"><c:out value="${prescription.getUserBirth()}"/></span>
-                                </div>
-
-                                <div class= "confirmation-requests-medicine-wrapper">
-                                    <span class="confirmation-requests-item"><c:out value="${prescription.getMedicineName()}"/></span>
-                                </div>
-
-
-
-
-                                 <form method = "post" action = "controller?command=confirmPrescription">
-                                  <input  type="hidden" name="prescription-id" value="${prescription.getId()}">
-                            <div class= "confirmation-request-wrapper">
-
-                                 <div class= "confirmation-request">
-                                 <input class = "input-text-doctor" type="text" name="prescription-medicine-amount" placeholder= "<fmt:message key="confirmation.requests.amount"/>" >
-                                  </div>
-
-
-
-
-
-                                  <div  class= "confirmation-request">
-                                 <input class = "input-text-doctor" type="text" name="prescription-term" placeholder="<fmt:message key="confirmation.requests.prescription.period.days"/>">
+                                 <div class= "confirmation-requests-number-wrapper">
+                                    <span class= "confirmation-requests-numbers"><c:out value="${prescription.getCounterPlusOne()}" /></span>
                                  </div>
 
+                                 <div class= "confirmation-requests-surname-wrapper">
+                                    <span class= "confirmation-requests-items"><c:out value="${prescription.getUserSurname()}" /></span>
+                                 </div>
 
-                                  <button class="confirm-doctor-button" type="submit" > <fmt:message key="confirmation.requests.button.confirm" /> </button>
+                                 <div class= "confirmation-requests-name-wrapper">
+                                     <span class= "confirmation-requests-items"><c:out value="${prescription.getUserName()}" /></span>
+                                 </div>
 
+                                 <div class= "confirmation-requests-birth-wrapper">
+                                     <span class= "confirmation-requests-items"><c:out value="${prescription.getUserBirth()}"/></span>
+                                 </div>
 
-                              </div>
-                              </form>
+                                 <div class= "confirmation-requests-medicine-wrapper">
+                                     <span class="confirmation-requests-items"><c:out value="${prescription.getMedicineName()}"/></span>
+                                 </div>
 
-                                <form method = "post" action = "controller?command=refusePrescription">
-
- <input  type="hidden" name="prescription-id" value="${prescription.getId()}">
-                                  <div class="confirmation-request">
-                                  <button class="refuse-doctor-button" type="submit" > <fmt:message key="confirmation.requests.button.refuse" /> </button>
-                                </div>
-
+                                 <form method = "post" action = "controller?command=confirmPrescription">
+                                    <input  type="hidden" name="prescription-id" value="${prescription.getId()}">
+                                    <div class= "confirmation-request-wrapper">
+                                        <div class= "confirmation-request">
+                                            <input class = "input-text-doctor" type="text" name="prescription-medicine-amount" placeholder= "<fmt:message key="confirmation.requests.amount"/>" >
+                                        </div>
+                                        <div  class= "confirmation-request">
+                                            <input class = "input-text-doctor" type="text" name="prescription-term" placeholder="<fmt:message key="confirmation.requests.prescription.period.days"/>">
+                                        </div>
+                                        <button class="confirm-doctor-button" type="submit" > <fmt:message key="confirmation.requests.button.confirm" /> </button>
+                                    </div>
                                  </form>
 
-                                  <div class = "doctor-error-message">
-                                   ${doctorErrorMessage}
-                                  </div>
-                        <c:if  test="${doctorErrorMessage!=null}">
-                                                                       <div class = "error-message" style = "color:red"; >
-                                                                            ${doctorErrorMessage = null}
-                                                                       </div>
-                                                                    </c:if>
-                       <div class = "doctor-error-message">
-                       ${doctorErrorMessage}
-                       </div>
+                                 <form method = "post" action = "controller?command=refusePrescription">
+                                 <input  type="hidden" name="prescription-id" value="${prescription.getId()}">
+                                      <div class="confirmation-request">
+                                            <button class="refuse-doctor-button" type="submit" > <fmt:message key="confirmation.requests.button.refuse" /> </button>
+                                      </div>
+                                 </form>
 
+                                 <div class = "doctor-error-message">
+                                     ${doctorErrorMessage}
+                                 </div>
 
+                                 <c:if  test="${doctorErrorMessage!=null}">
+                                    <div class = "error-message" style = "color:red"; >
+                                        ${doctorErrorMessage = null}
+                                     </div>
+                                 </c:if>
 
+                                <div class = "doctor-error-message">
+                                     ${doctorErrorMessage}
+                                </div>
 
-
+                            </div>
 
                      </c:forEach>
-                     </div>
-
+              </div>
 
         </section>
 
     </main>
 
-         <script src="static/js/main.js"></script>
-    </body>
-    </html>
+<script src="static/js/main.js"></script>
+</body>
+</html>
