@@ -26,8 +26,8 @@ public class SearchProductInStorageCommand implements Command {
            // req.getSession().setAttribute("errorSearchProductMessage", "Product is not found");
             req.setAttribute("errorSearchProductMessage", "Product is not found");
         }
-
-        req.setAttribute("medicinesStorage", foundProduct);
+        req.getSession().setAttribute("medicinesStorage", foundProduct);
+        //req.setAttribute("medicinesStorage", foundProduct);
         CommandResult result = CommandResult.forward("/WEB-INF/view/medicineStorage.jsp");
         return result;
     }

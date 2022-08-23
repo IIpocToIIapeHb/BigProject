@@ -41,19 +41,19 @@
                                  </div>
 
                                  <div class= "confirmation-requests-surname-wrapper">
-                                    <span class= "confirmation-requests-items"><c:out value="${prescription.getUserSurname()}" /></span>
+                                    <span class= "confirmation-requests-item-info"><c:out value="${prescription.getUserSurname()}" /></span>
                                  </div>
 
                                  <div class= "confirmation-requests-name-wrapper">
-                                     <span class= "confirmation-requests-items"><c:out value="${prescription.getUserName()}" /></span>
+                                     <span class= "confirmation-requests-item-info"><c:out value="${prescription.getUserName()}" /></span>
                                  </div>
 
                                  <div class= "confirmation-requests-birth-wrapper">
-                                     <span class= "confirmation-requests-items"><c:out value="${prescription.getUserBirth()}"/></span>
+                                     <span class= "confirmation-requests-item-info"><c:out value="${prescription.getUserBirth()}"/></span>
                                  </div>
 
                                  <div class= "confirmation-requests-medicine-wrapper">
-                                     <span class="confirmation-requests-items"><c:out value="${prescription.getMedicineName()}"/></span>
+                                     <span class="confirmation-requests-item-info"><c:out value="${prescription.getMedicineName()}"/></span>
                                  </div>
 
                                  <form method = "post" action = "controller?command=confirmPrescription">

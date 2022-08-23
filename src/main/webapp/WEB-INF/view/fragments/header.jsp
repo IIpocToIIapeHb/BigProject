@@ -29,11 +29,13 @@
                                     <img src="static/img/svg/user_icon.svg" alt="">
                                 </a>
                             </li>
+                            <c:if  test="${user.getRole().equals('user')}">
                             <li class="header-top-item">
                                  <a  href="controller?command=showCart" >
                                  <img class = "header-top-link bag" src="static/img/icon-bag.png" alt="">
                                  </a>
                             </li>
+                            </c:if>
                         </ul>
                     </nav>
 
@@ -112,11 +114,11 @@
                          </c:if>
                           <c:if  test="${user.getRole().equals('chemist')}">
                                                      <li class="header-bottom-item">
-                                                      <a href="controller?command=showMedicineStoragePage"><fmt:message key="header.chemist.storage"/>
+                                                      <a  class="header-bottom-link" href="controller?command=showMedicineStoragePage"><fmt:message key="header.chemist.storage"/>
                                                       </li>
 
                                                         <li class="header-bottom-item">
-                                                             <a href="controller?command=addMedicinePage"><fmt:message key="header.chemist.addMedicine"/>
+                                                             <a  class="header-bottom-link" href="controller?command=addMedicinePage"><fmt:message key="header.chemist.addMedicine"/>
                                                                                  </a>
                                                         </li>
 

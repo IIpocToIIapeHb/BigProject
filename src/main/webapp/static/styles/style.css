@@ -1456,7 +1456,7 @@ font-family: 'Rubik';
 
   /*Confirmation requests page start*/
   .confirmation-requests-items{
-           padding-top: 250px;
+           padding-top: 200px;
            padding-left:20px;
            padding-right:20px;
            max-width: 1400px;
@@ -1498,7 +1498,7 @@ font-family: 'Rubik';
                        width:30px;
              }
 
-            .confirmation-requests-items{
+            .confirmation-requests-item-info{
                        font-family: 'Rubik';
                        font-style: normal;
                        font-size: 20px;
@@ -1624,7 +1624,7 @@ align-items: center;
 
 /*Extension requests page start*/
   .extension-requests-items{
-           padding-top: 250px;
+           padding-top: 200px;
            padding-left:20px;
            padding-right:20px;
            max-width: 1400px;
@@ -1639,7 +1639,7 @@ align-items: center;
           flex-wrap: wrap;
        }
 
-       .extension-requests-number{
+       .extension-requests-number-captain{
                 font-family: 'Rubik';
                 font-style: normal;
                 font-size: 20px;
@@ -1649,7 +1649,7 @@ align-items: center;
                  width:40px;
        }
 
-             .extension-requests-item{
+             .extension-requests-item-captain{
                         font-family: 'Rubik';
                         font-style: normal;
                         font-size: 20px;
@@ -1719,6 +1719,16 @@ align-items: center;
          color: black;
          text-align:center;
      }
+
+        .extension-requests-number{
+              font-family: 'Rubik';
+              font-style: normal;
+              font-size: 20px;
+              line-height: 1.2;
+              font-weight: 300;
+              color: black;
+              text-align:center;
+          }
 
      .extension-requests-surname-wrapper{
            text-align:center;
@@ -1820,7 +1830,7 @@ align-items: center;
 
 /*All prescriptions page start*/
   .all-prescriptions-items{
-           padding-top: 250px;
+           padding-top: 200px;
            padding-left:20px;
            padding-right:20px;
            max-width: 1400px;
@@ -2043,7 +2053,7 @@ color:#113f67;
                      font-weight: 500;
                      color: #7eb2e6;
                      text-align:center;
-                     width:120px;
+                     width:160px;
    margin:auto 0;
        }
           .storage-captain-dosage{
@@ -2086,7 +2096,7 @@ color:#113f67;
                         font-weight: 500;
                         color: #7eb2e6;
                         text-align:center;
-                        width:120px;
+                        width:100px;
                          margin:auto 0;
                       }
 
@@ -2097,7 +2107,7 @@ color:#113f67;
                                             font-weight: 500;
                                             color: #7eb2e6;
                                             text-align:center;
-                                            width:120px;
+                                            width:100px;
                                              margin:auto 0;
                                           }
 
@@ -2149,7 +2159,7 @@ color:#113f67;
 
                  .storage-medicine-category-wrapper{
                                    text-align:center;
-                                   width:120px;
+                                   width:160px;
                                   }
                                   .storage-medicine-category{
                                       font-family: 'Rubik';
@@ -2205,7 +2215,7 @@ color:#113f67;
 
                    .storage-medicine-package-amount-wrapper{
                                              text-align:center;
-                                             width:120px;
+                                             width:100px;
                                             }
                                             .storage-medicine-package-amount{
                                                 font-family: 'Rubik';
@@ -2217,23 +2227,12 @@ color:#113f67;
                                                 text-align:center;
                                             }
 
-                 .storage-medicine-amount-wrapper{
-                                                 text-align:center;
-                                                 width:120px;
-                                                }
-                                                .storage-medicine-amount{
-                                                    font-family: 'Rubik';
-                                                    font-style: normal;
-                                                    font-size: 20px;
-                                                    line-height: 1.2;
-                                                    font-weight: 300;
-                                                    color: black;
-                                                    text-align:center;
-                                                }
+
+
 
                   .storage-medicine-amount-wrapper{
                                                  text-align:center;
-                                                 width:120px;
+                                                 width:100px;
                                                 }
                                                 .storage-medicine-amount{
                                                     font-family: 'Rubik';
