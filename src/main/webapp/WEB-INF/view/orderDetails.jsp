@@ -90,12 +90,12 @@
 <section class="intro-order-details">
 
               <div class="position-captain">
-                <div class="position-captain-name">Name</div>
-                <div class="position-captain-item">Price</div>
-                <div class="position-captain-item">Number</div>
-                <div class="position-captain-item">Recipe</div>
-                <div class="position-captain-item">Recipe status</div>
-                <div class="position-captain-item">Total</div>
+                <div class="position-captain-name"><fmt:message key="order.details.product.name"/></div>
+                <div class="position-captain-item"><fmt:message key="order.details.product.price"/></div>
+                <div class="position-captain-item"><fmt:message key="order.details.product.number"/></div>
+                <div class="position-captain-item"><fmt:message key="order.details.product.prescription"/></div>
+                <div class="position-captain-item-prescription"><fmt:message key="order.details.product.prescription.status"/></div>
+                <div class="position-captain-item"><fmt:message key="order.details.product.total"/></div>
               </div>
 
               <div class= "position-cards">
@@ -152,9 +152,9 @@
                      </div>
 
                     <div class= "total-price">
-                     Total price:
-                     ${totalPrice}
-                      rub
+                      <fmt:message key="cart.total.price"/>
+                                      ${totalPrice}
+                      <fmt:message key="catalog.price.rub"/>
                     </div>
 
 
@@ -166,7 +166,7 @@
                              <form method = "post" action = "controller?command=performOrder">
                              <input class = "" type="hidden" name="order-id" value="${orderInfo.getId()}">
                              <button class="perform-order-button" type="submit" >
-                                 Perform
+                                 <fmt:message key="order.details.perform.order"/>
                              </button>
 
                              </form>
