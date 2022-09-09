@@ -19,9 +19,6 @@ public class MedicineServiceImpl implements MedicineService {
         this.daoHelperFactory = daoHelperFactory;
     }
 
-
-
-
     @Override
     public List<Medicine> getAll() throws ServiceException {
         List<Medicine> medicines = null;

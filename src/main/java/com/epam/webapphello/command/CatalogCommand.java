@@ -15,18 +15,18 @@ public class CatalogCommand implements Command {
 
     private final MedicineService medicineService;
 
+    private static final String CATALOG_PATH = "/WEB-INF/view/catalog.jsp";
+
     public CatalogCommand(MedicineService medicineService) {
         this.medicineService = medicineService;
     }
 
-
     @Override
     public CommandResult execute(HttpServletRequest req, HttpServletResponse resp) throws ServiceException {
-
         List<Medicine> medicines = null;
         medicines = medicineService.getAll();
         req.getSession().setAttribute("medicines", medicines);
-        CommandResult result = CommandResult.forward("/WEB-INF/view/catalog.jsp");
+        CommandResult result = CommandResult.forward(CATALOG_PATH);
         return result;
     }
 }

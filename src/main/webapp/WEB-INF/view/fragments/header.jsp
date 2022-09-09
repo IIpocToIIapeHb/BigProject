@@ -132,9 +132,10 @@
                           </c:if>
                           <c:if  test="${user.getRole().equals('admin')}">
                            <li class="header-bottom-item">
-                            <a href="controller?command=showAdminUsersPage"><fmt:message key="header.admin.users.control"/>
+                            <a class="header-bottom-link" href="controller?command=showAdminUsersPage"><fmt:message key="header.admin.users.control"/>
+                            </a>
                             </li>
-                          </c:if>
+                        </c:if>
                     </ul>
                 </nav>
 
