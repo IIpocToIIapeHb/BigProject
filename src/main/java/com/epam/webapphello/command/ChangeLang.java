@@ -1,32 +1,34 @@
 package com.epam.webapphello.command;
 
-import com.epam.webapphello.entity.User;
 import com.epam.webapphello.exception.ServiceException;
-import com.epam.webapphello.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Locale;
-import java.util.Optional;
 
 public class ChangeLang implements Command {
 
+    private static final String REQUEST_HEADER = "referer";
+    private static final String LANG = "lang";
+    private static final String RU_LANG = "ru";
+    private static final String EN_LANG = "en";
+    private static final String FR_LANG = "fr";
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse resp) throws ServiceException {
-        String language = request.getParameter("lang");
-        String page = request.getHeader("referer");
+        String language = request.getParameter(LANG);
+        String page = request.getHeader(REQUEST_HEADER);
         CommandResult result = null;
         switch (language){
         case "ru":
-            Locale.forLanguageTag("ru");
-            request.getSession().setAttribute("lang", "ru");
+            Locale.forLanguageTag(RU_LANG);
+            request.getSession().setAttribute(LANG, RU_LANG);
             break;
         case "en":
-             request.getSession().setAttribute("lang", "en");
+             request.getSession().setAttribute(LANG, EN_LANG);
              break;
         case "fr":
-             request.getSession().setAttribute("lang", "fr");
+             request.getSession().setAttribute(LANG, FR_LANG);
              break;
             default:
                 throw new IllegalArgumentException("Unknown language" + language);

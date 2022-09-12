@@ -5,12 +5,21 @@ import com.epam.webapphello.service.*;
 
 public class CommandFactory {
 
+    private static final String MAIN_PAGE_PATH = "/WEB-INF/view/main.jsp";
+    private static final String PAYED_PAGE_PATH = "/WEB-INF/view/payedPage.jsp";
+    private static final String ADD_MEDICINE_PAGE_PATH = "/WEB-INF/view/addMedicine.jsp";
+    private static final String MEDICINE_STORAGE_PAGE_PATH = "/WEB-INF/view/medicineStorage.jsp";
+    private static final String SUCCESSFUL_MEDICINE_CHANGING_PAGE_PATH = "/WEB-INF/view/successfulMedicineChanging.jsp";
+    private static final String SUCCESSFUL_MEDICINE_ADDING_PAGE_PATH = "/WEB-INF/view/successfulMedicineAdding.jsp";
+    private static final String ORDER_IS_PERFORMED_PAGE_PATH = "/WEB-INF/view/orderIsPerformed.jsp";
+    private static final String USERS_STORAGE_PAGE_PATH = "/WEB-INF/view/usersStorage.jsp";
+
    public Command createCommand(String command) {
         switch(command){
             case "login":
                 return new LoginCommand(new UserServiceImpl(new DaoHelperFactory()));
             case "mainPage":
-                return new ShowPageCommand("/WEB-INF/view/main.jsp");
+                return new ShowPageCommand(MAIN_PAGE_PATH);
             case "catalog":
                 return new CatalogCommand(new MedicineServiceImpl(new DaoHelperFactory()));
             case "searchProduct":
@@ -26,7 +35,7 @@ public class CommandFactory {
             case "payOrder":
                 return new OrderPayCommand(new PositionInfoServiceImpl(new DaoHelperFactory()));
             case "payedPage":
-                return new ShowPageCommand("/WEB-INF/view/payedPage.jsp");
+                return new ShowPageCommand(PAYED_PAGE_PATH);
             case "ConfirmationRequestsPage":
                 return new ConfirmationRequestsPageCommand(new PrescriptionInfoServiceImpl(new DaoHelperFactory()));
             case "extensionRequestsPage":
@@ -44,13 +53,13 @@ public class CommandFactory {
             case "saveMedicine":
                 return new SaveMedicineCommand(new MedicineServiceImpl(new DaoHelperFactory()));
             case "addMedicinePage":
-                return new ShowPageCommand("/WEB-INF/view/addMedicine.jsp");
+                return new ShowPageCommand(ADD_MEDICINE_PAGE_PATH);
             case "showMedicineStoragePage":
-                return new ShowPageCommand("/WEB-INF/view/medicineStorage.jsp");
+                return new ShowPageCommand(MEDICINE_STORAGE_PAGE_PATH);
             case "showSuccessfulChangingMedicinePage":
-                return new ShowPageCommand("/WEB-INF/view/successfulMedicineChanging.jsp");
+                return new ShowPageCommand(SUCCESSFUL_MEDICINE_CHANGING_PAGE_PATH);
             case "showSuccessfulAddingMedicinePage":
-                return new ShowPageCommand("/WEB-INF/view/successfulMedicineAdding.jsp");
+                return new ShowPageCommand(SUCCESSFUL_MEDICINE_ADDING_PAGE_PATH);
             case "searchProductInStorage":
                 return new SearchProductInStorageCommand(new MedicineServiceImpl(new DaoHelperFactory()));
             case "changeMedicine":
@@ -64,9 +73,9 @@ public class CommandFactory {
             case "performOrder":
                 return new PerformOrderCommand(new OrderServiceImpl(new DaoHelperFactory()));
             case "orderIsPerformedPage":
-                return new ShowPageCommand("/WEB-INF/view/orderIsPerformed.jsp");
+                return new ShowPageCommand(ORDER_IS_PERFORMED_PAGE_PATH);
             case "showAdminUsersPage":
-                return new ShowPageCommand("/WEB-INF/view/usersStorage.jsp");
+                return new ShowPageCommand(USERS_STORAGE_PAGE_PATH);
             case "searchUser":
                 return new SearchUserCommand(new UserServiceImpl(new DaoHelperFactory()));
             case "changeLockStatus":

@@ -21,9 +21,15 @@ import static java.lang.Long.parseLong;
 
 public class CreateCartCommand implements Command {
 
-
     private final OrderService orderService;
     private final OrderMedicineService orderMedicineService;
+
+    private static final String MEDICINE_ID_PARAMETER = "medicine-id";
+    private static final String MEDICINE_NUMBER_PARAMETER = "medicine-number";
+    private static final String MEDICINE_PRESCRIPTION_PARAMETER = "medicine-with-recipe";
+    private static final String USER_ATTRIBUTE = "user";
+    private static final String NOT_PAID_ORDER_STATUS = "not_paid";
+    private static final String CATALOG_PAGE_PATH = "/WEB-INF/view/catalog.jsp";
 
     public CreateCartCommand(OrderService orderService,OrderMedicineService orderMedicineService) {
         this.orderService = orderService;
@@ -32,15 +38,14 @@ public class CreateCartCommand implements Command {
 
     @Override
     public CommandResult execute(HttpServletRequest req, HttpServletResponse resp) throws ServiceException {
-        String medicineId = req.getParameter("medicine-id");
-        String medicineNumber = req.getParameter("medicine-number");
-        String medicineWithRecipe =  req.getParameter("medicine-with-recipe");
+        String medicineId = req.getParameter(MEDICINE_ID_PARAMETER);
+        String medicineNumber = req.getParameter(MEDICINE_NUMBER_PARAMETER);
+        String medicineWithRecipe =  req.getParameter(MEDICINE_PRESCRIPTION_PARAMETER);
 
-        User user = (User)req.getSession().getAttribute("user");
+        User user = (User)req.getSession().getAttribute(USER_ATTRIBUTE);
 
         Optional<Order> order = null;
-        order = orderService.findOrderByStatusAndUser("not_paid",user.getId());
-
+        order = orderService.findOrderByStatusAndUser(NOT_PAID_ORDER_STATUS,user.getId());
 
         if (order.isPresent()) {
             Optional<OrderMedicine> orderMedicine = null;
@@ -52,11 +57,11 @@ public class CreateCartCommand implements Command {
                     orderMedicineService.save(newOrderMedicine, Boolean.parseBoolean(medicineWithRecipe), user.getId());
                 }
         } else {
-            Order newOrder = new Order(user.getId(),new Date(System.currentTimeMillis()), "not_paid");
+            Order newOrder = new Order(user.getId(),new Date(System.currentTimeMillis()), NOT_PAID_ORDER_STATUS);
             orderService.save(newOrder,parseLong(medicineId),parseInt(medicineNumber), user.getId(),Boolean.parseBoolean(medicineWithRecipe));
 
         }
-        CommandResult result = CommandResult.forward("/WEB-INF/view/catalog.jsp");
+        CommandResult result = CommandResult.forward(CATALOG_PAGE_PATH);
         return result;
     }
 }
