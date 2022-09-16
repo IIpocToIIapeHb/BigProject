@@ -17,7 +17,7 @@ public interface RowMapper <T extends Identifable> {
                 return new MedicineRowMapper();
             case Order.TABLE:
                 return new OrderRowMapper();
-            case Recipe.TABLE:
+            case Prescription.TABLE:
                 return new RecipeRowMapper();
             default:
                 throw new IllegalArgumentException("Unknown table " + table);

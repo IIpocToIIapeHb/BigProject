@@ -1,6 +1,6 @@
 package com.epam.webapphello.dao;
 
-import com.epam.webapphello.entity.Recipe;
+import com.epam.webapphello.entity.Prescription;
 import com.epam.webapphello.exception.DAOException;
 import com.epam.webapphello.mapper.RecipeRowMapper;
 
@@ -10,7 +10,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 
-public class PrescriptionDaoImpl extends AbstractDao<Recipe> implements PrescriptionDao {
+public class PrescriptionDaoImpl extends AbstractDao<Prescription> implements PrescriptionDao {
 
     private static final String FIND_BY_USER_AND_MEDICINE = "select * from recipe where user_id = ? and medicine_id = ?";
     private static final String FIND_BY_USER_AND_MEDICINE_AND_STATUS = "select * from recipe where user_id = ? and medicine_id = ? and status != ?";
@@ -30,14 +30,14 @@ public class PrescriptionDaoImpl extends AbstractDao<Recipe> implements Prescrip
     }
 
     @Override
-    public Optional<Recipe> findRecipeByUserAndMedicine(Long userId, Long medicineId) throws DAOException {
+    public Optional<Prescription> findRecipeByUserAndMedicine(Long userId, Long medicineId) throws DAOException {
         return executeForSingleResult(FIND_BY_USER_AND_MEDICINE,
                 userId,
                medicineId);
     }
 
     @Override
-    public boolean requestRecipeByUserAndMedicine(Long userId, Long medicineId) throws DAOException {
+    public boolean requestPrescriptionByUserAndMedicine(Long userId, Long medicineId) throws DAOException {
         return executeUpdate(REQUEST_RECIPE_BY_USER,
                 userId,
                 medicineId,
@@ -52,7 +52,7 @@ public class PrescriptionDaoImpl extends AbstractDao<Recipe> implements Prescrip
     }
 
     @Override
-    public Optional<Recipe> findRecipeByUserAndMedicineAndUnwantedStatus(Long userId, Long medicineId, String recipeStatus) throws DAOException {
+    public Optional<Prescription> findPrescriptionByUserAndMedicineAndUnwantedStatus(Long userId, Long medicineId, String recipeStatus) throws DAOException {
         return executeForSingleResult(FIND_BY_USER_AND_MEDICINE_AND_STATUS,
                 userId,
                 medicineId,
@@ -60,7 +60,7 @@ public class PrescriptionDaoImpl extends AbstractDao<Recipe> implements Prescrip
     }
 
     @Override
-    public boolean saveEmptyRecipe(Long userId, Long medicineId) throws DAOException {
+    public boolean saveEmptyPrescription(Long userId, Long medicineId) throws DAOException {
        boolean result =  executeUpdate(SAVE_EMPTY_RECIPE,
                 userId,
                 medicineId);
@@ -69,20 +69,20 @@ public class PrescriptionDaoImpl extends AbstractDao<Recipe> implements Prescrip
 
     @Override
     protected String getTableName() {
-        return Recipe.TABLE;
+        return Prescription.TABLE;
     }
 
     @Override
-    protected Map<String, Object> getFields(Recipe item) {
+    protected Map<String, Object> getFields(Prescription item) {
         Map<String, Object> fields = new LinkedHashMap<>();
         fields.put(item.AMOUNT, item.getAmount());
         fields.put(item.STATUS, item.getStatus());
         return fields;
     }
 
-    public Recipe getRecipeById(Long id) throws DAOException{
+    public Prescription getRecipeById(Long id) throws DAOException{
             String request ="select * from recipe where id = ?;";
-            Recipe entity =  executeForSingleResult(request, id).get();
+            Prescription entity =  executeForSingleResult(request, id).get();
             return  entity;
         }
 

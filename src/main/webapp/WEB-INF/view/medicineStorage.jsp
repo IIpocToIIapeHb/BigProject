@@ -66,7 +66,7 @@
                                          </div>
 
                                          <div class="storage-medicine-prescription-wrapper">
-                                             <span class= "storage-medicine-prescription"><fmt:message key="${medicine.getWithRecipeStatus()}"/></span>
+                                             <span class= "storage-medicine-prescription"><fmt:message key="${medicine.getWithPrescriptionStatus()}"/></span>
                                          </div>
 
                                          <div class="storage-medicine-form-wrapper">

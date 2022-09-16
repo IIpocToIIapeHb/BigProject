@@ -17,21 +17,20 @@ public class PerformOrderCommand implements Command {
 
     private final OrderService orderService;
 
+    private static final String ORDER_ID_PARAMETER = "order-id";
+    private static final String ORDER_IS_PERFORMED_PAGE_COMMAND = "controller?command=orderIsPerformedPage";
+
     public PerformOrderCommand(OrderService orderService) {
         this.orderService = orderService;
     }
 
-
     @Override
     public CommandResult execute(HttpServletRequest req, HttpServletResponse resp) throws ServiceException {
-        String orderId = req.getParameter("order-id");
+        String orderId = req.getParameter(ORDER_ID_PARAMETER);
 
         CommandResult result;
-
-            orderService.performOrder(Long.parseLong(orderId));
-
-
-        result =  CommandResult.redirect("controller?command=orderIsPerformedPage");
+        orderService.performOrder(Long.parseLong(orderId));
+        result =  CommandResult.redirect(ORDER_IS_PERFORMED_PAGE_COMMAND);
         return result;
     }
 }

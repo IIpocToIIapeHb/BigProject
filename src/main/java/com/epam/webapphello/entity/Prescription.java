@@ -3,9 +3,9 @@ package com.epam.webapphello.entity;
 import java.io.Serializable;
 import java.sql.Date;
 
-public class Recipe implements Identifable, Serializable {
+public class Prescription implements Identifable, Serializable {
 
-    public static final long serialVersionUID = 762396735800315929L;
+    public static final long serialVersionUID = -368849885493883294L;
 
     public final static String TABLE = "recipe";
     public final static String ID = "id";
@@ -23,7 +23,7 @@ public class Recipe implements Identifable, Serializable {
     private String status;
     private Integer amount;
 
-    public Recipe(Long id, Long userId, Long medicineId, Date validUntil, String status, Integer amount) {
+    public Prescription(Long id, Long userId, Long medicineId, Date validUntil, String status, Integer amount) {
         this.id = id;
         this.userId = userId;
         this.medicineId = medicineId;
@@ -32,16 +32,7 @@ public class Recipe implements Identifable, Serializable {
         this.amount = amount;
     }
 
-
-//    public Recipe(Long userId, Long medicineId, Date validUntil, String status, Integer amount) {
-//        this.userId = userId;
-//        this.medicineId = medicineId;
-//        this.validUntil = validUntil;
-//        this.status = status;
-//        this.amount = amount;
-//    }
-
-    public Recipe(Long userId, Long medicineId, String status) {
+    public Prescription(Long userId, Long medicineId, String status) {
         this.userId = userId;
         this.medicineId = medicineId;
         this.status = status;
@@ -95,18 +86,18 @@ public class Recipe implements Identifable, Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Recipe)) return false;
+        if (!(o instanceof Prescription)) return false;
 
-        Recipe recipe = (Recipe) o;
+        Prescription prescription = (Prescription) o;
 
-        if (getId() != null ? !getId().equals(recipe.getId()) : recipe.getId() != null) return false;
-        if (getUserId() != null ? !getUserId().equals(recipe.getUserId()) : recipe.getUserId() != null) return false;
-        if (getMedicineId() != null ? !getMedicineId().equals(recipe.getMedicineId()) : recipe.getMedicineId() != null)
+        if (getId() != null ? !getId().equals(prescription.getId()) : prescription.getId() != null) return false;
+        if (getUserId() != null ? !getUserId().equals(prescription.getUserId()) : prescription.getUserId() != null) return false;
+        if (getMedicineId() != null ? !getMedicineId().equals(prescription.getMedicineId()) : prescription.getMedicineId() != null)
             return false;
-        if (getValidUntil() != null ? !getValidUntil().equals(recipe.getValidUntil()) : recipe.getValidUntil() != null)
+        if (getValidUntil() != null ? !getValidUntil().equals(prescription.getValidUntil()) : prescription.getValidUntil() != null)
             return false;
-        if (getStatus() != null ? !getStatus().equals(recipe.getStatus()) : recipe.getStatus() != null) return false;
-        return getAmount() != null ? getAmount().equals(recipe.getAmount()) : recipe.getAmount() == null;
+        if (getStatus() != null ? !getStatus().equals(prescription.getStatus()) : prescription.getStatus() != null) return false;
+        return getAmount() != null ? getAmount().equals(prescription.getAmount()) : prescription.getAmount() == null;
     }
 
     @Override
@@ -122,7 +113,7 @@ public class Recipe implements Identifable, Serializable {
 
     @Override
     public String toString() {
-        return "Recipe{" +
+        return "Prescription{" +
                 "id=" + id +
                 ", userId=" + userId +
                 ", medicineId=" + medicineId +

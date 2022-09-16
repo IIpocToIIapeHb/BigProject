@@ -5,7 +5,7 @@ import java.sql.Date;
 
 public class Order implements Identifable, Serializable {
 
-    public static final long serialVersionUID = 6251028556816113956L;
+    public static final long serialVersionUID = 3244626632322455839L;
 
     public final static String TABLE = "Pharmacy.order";
     public final static String USER_ID = "user_id";
@@ -14,19 +14,19 @@ public class Order implements Identifable, Serializable {
 
 
     private Long id;
-    private Long user_id;
+    private Long userId;
     private Date date;
     private String status;
 
-    public Order(Long user_id, Date date, String status) {
-        this.user_id = user_id;
+    public Order(Long userId, Date date, String status) {
+        this.userId = userId;
         this.date = date;
         this.status = status;
     }
 
-    public Order(Long id, Long user_id, Date date, String status) {
+    public Order(Long id, Long userId, Date date, String status) {
         this.id = id;
-        this.user_id = user_id;
+        this.userId = userId;
         this.date = date;
         this.status = status;
     }
@@ -40,12 +40,12 @@ public class Order implements Identifable, Serializable {
         this.id = id;
     }
 
-    public Long getUser_id() {
-        return user_id;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public Date getDate() {
@@ -68,7 +68,7 @@ public class Order implements Identifable, Serializable {
     public String toString() {
         return "Order{" +
                 "id=" + id +
-                ", user_id=" + user_id +
+                ", userId=" + userId +
                 ", date=" + date +
                 ", status='" + status + '\'' +
                 '}';

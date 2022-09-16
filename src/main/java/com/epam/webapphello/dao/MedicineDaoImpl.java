@@ -1,13 +1,8 @@
 package com.epam.webapphello.dao;
 
 import com.epam.webapphello.entity.Medicine;
-import com.epam.webapphello.entity.MedicineCategory;
-import com.epam.webapphello.entity.OrderMedicine;
-import com.epam.webapphello.entity.User;
 import com.epam.webapphello.exception.DAOException;
 import com.epam.webapphello.mapper.MedicineRowMapper;
-import com.epam.webapphello.mapper.RowMapper;
-import com.epam.webapphello.mapper.UserRowMapper;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -36,7 +31,7 @@ public class MedicineDaoImpl extends AbstractDao<Medicine> implements MedicineDa
        // fields.put(Medicine.MEDICINE_ID, item.getId());
         fields.put(Medicine.NAME, item.getName());
         fields.put(Medicine.DOSAGE, item.getDosage());
-        fields.put(Medicine.WITH_RECIPE, item.getWithRecipe());
+        fields.put(Medicine.WITH_RECIPE, item.getWithPrescription());
         fields.put(Medicine.FORM, item.getForm());
         fields.put(Medicine.AMOUNT, item.getAmount());
         fields.put(Medicine.PACKAGE_AMOUNT, item.getPackageAmount());

@@ -120,7 +120,7 @@
                                 </div>
 
                                 <div class= "position-medicine-recipe-status-wrapper">
-                                    <span class= "position-medicine-recipe-status "><c:out value="${position.getStringMedicineWithRecipe()}"/></span>
+                                    <span class= "position-medicine-recipe-status "><c:out value="${position.getStringMedicineWithPrescription()}"/></span>
                                 </div>
 
 
@@ -129,10 +129,10 @@
                                 <div class= "position-recipe-status-wrapper">
 
                                    <span class= "position-recipe-status">
-                                    <c:if  test="${position.getRecipeStatus()!=null}">
+                                    <c:if  test="${position.getPrescriptionStatus()!=null}">
 
 
-                                   <fmt:message key="${position.getRecipeStatus()}"/>
+                                   <fmt:message key="${position.getPrescriptionStatus()}"/>
                                      </c:if>
                                    </span>
                                 </div>

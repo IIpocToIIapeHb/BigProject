@@ -1,12 +1,8 @@
 package com.epam.webapphello.dao;
 
 import com.epam.webapphello.entity.Order;
-import com.epam.webapphello.entity.OrderMedicine;
-import com.epam.webapphello.entity.User;
 import com.epam.webapphello.exception.DAOException;
-import com.epam.webapphello.mapper.MedicineRowMapper;
 import com.epam.webapphello.mapper.OrderRowMapper;
-import com.epam.webapphello.mapper.RowMapper;
 
 import java.sql.Connection;
 import java.util.LinkedHashMap;
@@ -42,7 +38,7 @@ public class OrderDaoImpl extends AbstractDao<Order> implements OrderDao{
     @Override
     protected Map<String, Object> getFields(Order item) {
         Map<String, Object> fields = new LinkedHashMap<>();
-        fields.put(Order.USER_ID, item.getUser_id());
+        fields.put(Order.USER_ID, item.getUserId());
         fields.put(Order.CREATION_DATE, item.getDate());
         fields.put(Order.STATUS, item.getStatus());
         return fields;

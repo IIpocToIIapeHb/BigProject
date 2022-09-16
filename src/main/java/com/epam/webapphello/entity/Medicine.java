@@ -22,7 +22,7 @@ public class Medicine implements Identifable, Serializable {
     private Long id;
     private String name;
     private Integer dosage;
-    private boolean withRecipe;
+    private boolean withPrescription;
     private String form;
     private Integer amount;
     private Integer packageAmount;
@@ -31,11 +31,11 @@ public class Medicine implements Identifable, Serializable {
     private Long categoryId;
     private String categoryName;
 
-    public Medicine(Long id, String name, Integer dosage, boolean withRecipe, String form, Integer amount, Integer packageAmount, Double price, String path, Long categoryId) {
+    public Medicine(Long id, String name, Integer dosage, boolean withPrescription, String form, Integer amount, Integer packageAmount, Double price, String path, Long categoryId) {
         this.id = id;
         this.name = name;
         this.dosage = dosage;
-        this.withRecipe = withRecipe;
+        this.withPrescription = withPrescription;
         this.form = form;
         this.amount = amount;
         this.packageAmount = packageAmount;
@@ -44,11 +44,11 @@ public class Medicine implements Identifable, Serializable {
         this.categoryId = categoryId;
     }
 
-    public Medicine(Long id, String name, Integer dosage, boolean withRecipe, String form, Integer amount, Integer packageAmount, Double price, String path) {
+    public Medicine(Long id, String name, Integer dosage, boolean withPrescription, String form, Integer amount, Integer packageAmount, Double price, String path) {
         this.id = id;
         this.name = name;
         this.dosage = dosage;
-        this.withRecipe = withRecipe;
+        this.withPrescription = withPrescription;
         this.form = form;
         this.amount = amount;
         this.packageAmount = packageAmount;
@@ -56,10 +56,10 @@ public class Medicine implements Identifable, Serializable {
         this.path = path;
     }
 
-    public Medicine(String name, Integer dosage, boolean withRecipe, String form, Integer amount, Integer packageAmount, Double price, String path,Long categoryId) {
+    public Medicine(String name, Integer dosage, boolean withPrescription, String form, Integer amount, Integer packageAmount, Double price, String path, Long categoryId) {
         this.name = name;
         this.dosage = dosage;
-        this.withRecipe = withRecipe;
+        this.withPrescription = withPrescription;
         this.form = form;
         this.amount = amount;
         this.packageAmount = packageAmount;
@@ -68,20 +68,20 @@ public class Medicine implements Identifable, Serializable {
         this.categoryId = categoryId;
     }
 
-    public Medicine(String name, Integer dosage, boolean withRecipe, String form, Integer amount, Integer packageAmount, Double price, String path) {
+    public Medicine(String name, Integer dosage, boolean withPrescription, String form, Integer amount, Integer packageAmount, Double price, String path) {
         this.name = name;
         this.dosage = dosage;
-        this.withRecipe = withRecipe;
+        this.withPrescription = withPrescription;
         this.form = form;
         this.amount = amount;
         this.packageAmount = packageAmount;
         this.price = price;
         this.path = path;
     }
-    public Medicine(String name, Integer dosage, boolean withRecipe, String form, Integer amount, Integer packageAmount, Double price) {
+    public Medicine(String name, Integer dosage, boolean withPrescription, String form, Integer amount, Integer packageAmount, Double price) {
         this.name = name;
         this.dosage = dosage;
-        this.withRecipe = withRecipe;
+        this.withPrescription = withPrescription;
         this.form = form;
         this.amount = amount;
         this.packageAmount = packageAmount;
@@ -113,16 +113,16 @@ public class Medicine implements Identifable, Serializable {
         this.dosage = dosage;
     }
 
-    public boolean getWithRecipe() {
-        return withRecipe;
+    public boolean getWithPrescription() {
+        return withPrescription;
     }
 
-    public String getWithRecipeStatus() {
-        return withRecipe ? "yes":"no";
+    public String getWithPrescriptionStatus() {
+        return withPrescription ? "yes":"no";
     }
 
-    public void setWithRecipe(boolean with_recipe) {
-        this.withRecipe = with_recipe;
+    public void setWithPrescription(boolean withPrescription) {
+        this.withPrescription = withPrescription;
     }
 
     public String getForm() {
@@ -187,11 +187,14 @@ public class Medicine implements Identifable, Serializable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", dosage=" + dosage +
-                ", with_recipe=" + withRecipe +
+                ", withPrescription=" + withPrescription +
                 ", form='" + form + '\'' +
                 ", amount=" + amount +
-                ", package_amount=" + packageAmount +
+                ", packageAmount=" + packageAmount +
                 ", price=" + price +
+                ", path='" + path + '\'' +
+                ", categoryId=" + categoryId +
+                ", categoryName='" + categoryName + '\'' +
                 '}';
     }
 }

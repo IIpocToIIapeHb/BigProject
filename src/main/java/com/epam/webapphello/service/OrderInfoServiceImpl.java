@@ -2,9 +2,6 @@ package com.epam.webapphello.service;
 
 import com.epam.webapphello.dao.*;
 import com.epam.webapphello.entity.OrderInfo;
-import com.epam.webapphello.entity.OrderMedicine;
-import com.epam.webapphello.entity.PrescriptionInfo;
-import com.epam.webapphello.entity.Recipe;
 import com.epam.webapphello.exception.DAOException;
 import com.epam.webapphello.exception.ServiceException;
 
@@ -18,7 +15,6 @@ public class OrderInfoServiceImpl implements OrderInfoService {
     public OrderInfoServiceImpl(DaoHelperFactory daoHelperFactory) {
         this.daoHelperFactory = daoHelperFactory;
     }
-
 
     @Override
     public List<OrderInfo> getAllPaidOrders() throws ServiceException {

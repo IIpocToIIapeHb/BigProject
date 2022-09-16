@@ -2,7 +2,7 @@ package com.epam.webapphello.service;
 
 import com.epam.webapphello.dao.*;
 import com.epam.webapphello.entity.OrderMedicine;
-import com.epam.webapphello.entity.Recipe;
+import com.epam.webapphello.entity.Prescription;
 import com.epam.webapphello.exception.DAOException;
 import com.epam.webapphello.exception.ServiceException;
 
@@ -11,6 +11,8 @@ import java.util.Optional;
 public class OrderMedicineServiceImpl implements OrderMedicineService {
 
     private DaoHelperFactory daoHelperFactory;
+    private static final String PRESCRIPTION_STATUS_PENDING_APPROVAL = "pending approval";
+
 
     public OrderMedicineServiceImpl(DaoHelperFactory daoHelperFactory) {
         this.daoHelperFactory = daoHelperFactory;
@@ -18,11 +20,11 @@ public class OrderMedicineServiceImpl implements OrderMedicineService {
 
 
     @Override
-    public void save(OrderMedicine orderMedicine, boolean medicineWithRecipe, Long userId) throws ServiceException {
+    public void save(OrderMedicine orderMedicine, boolean medicineWithPrescription, Long userId) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             OrderMedicineDao orderMedicineDao = helper.createOrderMedicineDao();
             orderMedicineDao.save(orderMedicine);
-            createRecipeIfAbsent(helper,userId,medicineWithRecipe,orderMedicine.getMedicine_id());
+            createPrescriptionIfAbsent(helper,userId,medicineWithPrescription,orderMedicine.getMedicineId());
         } catch (DAOException e) {
             throw new ServiceException(e);
         }
@@ -40,8 +42,6 @@ public class OrderMedicineServiceImpl implements OrderMedicineService {
         return orderMedicine;
     }
 
-
-
     @Override
     public void addMedicineOrderAmount(Long orderMedicineId, Integer oldMedicineAmount,Integer addMedicineAmount)  throws ServiceException {
         Integer medicineNumber = oldMedicineAmount+addMedicineAmount;
@@ -54,28 +54,27 @@ public class OrderMedicineServiceImpl implements OrderMedicineService {
     }
 
     @Override
-    public void removeMedicine(Long orderMedicineId, Long recipeId, String recipeStatus) throws ServiceException {
+    public void removeMedicine(Long orderMedicineId, Long prescriptionId, String prescriptionStatus) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             OrderMedicineDao orderMedicineDao = helper.createOrderMedicineDao();
             orderMedicineDao.removeById(orderMedicineId);
-
-            if (recipeStatus.equals("pending approval") || recipeStatus.isEmpty()){
-                PrescriptionDao recipeDao = helper.createPrescriptionDao();
-                recipeDao.removeById(recipeId);
+            if (prescriptionStatus.equals(PRESCRIPTION_STATUS_PENDING_APPROVAL) || prescriptionStatus.isEmpty()){
+                PrescriptionDao prescriptionDao = helper.createPrescriptionDao();
+                prescriptionDao.removeById(prescriptionId);
             }
         } catch (DAOException e) {
             throw new ServiceException(e);
         }
     }
 
-    public void createRecipeIfAbsent(DaoHelper helper,Long userId, boolean medicineWithRecipe, Long medicineId) throws DAOException {
+    public void createPrescriptionIfAbsent(DaoHelper helper, Long userId, boolean medicineWithPrescription, Long medicineId) throws DAOException {
 
-        PrescriptionDao recipeDao = helper.createPrescriptionDao();
-        if (medicineWithRecipe) {
-            Optional<Recipe> recipe= recipeDao.findRecipeByUserAndMedicineAndUnwantedStatus(userId, medicineId,"used");
-            if (recipe.isPresent()){
+        PrescriptionDao prescriptionDao = helper.createPrescriptionDao();
+        if (medicineWithPrescription) {
+            Optional<Prescription> prescription= prescriptionDao.findPrescriptionByUserAndMedicineAndUnwantedStatus(userId, medicineId,"used");
+            if (prescription.isPresent()){
             } else {
-                recipeDao.saveEmptyRecipe(userId,medicineId);
+                prescriptionDao.saveEmptyPrescription(userId,medicineId);
             }
         }
     }

@@ -3,29 +3,28 @@ package com.epam.webapphello.service;
 import com.epam.webapphello.dao.*;
 import com.epam.webapphello.entity.Order;
 import com.epam.webapphello.entity.OrderMedicine;
-import com.epam.webapphello.entity.Recipe;
+import com.epam.webapphello.entity.Prescription;
 import com.epam.webapphello.exception.DAOException;
 import com.epam.webapphello.exception.ServiceException;
-
 import java.util.Optional;
-
-import static java.lang.Integer.parseInt;
-import static java.lang.Long.parseLong;
 
 public class OrderServiceImpl implements OrderService {
 
     private DaoHelperFactory daoHelperFactory;
+    private static final String ORDER_STATUS_NOT_PAID = "not_paid";
+    private static final String DELIVERY_ORDER_STATUS_PERFORMED = "performed";
+
 
     public OrderServiceImpl(DaoHelperFactory daoHelperFactory) {
         this.daoHelperFactory = daoHelperFactory;
     }
 
     @Override
-    public Optional<Order> findOrderByStatusAndUser(final String status, final Long user_id) throws ServiceException {
+    public Optional<Order> findOrderByStatusAndUser(final String status, final Long userId) throws ServiceException {
         Optional<Order> order = null;
         try (DaoHelper helper = daoHelperFactory.create()) {
             OrderDao orderDao = helper.createOrderDao();
-            order = orderDao.findOrderByStatusAndUser(status,user_id);
+            order = orderDao.findOrderByStatusAndUser(status,userId);
         } catch (DAOException e) {
             throw new ServiceException(e);
         }
@@ -33,7 +32,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void save(Order order, Long medicine_id, Integer required_amount, Long userId, boolean isPrescriptionRequired) throws ServiceException {
+    public void save(Order order, Long medicineId, Integer requiredAmount, Long userId, boolean isPrescriptionRequired) throws ServiceException {
 
         DaoHelper helper = null;
         try {
@@ -44,14 +43,14 @@ public class OrderServiceImpl implements OrderService {
             orderDaoSave.save(order);
 
             OrderDao orderDaoFind = helper.createOrderDao();
-            Optional<Order> orderWithId = orderDaoFind.findOrderByStatusAndUser("not_paid",order.getUser_id());
+            Optional<Order> orderWithId = orderDaoFind.findOrderByStatusAndUser(ORDER_STATUS_NOT_PAID,order.getUserId());
 
 
-            OrderMedicine orderMedicine = new OrderMedicine(medicine_id, required_amount,orderWithId.get().getId());
+            OrderMedicine orderMedicine = new OrderMedicine(medicineId, requiredAmount,orderWithId.get().getId());
             OrderMedicineDao orderMedicineDao = helper.createOrderMedicineDao();
             orderMedicineDao.save(orderMedicine);
 
-            createRecipeIfAbsent(helper,userId,isPrescriptionRequired,orderMedicine.getMedicine_id());
+            createPrescriptionIfAbsent(helper,userId,isPrescriptionRequired,orderMedicine.getMedicineId());
             helper.endTransaction();
         } catch (DAOException e) {
             if (helper!=null){
@@ -69,19 +68,18 @@ public class OrderServiceImpl implements OrderService {
     public void performOrder(long orderId) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             OrderDao orderDao = helper.createOrderDao();
-            orderDao.changeOrderDeliveryStatus("performed", orderId);
+            orderDao.changeOrderDeliveryStatus(DELIVERY_ORDER_STATUS_PERFORMED, orderId);
         } catch (DAOException e) {
             throw new ServiceException(e);
         }
     }
 
-    private void createRecipeIfAbsent(DaoHelper helper,Long userId, boolean isPrescriptionRequired, Long medicineId) throws DAOException {
-
-        PrescriptionDao recipeDao = helper.createPrescriptionDao();
+    private void createPrescriptionIfAbsent(DaoHelper helper, Long userId, boolean isPrescriptionRequired, Long medicineId) throws DAOException {
+        PrescriptionDao prescriptionDao = helper.createPrescriptionDao();
         if (isPrescriptionRequired) {
-            Optional<Recipe> recipe= recipeDao.findRecipeByUserAndMedicineAndUnwantedStatus(userId, medicineId,"used");
-            if (!recipe.isPresent()) {
-                recipeDao.saveEmptyRecipe(userId,medicineId);
+            Optional<Prescription> prescription= prescriptionDao.findPrescriptionByUserAndMedicineAndUnwantedStatus(userId, medicineId,"used");
+            if (!prescription.isPresent()) {
+                prescriptionDao.saveEmptyPrescription(userId,medicineId);
             }
         }
     }

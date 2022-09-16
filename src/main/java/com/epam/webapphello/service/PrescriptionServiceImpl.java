@@ -3,7 +3,7 @@ package com.epam.webapphello.service;
 import com.epam.webapphello.dao.DaoHelper;
 import com.epam.webapphello.dao.DaoHelperFactory;
 import com.epam.webapphello.dao.PrescriptionDao;
-import com.epam.webapphello.entity.Recipe;
+import com.epam.webapphello.entity.Prescription;
 import com.epam.webapphello.exception.DAOException;
 import com.epam.webapphello.exception.ServiceException;
 
@@ -17,26 +17,11 @@ public class PrescriptionServiceImpl implements PrescriptionService {
         this.daoHelperFactory = daoHelperFactory;
     }
 
-
-
-//    @Override
-//    public Recipe getRecipe(Long userId, Long medicineId) throws ServiceException {
-//
-//        Optional<Recipe> recipe = null;
-//        try (DaoHelper helper = daoHelperFactory.create()) {
-//            RecipeDao recipeDao = helper.createRecipeDao();
-//            recipe = recipeDao.findRecipeByUserAndMedicine(userId, medicineId);
-//        } catch (DAOException e) {
-//            throw new ServiceException(e);
-//        }
-//        return recipe.get();
-//    }
-
-    public void requestRecipe(Long userId, Long medicineId) throws ServiceException {
-        Recipe recipe;
+    public void requestPrescription(Long userId, Long medicineId) throws ServiceException {
+        Prescription prescription;
         try (DaoHelper helper = daoHelperFactory.create()) {
-            PrescriptionDao recipeDao = helper.createPrescriptionDao();
-            recipeDao.requestRecipeByUserAndMedicine(userId, medicineId);
+            PrescriptionDao prescriptionDao = helper.createPrescriptionDao();
+            prescriptionDao.requestPrescriptionByUserAndMedicine(userId, medicineId);
         } catch (DAOException e) {
             throw new ServiceException(e);
         }
@@ -44,27 +29,25 @@ public class PrescriptionServiceImpl implements PrescriptionService {
     }
 
     @Override
-    public void changeRecipeStatus(Long recipeId, String recipeStatus) throws ServiceException {
-        String newRecipeStatus= null;
+    public void changePrescriptionStatus(Long prescriptionId, String prescriptionStatus) throws ServiceException {
+        String newPrescriptionStatus= null;
         try (DaoHelper helper = daoHelperFactory.create()) {
-            PrescriptionDao recipeDao = helper.createPrescriptionDao();
-
-
-            switch (recipeStatus){
+            PrescriptionDao prescriptionDao = helper.createPrescriptionDao();
+            switch (prescriptionStatus){
                 case("pending approval"):
                 case("extension requested"):
                     break;
                 case ("declined"):
                 case (""):
-                    newRecipeStatus = "pending approval";
-                    recipeDao.changeStatus(recipeId, newRecipeStatus);
+                    newPrescriptionStatus = "pending approval";
+                    prescriptionDao.changeStatus(prescriptionId, newPrescriptionStatus);
                     break;
                 case ("overdue"):
-                    newRecipeStatus = "extension requested";
-                    recipeDao.changeStatus(recipeId, newRecipeStatus);
+                    newPrescriptionStatus = "extension requested";
+                    prescriptionDao.changeStatus(prescriptionId, newPrescriptionStatus);
                     break;
                 default:
-                    throw new IllegalArgumentException("Unknown recipe status" + recipeStatus);
+                    throw new IllegalArgumentException("Unknown prescription status" + prescriptionStatus);
             }
 
         } catch (DAOException e) {
@@ -74,11 +57,8 @@ public class PrescriptionServiceImpl implements PrescriptionService {
 
     @Override
     public void confirmPrescription(long prescriptionId, int prescriptionMedicineAmount, int prescriptionTerm) throws ServiceException {
-
         java.util.Date now = new java.util.Date();
-        long millis=System.currentTimeMillis();
         long time =  (long)prescriptionTerm*24*60*60*1000;
-        long prescriptionTimeInMilliseconds = time + millis;
         Date prescriptionValidUntil = new Date(now.getTime()+time);
 
         try (DaoHelper helper = daoHelperFactory.create()) {

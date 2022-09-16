@@ -36,25 +36,25 @@ public class PositionInfo implements Identifable, Serializable {
     private String status;
     private Long medicineId;
     private String medicineName;
-    private Byte medicineWithRecipe;
+    private Byte medicineWithPrescription;
     private String medicinePath;
     private Integer requiredAmount;
-    private Long recipeId;
-    private String recipeStatus;
-    private Integer recipeAmount;
-    private Date recipeValidUntil;
+    private Long prescriptionId;
+    private String prescriptionStatus;
+    private Integer prescriptionAmount;
+    private Date prescriptionValidUntil;
     private Double medicinePrice;
     private Double total;
 
-    public PositionInfo(Long id, Long user_id, String name,
+    public PositionInfo(Long id, Long userId, String name,
                         String surname, Long orderId, Date date,
                         String status, Long medicineId, String medicineName,
-                        Byte medicineWithRecipe, String medicinePath,
-                        Integer requiredAmount, Long recipeId,
-                        String recipeStatus,Integer recipeAmount, Date recipeValidUntil,
+                        Byte medicineWithPrescription, String medicinePath,
+                        Integer requiredAmount, Long prescriptionId,
+                        String prescriptionStatus, Integer prescriptionAmount, Date prescriptionValidUntil,
                         Double medicinePrice) {
         this.id = id;
-        this.userId = user_id;
+        this.userId = userId;
         this.name = name;
         this.surname = surname;
         this.orderId = orderId;
@@ -64,12 +64,12 @@ public class PositionInfo implements Identifable, Serializable {
         this.medicineName = medicineName;
         this.medicinePath = medicinePath;
         this.requiredAmount = requiredAmount;
-        this.recipeId = recipeId;
-        this.recipeStatus = recipeStatus;
-        this.recipeAmount = recipeAmount;
-        this.recipeValidUntil = recipeValidUntil;
+        this.prescriptionId = prescriptionId;
+        this.prescriptionStatus = prescriptionStatus;
+        this.prescriptionAmount = prescriptionAmount;
+        this.prescriptionValidUntil = prescriptionValidUntil;
         this.medicinePrice = medicinePrice;
-        this.medicineWithRecipe = medicineWithRecipe;
+        this.medicineWithPrescription = medicineWithPrescription;
         total = requiredAmount * medicinePrice;
     }
 
@@ -148,16 +148,16 @@ public class PositionInfo implements Identifable, Serializable {
         this.medicineName = medicineName;
     }
 
-    public Byte getMedicineWithRecipe() {
-        return medicineWithRecipe;
+    public Byte getMedicineWithPrescription() {
+        return medicineWithPrescription;
     }
 
-    public void setMedicineWithRecipe(Byte MedicineWithRecipe) {
-        this.medicineWithRecipe = medicineWithRecipe;
+    public void setMedicineWithPrescription(Byte medicineWithPrescription) {
+        this.medicineWithPrescription = medicineWithPrescription;
     }
 
-    public String getStringMedicineWithRecipe(){
-        String result = medicineWithRecipe==0 ? "no":"yes";
+    public String getStringMedicineWithPrescription(){
+        String result = medicineWithPrescription ==0 ? "no":"yes";
         return  result;
     }
 
@@ -181,37 +181,37 @@ public class PositionInfo implements Identifable, Serializable {
         this.requiredAmount = requiredAmount;
     }
 
-    public Long getRecipeId() {
-        return recipeId;
+    public Long getPrescriptionId() {
+        return prescriptionId;
     }
 
-    public void setRecipeId(Long recipeId) {
-        this.recipeId = recipeId;
+    public void setPrescriptionId(Long prescriptionId) {
+        this.prescriptionId = prescriptionId;
     }
 
-    public String getRecipeStatus() {
+    public String getPrescriptionStatus() {
 
-        return recipeStatus;
+        return prescriptionStatus;
     }
 
-    public void setRecipeStatus(String recipeStatus) {
-        this.recipeStatus = recipeStatus;
+    public void setPrescriptionStatus(String prescriptionStatus) {
+        this.prescriptionStatus = prescriptionStatus;
     }
 
-    public Integer getRecipeAmount() {
-        return recipeAmount;
+    public Integer getPrescriptionAmount() {
+        return prescriptionAmount;
     }
 
-    public void setRecipeAmount(Integer recipeAmount) {
-        this.recipeAmount = recipeAmount;
+    public void setPrescriptionAmount(Integer prescriptionAmount) {
+        this.prescriptionAmount = prescriptionAmount;
     }
 
-    public Date getRecipeValidUntil() {
-        return recipeValidUntil;
+    public Date getPrescriptionValidUntil() {
+        return prescriptionValidUntil;
     }
 
-    public void setRecipeValidUntil(Date recipeValidUntil) {
-        this.recipeValidUntil = recipeValidUntil;
+    public void setPrescriptionValidUntil(Date prescriptionValidUntil) {
+        this.prescriptionValidUntil = prescriptionValidUntil;
     }
 
     public Double getMedicinePrice() {

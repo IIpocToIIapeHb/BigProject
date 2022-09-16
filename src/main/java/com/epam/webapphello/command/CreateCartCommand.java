@@ -6,7 +6,6 @@ import com.epam.webapphello.entity.User;
 import com.epam.webapphello.exception.ServiceException;
 import com.epam.webapphello.service.OrderMedicineService;
 import com.epam.webapphello.service.OrderService;
-import com.epam.webapphello.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +13,6 @@ import java.sql.Date;
 import java.util.Optional;
 
 
-import static java.lang.Boolean.parseBoolean;
 import static java.lang.Byte.parseByte;
 import static java.lang.Integer.parseInt;
 import static java.lang.Long.parseLong;
@@ -51,7 +49,7 @@ public class CreateCartCommand implements Command {
             Optional<OrderMedicine> orderMedicine = null;
             orderMedicine = orderMedicineService.findOrderMedicine(order.get().getId(),parseLong(medicineId));
                 if (orderMedicine.isPresent()) {
-                    orderMedicineService.addMedicineOrderAmount(orderMedicine.get().getId(),orderMedicine.get().getRequired_amount(),Integer.parseInt(medicineNumber));
+                    orderMedicineService.addMedicineOrderAmount(orderMedicine.get().getId(),orderMedicine.get().getRequiredAmount(),Integer.parseInt(medicineNumber));
                 } else {
                     OrderMedicine newOrderMedicine = new OrderMedicine(Long.parseLong(medicineId), Integer.parseInt(medicineNumber), order.get().getId());
                     orderMedicineService.save(newOrderMedicine, Boolean.parseBoolean(medicineWithRecipe), user.getId());

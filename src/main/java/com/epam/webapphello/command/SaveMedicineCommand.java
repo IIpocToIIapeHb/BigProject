@@ -22,6 +22,19 @@ public class SaveMedicineCommand implements Command {
 
     public static final int BUFFER_SIZE = 1024;
     private final MedicineService medicineService;
+    private static final String MEDICINE_NAME_PARAMETER = "medicine-name";
+    private static final String MEDICINE_CATEGORY_PARAMETER = "medicine-category";
+    private static final String MEDICINE_DOSAGE_PARAMETER = "medicine-dosage";
+    private static final String MEDICINE_PRESCRIPTION_AVAILABILITY_PARAMETER = "medicine-prescription-availability";
+    private static final String MEDICINE_FORM_PARAMETER = "medicine-form";
+    private static final String MEDICINE_NUMBER_PARAMETER = "medicine-number";
+    private static final String MEDICINE_PACKAGE_AMOUNT_PARAMETER = "medicine-package-amount";
+    private static final String MEDICINE_PRICE_PARAMETER = "medicine-price";
+    private static final String MEDICINE_IMAGE_PARAMETER = "medicine-image";
+    private static final String MAIN_PAGE_COMMAND = "controller?command=mainPage";
+    private static final String ADD_MEDICINE_PAGE = "/WEB-INF/view/addMedicine.jsp";
+    private static final String ERROR_MESSAGE_ATTRIBUTE = "errorMessage";
+    private static final String ERROR_MESSAGE = "Invalid credentials";
 
     public SaveMedicineCommand(MedicineService medicineService) {
         this.medicineService = medicineService;
@@ -30,36 +43,29 @@ public class SaveMedicineCommand implements Command {
 
     @Override
     public CommandResult execute(HttpServletRequest req, HttpServletResponse resp) throws ServiceException {
-        String medicineName = req.getParameter("medicine-name");
-        String medicineCategory = req.getParameter("medicine-category");
-        String medicineDosage = req.getParameter("medicine-dosage");
-        String medicinePrescriptionAvailability = req.getParameter("medicine-prescription-availability");
-        String medicineForm = req.getParameter("medicine-form");
-        String medicineNumber = req.getParameter("medicine-number");
-        String medicinePackageAmount = req.getParameter("medicine-package-amount");
-        String medicinePrice = req.getParameter("medicine-price");
-
+        String medicineName = req.getParameter(MEDICINE_NAME_PARAMETER);
+        String medicineCategory = req.getParameter(MEDICINE_CATEGORY_PARAMETER);
+        String medicineDosage = req.getParameter(MEDICINE_DOSAGE_PARAMETER);
+        String medicinePrescriptionAvailability = req.getParameter(MEDICINE_PRESCRIPTION_AVAILABILITY_PARAMETER);
+        String medicineForm = req.getParameter(MEDICINE_FORM_PARAMETER);
+        String medicineNumber = req.getParameter(MEDICINE_NUMBER_PARAMETER);
+        String medicinePackageAmount = req.getParameter(MEDICINE_PACKAGE_AMOUNT_PARAMETER);
+        String medicinePrice = req.getParameter(MEDICINE_PRICE_PARAMETER);
 
         CommandResult result;
         if (!medicineName.isEmpty() && !medicineDosage.isEmpty() && !medicineNumber.isEmpty() && !medicinePackageAmount.isEmpty()
                 && !medicinePrice.isEmpty()) {
-            String fileName =  saveImage(req,"medicine-image");
+            String fileName =  saveImage(req,MEDICINE_IMAGE_PARAMETER);
             boolean medicinePrescriptionStatus= medicinePrescriptionAvailability.equals("yes");
-
             Medicine medicine = new Medicine(medicineName,Integer.parseInt(medicineDosage),medicinePrescriptionStatus,
                     medicineForm, Integer.parseInt(medicineNumber),Integer.parseInt(medicinePackageAmount),
                     Double.parseDouble(medicinePrice),fileName);
-
-
             medicineService.save(medicine, medicineCategory);
-            result = CommandResult.redirect("controller?command=mainPage");
+            result = CommandResult.redirect(MAIN_PAGE_COMMAND);
         } else {
-            req.setAttribute("errorMessage", "Invalid credentials");
-            result = CommandResult.forward("/WEB-INF/view/addMedicine.jsp");
+            req.setAttribute(ERROR_MESSAGE_ATTRIBUTE, ERROR_MESSAGE);
+            result = CommandResult.forward(ADD_MEDICINE_PAGE);
         }
-
-            result = CommandResult.redirect("controller?command=mainPage");
-
         return result;
     }
 

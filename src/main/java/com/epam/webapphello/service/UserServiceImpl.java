@@ -39,7 +39,6 @@ public class UserServiceImpl implements UserService {
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao userDao = helper.createUserDao();
             foundUsers = userDao.findUserBySurname(searchingUser);
-
         } catch (DAOException e) {
             throw new ServiceException(e);
         }
@@ -64,6 +63,5 @@ public class UserServiceImpl implements UserService {
         }
         return foundUsers;
     }
-
 
 }

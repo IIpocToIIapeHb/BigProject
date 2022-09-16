@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class OrderMedicine implements Identifable, Serializable {
 
-    public static final long serialVersionUID = -4390825584280754489L;
+    public static final long serialVersionUID = -8633218305289729197L;
 
     public final static String TABLE = "order_medicine";
     public final static String MEDICINE_ID = "medicine_id";
@@ -12,23 +12,23 @@ public class OrderMedicine implements Identifable, Serializable {
     public final static String ORDER_ID = "order_id";
 
     private Long id;
-    private Long medicine_id;
-    private Integer required_amount;
-    private Long order_id;
+    private Long medicineId;
+    private Integer requiredAmount;
+    private Long orderId;
 
-    public OrderMedicine(Long id, Long medicine_id, Integer required_amount, Long order_id) {
+    public OrderMedicine(Long id, Long medicineId, Integer requiredAmount, Long orderId) {
         this.id = id;
-        this.medicine_id = medicine_id;
-        this.required_amount = required_amount;
-        this.order_id = order_id;
+        this.medicineId = medicineId;
+        this.requiredAmount = requiredAmount;
+        this.orderId = orderId;
     }
 
 
-    public OrderMedicine(Long medicine_id, Integer required_amount, Long order_id) {
+    public OrderMedicine(Long medicineId, Integer requiredAmount, Long orderId) {
         this.id = id;
-        this.medicine_id = medicine_id;
-        this.required_amount = required_amount;
-        this.order_id = order_id;
+        this.medicineId = medicineId;
+        this.requiredAmount = requiredAmount;
+        this.orderId = orderId;
     }
 
     @Override
@@ -40,27 +40,27 @@ public class OrderMedicine implements Identifable, Serializable {
         this.id = id;
     }
 
-    public Long getMedicine_id() {
-        return medicine_id;
+    public Long getMedicineId() {
+        return medicineId;
     }
 
-    public void setMedicine_id(Long medicine_id) {
-        this.medicine_id = medicine_id;
+    public void setMedicineId(Long medicineId) {
+        this.medicineId = medicineId;
     }
 
-    public Integer getRequired_amount() {
-        return required_amount;
+    public Integer getRequiredAmount() {
+        return requiredAmount;
     }
 
-    public void setRequired_amount(Integer required_amount) {
-        this.required_amount = required_amount;
+    public void setRequiredAmount(Integer requiredAmount) {
+        this.requiredAmount = requiredAmount;
     }
 
-    public Long getOrder_id() {
-        return order_id;
+    public Long getOrderId() {
+        return orderId;
     }
 
-    public void setOrder_id(Long order_id) {
-        this.order_id = order_id;
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
 }

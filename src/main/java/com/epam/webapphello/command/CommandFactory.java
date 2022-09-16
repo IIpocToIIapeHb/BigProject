@@ -29,7 +29,7 @@ public class CommandFactory {
             case "showCart":
                 return new ShowCartCommand(new PositionInfoServiceImpl(new DaoHelperFactory()));
             case "getRecipe":
-                return new GetRecipeCommand(new PrescriptionServiceImpl(new DaoHelperFactory()));
+                return new GetPrescriptionCommand(new PrescriptionServiceImpl(new DaoHelperFactory()));
             case "deleteFromCart":
                 return new DeleteFromCart(new OrderMedicineServiceImpl(new DaoHelperFactory()));
             case "payOrder":

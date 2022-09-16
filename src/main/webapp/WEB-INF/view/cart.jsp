@@ -55,35 +55,35 @@
                                 </div>
 
                                 <div class= "position-medicine-recipe-status-wrapper">
-                                    <span class= "position-medicine-recipe-status "><fmt:message key="${position.getStringMedicineWithRecipe()}"/></span>
+                                    <span class= "position-medicine-recipe-status "><fmt:message key="${position.getStringMedicineWithPrescription()}"/></span>
                                 </div>
 
 				                 <div class= "position-form-wrapper">
                                         <form method = "post" action = "controller?command=getRecipe">
                                             <input class = "medicine-id" type="hidden" name="medicine-id" value="${position.getMedicineId()}">
                                             <input class = "medicine-required-amount" type="hidden" name="medicine-required-amount" value="${position.getRequiredAmount()}">
-                                            <input class = "medicine-recipe-status" type="hidden" name="medicine-recipe-status" value="${position.getRecipeStatus()}">
-                                            <input class = "medicine-recipe-id" type="hidden" name="medicine-recipe-id" value="${position.getRecipeId()}">
+                                            <input class = "medicine-recipe-status" type="hidden" name="medicine-recipe-status" value="${position.getPrescriptionStatus()}">
+                                            <input class = "medicine-recipe-id" type="hidden" name="medicine-recipe-id" value="${position.getPrescriptionId()}">
 
                                             <div class= "get-recipe-button-wrapper">
-                                                 <c:if  test="${position.getStringMedicineWithRecipe().equals('yes')}">
-                                                     <c:if  test="${!position.getRecipeStatus().equals('approved') && !position.getRecipeStatus().equals('overdue')}">
+                                                 <c:if  test="${position.getStringMedicineWithPrescription().equals('yes')}">
+                                                     <c:if  test="${!position.getPrescriptionStatus().equals('approved') && !position.getPrescriptionStatus().equals('overdue')}">
                                                      <button class="get-recipe-button" type="submit"><fmt:message key="cart.request.recipe"/></button>
                                                      </c:if>
-                                                     <c:if  test="${position.getRecipeStatus().equals('overdue') && position.getRequiredAmount()<=position.getRecipeAmount()}">
+                                                     <c:if  test="${position.getPrescriptionStatus().equals('overdue') && position.getRequiredAmount()<=position.getPrescriptionAmount()}">
                                                      <button class="get-recipe-button" type="submit"><fmt:message key="cart.request.extension"/></button>
                                                      </c:if>
                                                  </c:if>
                                             </div>
                                         </form>
 
-                                        <c:if  test="${position.getStringMedicineWithRecipe().equals('no') || (position.getRecipeStatus().equals('approved') && position.getRequiredAmount()<=position.getRecipeAmount())}">
+                                        <c:if  test="${position.getStringMedicineWithPrescription().equals('no') || (position.getPrescriptionStatus().equals('approved') && position.getRequiredAmount()<=position.getPrescriptionAmount())}">
                                           <div class= "check-icon-wrapper">
                                             <img src="./static/img/icons-check.png" alt="" class="check-icon">
                                           </div>
                                         </c:if>
 
-                                        <c:if  test="${position.getStringMedicineWithRecipe().equals('yes') && (!position.getRecipeStatus().equals('pending approval')) && (!position.getRecipeStatus().equals('declined')) && (position.getRecipeStatus()!=null)  && (position.getRequiredAmount()>position.getRecipeAmount())}">
+                                        <c:if  test="${position.getStringMedicineWithPrescription().equals('yes') && (!position.getPrescriptionStatus().equals('pending approval')) && (!position.getPrescriptionStatus().equals('declined')) && (position.getPrescriptionStatus()!=null)  && (position.getRequiredAmount()>position.getPrescriptionAmount())}">
                                            <div class= "cross-icon-wrapper">
                                               <img src="./static/img/icons-cross.png" alt="" class="cross-icon">
                                            </div>
@@ -92,20 +92,20 @@
 
                                 <div class= "position-recipe-status-wrapper">
                                    <span class= "position-recipe-status">
-                                        <c:if  test="${position.getRecipeStatus()!=null}">
-                                            <fmt:message key="${position.getRecipeStatus()}"/>
+                                        <c:if  test="${position.getPrescriptionStatus()!=null}">
+                                            <fmt:message key="${position.getPrescriptionStatus()}"/>
                                         </c:if>
                                    </span>
                                 </div>
 
                                  <div class= "position-recipe-status-wrapper">
-                                      <span class= "position-recipe-status"><c:out value="${position.getRecipeValidUntil()}"/></span>
+                                      <span class= "position-recipe-status"><c:out value="${position.getPrescriptionValidUntil()}"/></span>
                                  </div>
 
                                  <div class= "position-recipe-number-wrapper">
-                                      <c:if  test="${position.getStringMedicineWithRecipe().equals('yes') && position.getRecipeAmount()!=0 }">
-                                           <span class= "position-recipe-number"><c:out value="${position.getRecipeAmount()}"/></span>
-                                             <c:if  test="${position.getRequiredAmount()>position.getRecipeAmount()}">
+                                      <c:if  test="${position.getStringMedicineWithPrescription().equals('yes') && position.getPrescriptionAmount()!=0 }">
+                                           <span class= "position-recipe-number"><c:out value="${position.getPrescriptionAmount()}"/></span>
+                                             <c:if  test="${position.getRequiredAmount()>position.getPrescriptionAmount()}">
                                                 <div class = "error-message" style = "color:red"; >
                                                      ${errorMessage = "exceeding the limit"}
                                                 </div>
@@ -120,8 +120,8 @@
                                  <div class= "position-delete-button-wrapper">
                                       <form method = "post" action = "controller?command=deleteFromCart">
                                           <input class = "medicine-id" type="hidden" name="order-medicine-id" value="${position.getId()}">
-                                          <input class = "medicine-id" type="hidden" name="recipe-id" value="${position.getRecipeId()}">
-                                          <input class = "medicine-id" type="hidden" name="recipe-status" value="${position.getRecipeStatus()}">
+                                          <input class = "medicine-id" type="hidden" name="recipe-id" value="${position.getPrescriptionId()}">
+                                          <input class = "medicine-id" type="hidden" name="recipe-status" value="${position.getPrescriptionStatus()}">
                                           <button class="delete-button" type="submit">
                                             <img src="./static/img/svg/icons-delete.svg" alt="" class="delete-icon">
                                           </button>

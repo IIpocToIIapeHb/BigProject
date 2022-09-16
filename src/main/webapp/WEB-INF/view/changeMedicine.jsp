@@ -76,7 +76,7 @@
                              </div>
                              <div class="medicine-card-input">
                                  <select name="medicine-prescription-availability">
-                                 <option hidden value="default">${changingMedicine.getWithRecipeStatus()}</option>
+                                 <option hidden value="default">${changingMedicine.getWithPrescriptionStatus()}</option>
                                  <option value="yes"><fmt:message key="medicine.prescription.availability.yes"/></option>
                                  <option value="no"><fmt:message key="medicine.prescription.availability.no"/></option>
                                  </select>

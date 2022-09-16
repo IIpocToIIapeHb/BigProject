@@ -12,6 +12,11 @@ import java.util.List;
 public class SearchProductInStorageCommand implements Command {
 
     private final MedicineService medicineService;
+    private static final String SEARCH_PRODUCT_PARAMETER = "search-product";
+    private static final String ERROR_MESSAGE_ATTRIBUTE = "errorSearchProductMessage";
+    private static final String ERROR_MESSAGE = "Product is not found";
+    private static final String MEDICINE_STORAGE_ATTRIBUTE = "medicinesStorage";
+    private static final String MEDICINE_STORAGE_PAGE = "/WEB-INF/view/medicineStorage.jsp";
 
     public SearchProductInStorageCommand(MedicineServiceImpl medicineService) {
         this.medicineService = medicineService;
@@ -19,16 +24,14 @@ public class SearchProductInStorageCommand implements Command {
 
     @Override
     public CommandResult execute(HttpServletRequest req, HttpServletResponse resp) throws ServiceException {
-        String searchingProduct = req.getParameter("search-product");
+        String searchingProduct = req.getParameter(SEARCH_PRODUCT_PARAMETER);
         List<Medicine> foundProduct = null;
         foundProduct = medicineService.findProductByName(searchingProduct);
         if (foundProduct.isEmpty()){
-           // req.getSession().setAttribute("errorSearchProductMessage", "Product is not found");
-            req.setAttribute("errorSearchProductMessage", "Product is not found");
+            req.setAttribute(ERROR_MESSAGE_ATTRIBUTE, ERROR_MESSAGE);
         }
-        req.getSession().setAttribute("medicinesStorage", foundProduct);
-        //req.setAttribute("medicinesStorage", foundProduct);
-        CommandResult result = CommandResult.forward("/WEB-INF/view/medicineStorage.jsp");
+        req.getSession().setAttribute(MEDICINE_STORAGE_ATTRIBUTE, foundProduct);
+        CommandResult result = CommandResult.forward(MEDICINE_STORAGE_PAGE);
         return result;
     }
 }

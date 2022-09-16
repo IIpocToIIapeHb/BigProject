@@ -16,6 +16,11 @@ import java.util.List;
 public class ShowCartCommand implements Command {
 
     private final PositionInfoService positionInfoService;
+    private static final String USER_ATTRIBUTE = "user";
+    private static final String NOT_PAID_ORDER_STATUS = "not_paid";
+    private static final String POSITIONS_ATTRIBUTE = "positions";
+    private static final String TOTAL_PRICE_ATTRIBUTE = "totalPrice";
+    private static final String CART_PAGE_PATH = "/WEB-INF/view/cart.jsp";
 
     public ShowCartCommand(PositionInfoService positionInfoService) {
         this.positionInfoService = positionInfoService;
@@ -39,3 +44,4 @@ public class ShowCartCommand implements Command {
         return result;
     }
 }
+

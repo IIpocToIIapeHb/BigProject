@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import static java.lang.Integer.parseInt;
 import static java.lang.Long.parseLong;
 
-public class GetRecipeCommand implements Command {
+public class GetPrescriptionCommand implements Command {
 
-    private final PrescriptionService recipeService;
+    private final PrescriptionService prescriptionService;
 
     private static final String MEDICINE_ID_PARAMETER = "medicine-id";
     private static final String MEDICINE_REQUIRED_AMOUNT_PARAMETER = "medicine-required-amount";
@@ -21,8 +21,8 @@ public class GetRecipeCommand implements Command {
     private static final String USER_ATTRIBUTE = "user";
     private static final String SHOW_CART_PAGE_COMMAND = "controller?command=showCart";
 
-    public GetRecipeCommand(PrescriptionService recipeService) {
-        this.recipeService = recipeService;
+    public GetPrescriptionCommand(PrescriptionService prescriptionService) {
+        this.prescriptionService = prescriptionService;
     }
 
 
@@ -30,11 +30,11 @@ public class GetRecipeCommand implements Command {
     public CommandResult execute(HttpServletRequest req, HttpServletResponse resp) throws ServiceException {
         String medicineId = req.getParameter(MEDICINE_ID_PARAMETER);
         String medicineRequiredAmount = req.getParameter(MEDICINE_REQUIRED_AMOUNT_PARAMETER);
-        String medicineRecipeStatus = req.getParameter(MEDICINE_PRESCRIPTION_STATUS_PARAMETER);
-        String medicineRecipeId = req.getParameter(MEDICINE_PRESCRIPTION_ID_PARAMETER);
+        String medicinePrescriptionStatus = req.getParameter(MEDICINE_PRESCRIPTION_STATUS_PARAMETER);
+        String medicinePrescriptionId = req.getParameter(MEDICINE_PRESCRIPTION_ID_PARAMETER);
         User user = (User)req.getSession().getAttribute(USER_ATTRIBUTE);
 
-        recipeService.changeRecipeStatus(parseLong(medicineRecipeId),medicineRecipeStatus);
+        prescriptionService.changePrescriptionStatus(parseLong(medicinePrescriptionId),medicinePrescriptionStatus);
 
         CommandResult result = CommandResult.redirect(SHOW_CART_PAGE_COMMAND);
         return result;

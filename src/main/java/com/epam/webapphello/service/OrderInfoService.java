@@ -9,8 +9,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface OrderInfoService {
-
     List<OrderInfo> getAllPaidOrders() throws ServiceException;
-
     Optional<OrderInfo> findOrderInfoById(long parseLong) throws ServiceException;
 }

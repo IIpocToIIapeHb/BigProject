@@ -12,9 +12,7 @@ import java.util.Optional;
 
 public interface PositionInfoService {
     List<PositionInfo> getPositions(Long userId, String orderStatus) throws ServiceException;
-    public BigDecimal calcTotalPrice();
-
+    BigDecimal calcTotalPrice();
     boolean pay(List<PositionInfo> positions, User user,  BigDecimal totalPrice) throws ServiceException,ServiceErrorException;
-
     List<PositionInfo> getPositions(Long id) throws ServiceException;
 }
